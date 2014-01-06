@@ -1,0 +1,147 @@
+<!-- i-C-a -->
+<div data-role="page" id="sub-people-in-space-space-racefirst-person-in-space">
+  <script src="js/hammer.js"></script>
+  <script src="js/jquery.hammer.js"></script>
+  <script src="js/slidebar_people_in_space.js"></script>
+  <link rel="stylesheet" href="css/style_people_in_space.css" />
+  <div class="menuhousing"></div>
+  <div class="homebtnholder"><div class="homebtnPeopleInSpace"></div></div>
+  <div class="mpbtnholder"><div class="mpbtnPeopleInSpace"></div></div>
+  <div class="cpbtnholder"><div class="cpbtnPeopleInSpace"></div></div>
+  <div class="infobtnholder"><div class="infobtnPeopleInSpace"></div></div>
+  <div class="credsbtnholder"><div class="credsbtnPeopleInSpace"></div></div>
+  <div class="menubtnholder"><div class="menubtnPeopleInSpace"></div></div>
+  
+  <div class="bptitleholder" style="padding-top:0px;"><h1>First... Person in Space</h1></div>
+  <div id="spacechar">&nbsp;
+    <div data-role="content" class="kidzcontent">
+      <div class="v-spacer"></div>
+      <div class="sidebarleft-half">
+        <a id="gagarinlink" style="visibility:hidden;" href="JavaScript:html5Lightbox.showLightbox(0, 'css/images/9-12/Space/People_In_Space/Space_Race/First_Person_In_Space/Gagarin_Smiling_B_W_Hi_Res.jpg', 'Yuri Gagarin was also famous for his broad smile, and his height. At 1.57 m, he was well-suited to the cramped Vostok capsule.');">click here</a>
+		
+		<a id="alanlink" style="visibility:hidden;" href="JavaScript:html5Lightbox.showLightbox(0, 'css/images/9-12/Space/People_In_Space/Space_Race/First_Person_In_Space/Alan_Shepard_Freedom_7_Hi_Res.jpg', 'Alan Shepard was the second human in space.  He flew for the National Aeronautics and Space Administration (NASA).');">click here</a>
+		
+		<a id="valentinalink" style="visibility:hidden;" href="JavaScript:html5Lightbox.showLightbox(0, 'css/images/9-12/Space/People_In_Space/Space_Race/First_Person_In_Space/Valentina_Tereshkova_Hi_Res.jpg', 'Valentina Tereshkova loved parachuting. She spent three days in space when she was 26 years old.');">click here</a>
+        
+        <div id="zoomwrapper">
+		  <div id="pol1"class="pPiece" style="left:80px;top:270px;">
+             <img src="css/images/9-12/Space/People_In_Space/Space_Race/First_Person_In_Space/Gagarin_Smiling_B_W.jpg" alt="" />
+          </div>        
+		  <div id="pol2" class="pPiece" style="left:100px;top:270px;">
+             <img src="css/images/9-12/Space/People_In_Space/Space_Race/First_Person_In_Space/Alan_Shepard_Freedom_7.jpg" alt="" />
+          </div>
+		  <div id="pol3"class="pPiece" style="left:75px;top:290px;">
+             <img src="css/images/9-12/Space/People_In_Space/Space_Race/First_Person_In_Space/Valentina_Tereshkova.jpg" alt="" />
+          </div>
+		</div><!--/zoomwrapper-->
+      </div>
+      
+      <div class="bpcontentPeopleInSpace">
+        <p>In the late 1950s and early 1960s, it was a race to get the first person into space.  Dozens of rockets were sent on test flights with empty capsules or animals on board.  Some of the tests ended in disaster.</p>
+		<p>On 12 April 1961, Yuri Gagarin, a cosmonaut from the Soviet Union, was launched into space on board Vostok 1.  He flew a single orbit of the Earth and safely returned to Earth less than two hours after his launch.  Within 24 hours Gagarin's name was known around the world!</p>
+		<p>Less than one month later, Alan Shepard blasted off on board a Mercury capsule.  The rocket carrying the Mercury capsule wasn't powerful enough to get into orbit though, so Shepard's flight lasted just 15 minutes.</p>
+		<p>By the end of 1963, more than a dozen people had travelled into space, including Valentina Tereshkova, the first woman in space.</p>
+      </div>
+       
+      <div class="botlogoholder"><a href="home.html" class="homelinkbh"><img src="css/images/9-12/Space/bottomhomesp.png"></a></div>
+    </div> <!-- end content -->  
+  </div><!--/spacechar-->        
+  
+    <div class="micbtnholder"><div class="micbtnPeopleInSpace" id="playstopFirstPerson"></div></div>
+    <div class="bPeopleInSpace"><div class="rwPeopleInSpace" id="FirstPersonaudiobbtn"></div></div>
+    <div class="plPeopleInSpace"><div class="plpsPeopleInSpace" id="FirstPersonaudioplbtn"></div></div>
+    <div class="fPeopleInSpace"><div class="fwPeopleInSpace" id="FirstPersonaudiofbtn"></div></div>
+    <div id="actualaudio-FirstPerson" style="visibility:hidden;"></div>
+  <!-- </div> -->
+  
+  <script>
+  // sound setup is in home.html and index.js
+    sound = new Audio(); // 'sound' is now an audio object
+ 
+	var playing;
+    var paused;
+    (function() {
+      playing = false;
+      paused = true;
+      $('div#pol3').css("z-index", 1);
+	  $('div#pol2').css("z-index", 2);
+      $('div#pol1').css("z-index", 3);
+      $('div#pol2 > img').css("-webkit-transform", "rotate(0deg)");
+      $('div#pol3 > img').css("-webkit-transform", "rotate(5deg)");
+      $('div#pol1 > img').css("-webkit-transform", "rotate(-3deg)");
+      if(sound.canPlayType('audio/mpeg')) {
+        $('#actualaudio-FirstPerson').html('<audio id="FirstPersonaudio" controls preload onpause="playsPeopleInSpace()" onplay="pausePeopleInSpace()"><source src="audio/People_In_Space/First_Person_Space.mp3" type="audio/mpeg"></audio>');
+      }             
+      $("#sub-people-in-space-space-racefirst-person-in-space").swipe( { swipeRight:goBack, allowPageScroll:"auto"} );
+    })();
+    
+    $('.homelinkbh').on('tap', function() { mainaudiobg.play(); bgsoundPeopleInSpace.pause(); bgsoundPeopleInSpace.currentTime = 0;});
+	
+    
+    
+    $("#pol1").on('tap', function() {
+      $('#gagarinlink')[0].click();
+    });
+	
+	$("#pol2").on('tap', function() {
+      $('#alanlink')[0].click();
+    });
+	
+	$("#pol3").on('tap', function() {
+      $('#valentinalink')[0].click();
+    });
+    
+    function goBack() {
+      $.mobile.changePage("sub-people-in-space-space-race.html", {transition: "slide", reverse: true });
+    }
+    
+    function playsPeopleInSpace() {
+         bgsoundPeopleInSpace.play();
+    }
+       
+    function pausePeopleInSpace() {
+         bgsoundPeopleInSpace.pause();
+    }
+    /* ******************** */
+    /* this is the microphone button */
+    $("#playstopFirstPerson").on('tap', function() {
+      if(!playing) {
+        FirstPersonaudio.play();
+        $('.micbtnPeopleInSpace').css('background-position-x', '-81px');
+        playing = true;
+        paused = false;
+      } else {
+        FirstPersonaudio.pause(); FirstPersonaudio.currentTime = 0;
+        $('.micbtnPeopleInSpace').css('background-position-x', '0px');
+        playing = false;
+        paused = true;
+      }
+    });
+    
+    $("#FirstPersonaudioplbtn").on('tap', function() {
+      if(!paused) {
+        FirstPersonaudio.pause();
+        paused = true;
+      } else {
+        FirstPersonaudio.play();
+        paused = false;
+      }
+      //$(".audiopanel").css({"backgroundPosition":"-197px 0px"});
+    });
+    
+    $("#FirstPersonaudiofbtn").on('tap', function() {
+      var ctime = FirstPersonaudio.currentTime;
+      FirstPersonaudio.currentTime = ctime + 10;
+    });
+    
+    $("#FirstPersonaudiobbtn").on('tap', function() {
+      var ctime = FirstPersonaudio.currentTime;
+      FirstPersonaudio.currentTime = ctime - 10;
+    });
+    
+    $("#FirstPersonaudiopsbtn").on('tap', function() {
+      FirstPersonaudio.pause();
+    });
+  </script>
+  <script src="js/threecardLogic.js"></script>  <!-- for card dragging effects -->
+</div> <!--//home-->

@@ -1,0 +1,162 @@
+<!-- i-C-a -->
+<div data-role="page" id="sub-people-in-space-your-trip-to-space-weightlessness">
+  <script src="js/hammer.js"></script>
+  <script src="js/jquery.hammer.js"></script>
+  <script src="js/slidebar_people_in_space.js"></script>
+  <link rel="stylesheet" href="css/style_people_in_space.css" />
+  <div class="menuhousing"></div>
+  <div class="homebtnholder"><div class="homebtnPeopleInSpace"></div></div>
+  <div class="mpbtnholder"><div class="mpbtnPeopleInSpace"></div></div>
+  <div class="cpbtnholder"><div class="cpbtnPeopleInSpace"></div></div>
+  <div class="infobtnholder"><div class="infobtnPeopleInSpace"></div></div>
+  <div class="credsbtnholder"><div class="credsbtnPeopleInSpace"></div></div>
+  <div class="menubtnholder"><div class="menubtnPeopleInSpace"></div></div>
+  
+  <div class="bptitleholder" style="padding-top:0px;"><h1>Weightlessness</h1></div>
+  <div id="spacechar">&nbsp;
+    <div data-role="content" class="kidzcontent">
+      <div class="v-spacer"></div>
+      <div class="sidebarleft-half">
+        <a id="juleslink" style="visibility:hidden;" href="JavaScript:html5Lightbox.showLightbox(0, 'css/images/9-12/Space/People_In_Space/Your_Trip_Into_Space/Weightlessness/Candle_X_2_Hi_Res.jpg', 'A candle flame looks quite different on Earth and in space!');">click here</a>
+		
+		<div id="zoomwrapper">
+          <div id="pol1" class="pPiece" style="left:100px;top:270px;">
+             <img src="css/images/9-12/Space/People_In_Space/Your_Trip_Into_Space/Weightlessness/Weightlessness.png" alt="" />
+          </div>
+		  <div id="pol2"class="pPiece" style="left:75px;top:290px;">
+             <img src="css/images/9-12/Space/People_In_Space/Your_Trip_Into_Space/Weightlessness/Candle_X_2.jpg" alt="" />
+          </div>
+		</div><!--/zoomwrapper-->
+      </div>
+      
+      <div class="bpcontentPeopleInSpace">
+        <p>Imagine weighing nothing!  Weightlessness in space is a unique sensation.  You can literally float around your spacecraft.</p>
+		<p>Why are you weightless?  It isn't because of a lack of gravity.  Instead, gravity is pulling your spacecraft and you in exactly the same direction.  You would get the same sensation if you were in a rapidly falling elevator, which isn't recommended!  You can also get the same sensation at the very top of a jump from a trampoline or diving board.</p>
+		<p>There are risks in weightlessness though, particularly on a long trip.  Muscles and bones weaken without the regular exercise provided by moving around in Earth's gravity.  So you may want to go for a jog or hop on to the space station exercise bike!</p>
+	  </div>
+       
+      <div class="botlogoholder"><a href="home.html" class="homelinkbh"><img src="css/images/9-12/Space/bottomhomesp.png"></a></div>
+    </div> <!-- end content -->  
+  </div><!--/spacechar-->        
+  
+    <div class="micbtnholder"><div class="micbtnPeopleInSpace" id="playstopWeightlessness"></div></div>
+    <div class="bPeopleInSpace"><div class="rwPeopleInSpace" id="Weightlessnessaudiobbtn"></div></div>
+    <div class="plPeopleInSpace"><div class="plpsPeopleInSpace" id="Weightlessnessaudioplbtn"></div></div>
+    <div class="fPeopleInSpace"><div class="fwPeopleInSpace" id="Weightlessnessaudiofbtn"></div></div>
+    <div id="actualaudio-Weightlessness" style="visibility:hidden;"></div>
+  <!-- </div> -->
+  <!-- ----------------------- Video embedding --------------------------- -->
+  
+	<div id="watchWeightlessnessVideo" style="width:1024px;height:748px;position:absolute;left:0px;top:0px;visibility:hidden;background:#000000;z-index:-1;">
+		<video id="watchWeightlessness" width="1024" height="748" preload>
+        <source src="css/images/9-12/Space/People_In_Space/Your_Trip_Into_Space/Weightlessness/Weightlessness.mp4" type="video/mp4">
+    </video>
+    </div>
+  
+  <!-- ------------------------------------------------------------------ -->
+  <script>
+  // sound setup is in home.html and index.js
+    sound = new Audio(); // 'sound' is now an audio object
+ 
+	var playing;
+    var paused;
+    (function() {
+      playing = false;
+      paused = true;
+	  $('div#pol1').css("z-index", 2);
+      $('div#pol2').css("z-index", 1);
+      $('div#pol1 > img').css("-webkit-transform", "rotate(0deg)");
+	  $('#watchWeightlessnessVideo').css({"visibility":"hidden", "z-index":-10});		
+      $('div#pol2 > img').css("-webkit-transform", "rotate(5deg)");
+	  
+      if(sound.canPlayType('audio/mpeg')) {
+        $('#actualaudio-Weightlessness').html('<audio id="Weightlessnessaudio" controls preload onpause="playsPeopleInSpace()" onplay="pausePeopleInSpace()"><source src="audio/People_In_Space/Weightlessness.mp3" type="audio/mpeg"></audio>');
+      }             
+      $("#sub-people-in-space-your-trip-to-space-weightlessness").swipe( { swipeRight:goBack, allowPageScroll:"auto"} );
+    })();
+    
+    $('.homelinkbh').on('tap', function() { mainaudiobg.play(); bgsoundPeopleInSpace.pause(); bgsoundPeopleInSpace.currentTime = 0;});
+	
+      watchWeightlessness.addEventListener('ended', function() { 
+        $("#watchWeightlessnessVideo").css({"visibility":"hidden", "z-index":-1});
+        $("#watchWeightlessness").css({"z-index":-1});
+        bgsoundvol.play(); 
+      });
+    
+      $("#watchWeightlessness").on('tap', function() {
+        $("#watchWeightlessnessVideo").css({"visibility":"hidden", "z-index":-1});
+        $("#watchWeightlessness").css({"z-index":-1});
+        bgsoundvol.play();
+        watchWeightlessness.pause();
+        watchWeightlessness.currentTime = 0;
+      });
+	  
+    $("#pol1").on('tap', function(){
+      $("#watchWeightlessnessVideo").css({"visibility":"visible", "z-index":10});
+      $("#watchWeightlessness").css({"z-index":9});
+      bgsoundvol.pause();
+      watchWeightlessness.play();
+    });
+	
+    $("#pol2").on('tap', function() {
+      $('#juleslink')[0].click();
+    });
+	
+	$("#pol3").on('tap', function() {
+      $('#destinationlink')[0].click();
+    });
+    
+    function goBack() {
+      $.mobile.changePage("sub-people-in-space-your-trip-to-space.html", {transition: "slide", reverse: true });
+    }
+    
+    function playsPeopleInSpace() {
+         bgsoundPeopleInSpace.play();
+    }
+       
+    function pausePeopleInSpace() {
+         bgsoundPeopleInSpace.pause();
+    }
+    /* ******************** */
+    /* this is the microphone button */
+    $("#playstopWeightlessness").on('tap', function() {
+      if(!playing) {
+        Weightlessnessaudio.play();
+        $('.micbtnPeopleInSpace').css('background-position-x', '-81px');
+        playing = true;
+        paused = false;
+      } else {
+        Weightlessnessaudio.pause(); Weightlessnessaudio.currentTime = 0;
+        $('.micbtnPeopleInSpace').css('background-position-x', '0px');
+        playing = false;
+        paused = true;
+      }
+    });
+    
+    $("#Weightlessnessaudioplbtn").on('tap', function() {
+      if(!paused) {
+        Weightlessnessaudio.pause();
+        paused = true;
+      } else {
+        Weightlessnessaudio.play();
+        paused = false;
+      }
+      //$(".audiopanel").css({"backgroundPosition":"-197px 0px"});
+    });
+    
+    $("#Weightlessnessaudiofbtn").on('tap', function() {
+      var ctime = Weightlessnessaudio.currentTime;
+      Weightlessnessaudio.currentTime = ctime + 10;
+    });
+    
+    $("#Weightlessnessaudiobbtn").on('tap', function() {
+      var ctime = Weightlessnessaudio.currentTime;
+      Weightlessnessaudio.currentTime = ctime - 10;
+    });
+    
+    $("#Weightlessnessaudiopsbtn").on('tap', function() {
+      Weightlessnessaudio.pause();
+    });
+  </script>
+  <script src="js/twocardLogic.js"></script>  <!-- for card dragging effects -->
+</div> <!--//home-->

@@ -1,0 +1,136 @@
+<!-- i-C-a -->
+<div data-role="page" id="sub-people-in-space-space-race-taking-a-walk">
+  <script src="js/hammer.js"></script>
+  <script src="js/jquery.hammer.js"></script>
+  <script src="js/slidebar_people_in_space.js"></script>
+  <link rel="stylesheet" href="css/style_people_in_space.css" />
+  <div class="menuhousing"></div>
+  <div class="homebtnholder"><div class="homebtnPeopleInSpace"></div></div>
+  <div class="mpbtnholder"><div class="mpbtnPeopleInSpace"></div></div>
+  <div class="cpbtnholder"><div class="cpbtnPeopleInSpace"></div></div>
+  <div class="infobtnholder"><div class="infobtnPeopleInSpace"></div></div>
+  <div class="credsbtnholder"><div class="credsbtnPeopleInSpace"></div></div>
+  <div class="menubtnholder"><div class="menubtnPeopleInSpace"></div></div>
+  
+  <div class="bptitleholder" style="padding-top:0px;"><h1>Taking a Walk</h1></div>
+  <div id="spacechar">&nbsp;
+    <div data-role="content" class="kidzcontent">
+      <div class="v-spacer"></div>
+      <div class="sidebarleft-half">
+        <a id="edwhitelink" style="visibility:hidden;" href="JavaScript:html5Lightbox.showLightbox(0, 'css/images/9-12/Space/People_In_Space/Space_Race/Taking_A_Walk/Ed_Whites_First_Moonwalk_Hi_Res.jpg', 'Afraid of heights? Ed White\'s spacewalk generated some spectacular views.  (Courtesy: NASA)');">click here</a>
+		
+		<a id="jetpacklink" style="visibility:hidden;" href="JavaScript:html5Lightbox.showLightbox(0, 'css/images/9-12/Space/People_In_Space/Space_Race/Taking_A_Walk/Jetpack_Hi_Res.jpg', 'NASA\'s Manned Maneuvering Unit - a jetpack which allowed astronauts to fly around - was used in 1984.  It is now considered too risky for repair work.  (Courtesy: NASA)');">click here</a>
+		
+		<div id="zoomwrapper">
+		  <div id="pol1"class="pPiece" style="left:80px;top:270px;">
+             <img src="css/images/9-12/Space/People_In_Space/Space_Race/Taking_A_Walk/Ed_Whites_First_Moonwalk.jpg" alt="" />
+          </div>        
+		  <div id="pol2" class="pPiece" style="left:100px;top:270px;">
+             <img src="css/images/9-12/Space/People_In_Space/Space_Race/Taking_A_Walk/Jetpack.jpg" alt="" />
+          </div>
+		</div><!--/zoomwrapper-->
+      </div>
+      
+      <div class="bpcontentPeopleInSpace">
+        <p>What are the challenges of taking a spacewalk?</p>
+		<p>To truly explore space, people need to get out of their spacecraft.  Walking in space isn't as easy as it sounds.  A space suit has to protect you, provide air and survive the extreme temperatures of space.  A tear in its fabric could be lethal!</p>
+		<p>Alexey Leonov took the first spacewalk from the Voskhod 2 capsule in March 1965.  Leonov struggled to move in his spacesuit, which inflated like a balloon.  He struggled mightily to get back inside the Voskhod 2 capsule, but after 12 minutes he did get back in and returned safely to Earth.</p>
+		<p>Ed White, the first American to walk in space, had a similar problem.  He also moved around in space using a gas gun while fellow astronaut James McDivitt took photographs.  White was having so much fun he needed some convincing to get back into the Gemini 4 spacecraft!</p>
+      </div>
+       
+      <div class="botlogoholder"><a href="home.html" class="homelinkbh"><img src="css/images/9-12/Space/bottomhomesp.png"></a></div>
+    </div> <!-- end content -->  
+  </div><!--/spacechar-->        
+  
+    <div class="micbtnholder"><div class="micbtnPeopleInSpace" id="playstopTakingAWalk"></div></div>
+    <div class="bPeopleInSpace"><div class="rwPeopleInSpace" id="TakingAWalkaudiobbtn"></div></div>
+    <div class="plPeopleInSpace"><div class="plpsPeopleInSpace" id="TakingAWalkaudioplbtn"></div></div>
+    <div class="fPeopleInSpace"><div class="fwPeopleInSpace" id="TakingAWalkaudiofbtn"></div></div>
+    <div id="actualaudio-TakingAWalk" style="visibility:hidden;"></div>
+  <!-- </div> -->
+  
+  <script>
+  // sound setup is in home.html and index.js
+    sound = new Audio(); // 'sound' is now an audio object
+ 
+	var playing;
+    var paused;
+    (function() {
+      playing = false;
+      paused = true;
+      $('div#pol1').css("z-index", 2);
+      $('div#pol2').css("z-index", 1);
+      $('div#pol1 > img').css("-webkit-transform", "rotate(0deg)");
+      $('div#pol2 > img').css("-webkit-transform", "rotate(5deg)");
+      if(sound.canPlayType('audio/mpeg')) {
+        $('#actualaudio-TakingAWalk').html('<audio id="TakingAWalkaudio" controls preload onpause="playsPeopleInSpace()" onplay="pausePeopleInSpace()"><source src="audio/People_In_Space/Taking_Walk.mp3" type="audio/mpeg"></audio>');
+      }             
+      $("#sub-people-in-space-space-race-taking-a-walk").swipe( { swipeRight:goBack, allowPageScroll:"auto"} );
+    })();
+    
+    $('.homelinkbh').on('tap', function() { mainaudiobg.play(); bgsoundPeopleInSpace.pause(); bgsoundPeopleInSpace.currentTime = 0;});
+	
+    
+    
+    $("#pol1").on('tap', function() {
+      $('#edwhitelink')[0].click();
+    });
+	
+	$("#pol2").on('tap', function() {
+      $('#jetpacklink')[0].click();
+    });
+	
+    function goBack() {
+      $.mobile.changePage("sub-people-in-space-space-race.html", {transition: "slide", reverse: true });
+    }
+    
+    function playsPeopleInSpace() {
+         bgsoundPeopleInSpace.play();
+    }
+       
+    function pausePeopleInSpace() {
+         bgsoundPeopleInSpace.pause();
+    }
+    /* ******************** */
+    /* this is the microphone button */
+    $("#playstopTakingAWalk").on('tap', function() {
+      if(!playing) {
+        TakingAWalkaudio.play();
+        $('.micbtnPeopleInSpace').css('background-position-x', '-81px');
+        playing = true;
+        paused = false;
+      } else {
+        TakingAWalkaudio.pause(); TakingAWalkaudio.currentTime = 0;
+        $('.micbtnPeopleInSpace').css('background-position-x', '0px');
+        playing = false;
+        paused = true;
+      }
+    });
+    
+    $("#TakingAWalkaudioplbtn").on('tap', function() {
+      if(!paused) {
+        TakingAWalkaudio.pause();
+        paused = true;
+      } else {
+        TakingAWalkaudio.play();
+        paused = false;
+      }
+      //$(".audiopanel").css({"backgroundPosition":"-197px 0px"});
+    });
+    
+    $("#TakingAWalkaudiofbtn").on('tap', function() {
+      var ctime = TakingAWalkaudio.currentTime;
+      TakingAWalkaudio.currentTime = ctime + 10;
+    });
+    
+    $("#TakingAWalkaudiobbtn").on('tap', function() {
+      var ctime = TakingAWalkaudio.currentTime;
+      TakingAWalkaudio.currentTime = ctime - 10;
+    });
+    
+    $("#TakingAWalkaudiopsbtn").on('tap', function() {
+      TakingAWalkaudio.pause();
+    });
+  </script>
+  <script src="js/twocardLogic.js"></script>  <!-- for card dragging effects -->
+</div> <!--//home-->

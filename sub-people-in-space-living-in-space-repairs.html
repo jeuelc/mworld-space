@@ -1,0 +1,145 @@
+<!-- i-C-a -->
+<div data-role="page" id="sub-people-in-space-living-in-space-repairs">
+  <script src="js/hammer.js"></script>
+  <script src="js/jquery.hammer.js"></script>
+  <script src="js/slidebar_people_in_space.js"></script>
+  <link rel="stylesheet" href="css/style_people_in_space.css" />
+  <div class="menuhousing"></div>
+  <div class="homebtnholder"><div class="homebtnPeopleInSpace"></div></div>
+  <div class="mpbtnholder"><div class="mpbtnPeopleInSpace"></div></div>
+  <div class="cpbtnholder"><div class="cpbtnPeopleInSpace"></div></div>
+  <div class="infobtnholder"><div class="infobtnPeopleInSpace"></div></div>
+  <div class="credsbtnholder"><div class="credsbtnPeopleInSpace"></div></div>
+  <div class="menubtnholder"><div class="menubtnPeopleInSpace"></div></div>
+  
+  <div class="bptitleholder" style="padding-top:0px;"><h1>Repairs</h1></div>
+  <div id="spacechar">&nbsp;
+    <div data-role="content" class="kidzcontent">
+      <div class="v-spacer"></div>
+      <div class="sidebarleft-half">
+        <a id="BWlink" style="visibility:hidden;" href="JavaScript:html5Lightbox.showLightbox(0, 'css/images/9-12/Space/People_In_Space/Living_In_Space/Repairs/B_W_Skylab_Sewing_Hi_Res.jpg', 'The Skylab heat shield fell off during launch making the space station impossibly hot.  These seamstresses are helping to make a replacement.  (Courtesy: NASA)');">click here</a>
+		
+		<a id="solarlink" style="visibility:hidden;" href="JavaScript:html5Lightbox.showLightbox(0, 'css/images/9-12/Space/People_In_Space/Living_In_Space/Repairs/Solar_Wing_Repairs_Hi_Res.jpg', 'In 2007, Scott Parazynski took 90 minutes to reach a damaged solar wing of the ISS to start repairs.  (Courtesy: NASA)');">click here</a>
+		
+		<a id="astronauttlink" style="visibility:hidden;" href="JavaScript:html5Lightbox.showLightbox(0, 'css/images/9-12/Space/People_In_Space/Living_In_Space/Repairs/Astronaut_Tool_Hi_Res.jpg', 'Astronauts use hundreds of different tools which are always tethered to their suits to prevent them floating off.  (Courtesy: NASA)');">click here</a>
+        
+        <div id="zoomwrapper">
+		  <div id="pol1"class="pPiece" style="left:80px;top:270px;">
+             <img src="css/images/9-12/Space/People_In_Space/Living_In_Space/Repairs/B_W_Skylab_Sewing.jpg" alt="" />
+          </div>        
+		  <div id="pol2" class="pPiece" style="left:100px;top:270px;">
+             <img src="css/images/9-12/Space/People_In_Space/Living_In_Space/Repairs/Solar_Wing_Repairs.jpg" alt="" />
+          </div>
+		  <div id="pol3"class="pPiece" style="left:75px;top:290px;">
+             <img src="css/images/9-12/Space/People_In_Space/Living_In_Space/Repairs/Astronaut_Tool.jpg" alt="" />
+          </div>
+		</div><!--/zoomwrapper-->
+      </div>
+      
+      <div class="bpcontentPeopleInSpace">
+        <p>One of the most important parts of living in space is repairing your home.  It isn't good if your home on Earth has a hole in the roof or lacks insulation.  In space the consequences of a hole in the roof are even worse.</p>
+		<p>When the Skylab space station was launched, one solar panel was torn off, another jammed and much of the insulation was torn away.  The first astronauts to visit Skylab arrived at a space station that was boiling inside and had little electrical power.  To fix it, astronauts fitted Skylab with a special sun shade called a 'parasol' and unjammed the remaining solar panel during a spacewalk.</p>
+		<p>Since the 1970s, astronauts have built and repaired space stations.  Fuel leaks and power failures have been fixed, prolonging the life of the space stations.  More mundane repairs have been needed too, including fixing toilets on the International Space Station!</p>
+      </div>
+       
+      <div class="botlogoholder"><a href="home.html" class="homelinkbh"><img src="css/images/9-12/Space/bottomhomesp.png"></a></div>
+    </div> <!-- end content -->  
+  </div><!--/spacechar-->        
+  
+    <div class="micbtnholder"><div class="micbtnPeopleInSpace" id="playstopRepairs"></div></div>
+    <div class="bPeopleInSpace"><div class="rwPeopleInSpace" id="Repairsaudiobbtn"></div></div>
+    <div class="plPeopleInSpace"><div class="plpsPeopleInSpace" id="Repairsaudioplbtn"></div></div>
+    <div class="fPeopleInSpace"><div class="fwPeopleInSpace" id="Repairsaudiofbtn"></div></div>
+    <div id="actualaudio-Repairs" style="visibility:hidden;"></div>
+  <!-- </div> -->
+  
+  <script>
+  // sound setup is in home.html and index.js
+    sound = new Audio(); // 'sound' is now an audio object
+ 
+	var playing;
+    var paused;
+    (function() {
+      playing = false;
+      paused = true;
+      $('div#pol3').css("z-index", 1);
+	  $('div#pol2').css("z-index", 2);
+      $('div#pol1').css("z-index", 3);
+      $('div#pol2 > img').css("-webkit-transform", "rotate(0deg)");
+      $('div#pol3 > img').css("-webkit-transform", "rotate(5deg)");
+      $('div#pol1 > img').css("-webkit-transform", "rotate(-3deg)");
+      if(sound.canPlayType('audio/mpeg')) {
+        $('#actualaudio-Repairs').html('<audio id="Repairsaudio" controls preload onpause="playsPeopleInSpace()" onplay="pausePeopleInSpace()"><source src="audio/People_In_Space/Repairs.mp3" type="audio/mpeg"></audio>');
+      }             
+      $("#sub-people-in-space-living-in-space-repairs").swipe( { swipeRight:goBack, allowPageScroll:"auto"} );
+    })();
+    
+    $('.homelinkbh').on('tap', function() { mainaudiobg.play(); bgsoundPeopleInSpace.pause(); bgsoundPeopleInSpace.currentTime = 0;});
+	
+    
+    
+    $("#pol2").on('tap', function() {
+      $('#solarlink')[0].click();
+    });
+	
+	$("#pol3").on('tap', function() {
+      $('#astronauttlink')[0].click();
+    });
+	$("#pol1").on('tap', function() {
+      $('#BWlink')[0].click();
+    });
+    
+    function goBack() {
+      $.mobile.changePage("sub-people-in-space-living-in-space.html", {transition: "slide", reverse: true });
+    }
+    
+    function playsPeopleInSpace() {
+         bgsoundPeopleInSpace.play();
+    }
+       
+    function pausePeopleInSpace() {
+         bgsoundPeopleInSpace.pause();
+    }
+    /* ******************** */
+    /* this is the microphone button */
+    $("#playstopRepairs").on('tap', function() {
+      if(!playing) {
+        Repairsaudio.play();
+        $('.micbtnPeopleInSpace').css('background-position-x', '-81px');
+        playing = true;
+        paused = false;
+      } else {
+        Repairsaudio.pause(); Repairsaudio.currentTime = 0;
+        $('.micbtnPeopleInSpace').css('background-position-x', '0px');
+        playing = false;
+        paused = true;
+      }
+    });
+    
+    $("#Repairsaudioplbtn").on('tap', function() {
+      if(!paused) {
+        Repairsaudio.pause();
+        paused = true;
+      } else {
+        Repairsaudio.play();
+        paused = false;
+      }
+      //$(".audiopanel").css({"backgroundPosition":"-197px 0px"});
+    });
+    
+    $("#Repairsaudiofbtn").on('tap', function() {
+      var ctime = Repairsaudio.currentTime;
+      Repairsaudio.currentTime = ctime + 10;
+    });
+    
+    $("#Repairsaudiobbtn").on('tap', function() {
+      var ctime = Repairsaudio.currentTime;
+      Repairsaudio.currentTime = ctime - 10;
+    });
+    
+    $("#Repairsaudiopsbtn").on('tap', function() {
+      Repairsaudio.pause();
+    });
+  </script>
+  <script src="js/threecardLogic.js"></script>  <!-- for card dragging effects -->
+</div> <!--//home-->

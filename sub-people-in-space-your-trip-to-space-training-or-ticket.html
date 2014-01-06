@@ -1,0 +1,133 @@
+<!-- i-C-a -->
+<div data-role="page" id="sub-people-in-space-your-trip-to-space-training-or-ticket">
+  <script src="js/hammer.js"></script>
+  <script src="js/jquery.hammer.js"></script>
+  <script src="js/slidebar_people_in_space.js"></script>
+  <link rel="stylesheet" href="css/style_people_in_space.css" />
+  <div class="menuhousing"></div>
+  <div class="homebtnholder"><div class="homebtnPeopleInSpace"></div></div>
+  <div class="mpbtnholder"><div class="mpbtnPeopleInSpace"></div></div>
+  <div class="cpbtnholder"><div class="cpbtnPeopleInSpace"></div></div>
+  <div class="infobtnholder"><div class="infobtnPeopleInSpace"></div></div>
+  <div class="credsbtnholder"><div class="credsbtnPeopleInSpace"></div></div>
+  <div class="menubtnholder"><div class="menubtnPeopleInSpace"></div></div>
+  
+  <div class="bptitleholder" style="padding-top:0px;"><h1>Training or Ticket</h1></div>
+  <div id="spacechar">&nbsp;
+    <div data-role="content" class="kidzcontent">
+      <div class="v-spacer"></div>
+      <div class="sidebarleft-half">
+        <a id="underwaterlink" style="visibility:hidden;" href="JavaScript:html5Lightbox.showLightbox(0, 'css/images/9-12/Space/People_In_Space/Your_Trip_Into_Space/Training_Or_Ticket/Underwater_Training_Hi_Res.jpg', 'To simulate the weightlessness of space, astronauts train for space walks in giant swimming pools.  (Courtesy: NASA)');">click here</a>
+		
+		<a id="dennislink" style="visibility:hidden;" href="JavaScript:html5Lightbox.showLightbox(0, 'css/images/9-12/Space/People_In_Space/Your_Trip_Into_Space/Training_Or_Ticket/Dennis_Tito_Hi_Res.jpg', 'Dennis Tito (left) was the first space tourist.  He paid $20 million to go into space in 2001.  (Courtesy: Getty)');">click here</a>
+        
+        <div id="zoomwrapper">
+          <div id="pol1" class="pPiece" style="left:100px;top:270px;">
+             <img src="css/images/9-12/Space/People_In_Space/Your_Trip_Into_Space/Training_Or_Ticket/Underwater_Training.jpg" alt="" />
+          </div>
+		  <div id="pol2"class="pPiece" style="left:75px;top:290px;">
+             <img src="css/images/9-12/Space/People_In_Space/Your_Trip_Into_Space/Training_Or_Ticket/Dennis_Tito.jpg" alt="" />
+          </div>
+		</div><!--/zoomwrapper-->
+      </div>
+      
+      <div class="bpcontentPeopleInSpace">
+        <p>There are two ways to get into space.  Citizens of some nations can apply to be astronauts.  Thousands of people apply to become astronauts, and only a handful are accepted.  If you want to be an astronaut, don't forget to do your homework, as a university degree is essential!  Many astronauts are test pilots, engineers or medical doctors.  However, astronomers, geologists, meteorologists, oceanographers, politicians, and a teacher have also flown in space.  You'll also need to train for years before your first flight.</p>
+		<p>However, there is now another way into space.  Some people fly into space as tourists.  To get into orbit isn't cheap, and may set you back tens of millions of dollars!  But flights into space are getting cheaper and private company Virgin Galactic has already taken deposits from eager would-be space tourists queuing up for the chance to spend a few moments at the edge of space!  If you had a few hundred thousand dollars, would you like to join them?</p>
+	  </div>
+       
+      <div class="botlogoholder"><a href="home.html" class="homelinkbh"><img src="css/images/9-12/Space/bottomhomesp.png"></a></div>
+    </div> <!-- end content -->  
+  </div><!--/spacechar-->        
+  
+    <div class="micbtnholder"><div class="micbtnPeopleInSpace" id="playstopTrainingOrTicket"></div></div>
+    <div class="bPeopleInSpace"><div class="rwPeopleInSpace" id="TrainingOrTicketaudiobbtn"></div></div>
+    <div class="plPeopleInSpace"><div class="plpsPeopleInSpace" id="TrainingOrTicketaudioplbtn"></div></div>
+    <div class="fPeopleInSpace"><div class="fwPeopleInSpace" id="TrainingOrTicketaudiofbtn"></div></div>
+    <div id="actualaudio-TrainingOrTicket" style="visibility:hidden;"></div>
+  <!-- </div> -->
+  
+  <script>
+  // sound setup is in home.html and index.js
+    sound = new Audio(); // 'sound' is now an audio object
+ 
+	var playing;
+    var paused;
+    (function() {
+      playing = false;
+      paused = true;
+      $('div#pol1').css("z-index", 2);
+      $('div#pol2').css("z-index", 1);
+      $('div#pol1 > img').css("-webkit-transform", "rotate(0deg)");
+      $('div#pol2 > img').css("-webkit-transform", "rotate(5deg)");
+	  
+      if(sound.canPlayType('audio/mpeg')) {
+        $('#actualaudio-TrainingOrTicket').html('<audio id="TrainingOrTicketaudio" controls preload onpause="playsPeopleInSpace()" onplay="pausePeopleInSpace()"><source src="audio/People_In_Space/Training_Ticket.mp3" type="audio/mpeg"></audio>');
+      }             
+      $("#sub-people-in-space-your-trip-to-space-training-or-ticket").swipe( { swipeRight:goBack, allowPageScroll:"auto"} );
+    })();
+    
+    $('.homelinkbh').on('tap', function() { mainaudiobg.play(); bgsoundPeopleInSpace.pause(); bgsoundPeopleInSpace.currentTime = 0;});
+	
+    $("#pol1").on('tap', function() {
+      $('#underwaterlink')[0].click();
+    });
+	
+	$("#pol2").on('tap', function() {
+      $('#dennislink')[0].click();
+    });
+    
+    function goBack() {
+      $.mobile.changePage("sub-people-in-space-your-trip-to-space.html", {transition: "slide", reverse: true });
+    }
+    
+    function playsPeopleInSpace() {
+         bgsoundPeopleInSpace.play();
+    }
+       
+    function pausePeopleInSpace() {
+         bgsoundPeopleInSpace.pause();
+    }
+    /* ******************** */
+    /* this is the microphone button */
+    $("#playstopTrainingOrTicket").on('tap', function() {
+      if(!playing) {
+        TrainingOrTicketaudio.play();
+        $('.micbtnPeopleInSpace').css('background-position-x', '-81px');
+        playing = true;
+        paused = false;
+      } else {
+        TrainingOrTicketaudio.pause(); TrainingOrTicketaudio.currentTime = 0;
+        $('.micbtnPeopleInSpace').css('background-position-x', '0px');
+        playing = false;
+        paused = true;
+      }
+    });
+    
+    $("#TrainingOrTicketaudioplbtn").on('tap', function() {
+      if(!paused) {
+        TrainingOrTicketaudio.pause();
+        paused = true;
+      } else {
+        TrainingOrTicketaudio.play();
+        paused = false;
+      }
+      //$(".audiopanel").css({"backgroundPosition":"-197px 0px"});
+    });
+    
+    $("#TrainingOrTicketaudiofbtn").on('tap', function() {
+      var ctime = TrainingOrTicketaudio.currentTime;
+      TrainingOrTicketaudio.currentTime = ctime + 10;
+    });
+    
+    $("#TrainingOrTicketaudiobbtn").on('tap', function() {
+      var ctime = TrainingOrTicketaudio.currentTime;
+      TrainingOrTicketaudio.currentTime = ctime - 10;
+    });
+    
+    $("#TrainingOrTicketaudiopsbtn").on('tap', function() {
+      TrainingOrTicketaudio.pause();
+    });
+  </script>
+  <script src="js/twocardLogic.js"></script>  <!-- for card dragging effects -->
+</div> <!--//home-->

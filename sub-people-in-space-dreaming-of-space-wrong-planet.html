@@ -1,0 +1,145 @@
+<!-- i-C-a -->
+<div data-role="page" id="sub-people-in-space-dreaming-of-space-wrong-planet">
+  <script src="js/hammer.js"></script>
+  <script src="js/jquery.hammer.js"></script>
+  <script src="js/slidebar_people_in_space.js"></script>
+  <link rel="stylesheet" href="css/style_people_in_space.css" />
+  <div class="menuhousing"></div>
+  <div class="homebtnholder"><div class="homebtnPeopleInSpace"></div></div>
+  <div class="mpbtnholder"><div class="mpbtnPeopleInSpace"></div></div>
+  <div class="cpbtnholder"><div class="cpbtnPeopleInSpace"></div></div>
+  <div class="infobtnholder"><div class="infobtnPeopleInSpace"></div></div>
+  <div class="credsbtnholder"><div class="credsbtnPeopleInSpace"></div></div>
+  <div class="menubtnholder"><div class="menubtnPeopleInSpace"></div></div>
+  
+  <div class="bptitleholder" style="padding-top:0px;"><h1>The Wrong Planet</h1></div>
+  <div id="spacechar">&nbsp;
+    <div data-role="content" class="kidzcontent">
+      <div class="v-spacer"></div>
+      <div class="sidebarleft-half">
+        <a id="tsiolkovskylink" style="visibility:hidden;" href="JavaScript:html5Lightbox.showLightbox(0, 'css/images/9-12/Space/People_In_Space/Dreaming_Of_Space/The_Wrong_Planet/Tsiolkovsky_Sketches_Hi_Res.jpg', 'In 1933, Konstantin Tsiolkovsky sketched the first airlock to allow astronauts in and out of spaceships in space.');">click here</a>
+		
+		<a id="goddardlink" style="visibility:hidden;" href="JavaScript:html5Lightbox.showLightbox(0, 'css/images/9-12/Space/People_In_Space/Dreaming_Of_Space/The_Wrong_Planet/Goddard_Car_Hi_Res.jpg', 'Technology has improved immensely since Robert Goddard\'s pioneering experiments.');">click here</a>
+		
+		<a id="ruinedlink" style="visibility:hidden;" href="JavaScript:html5Lightbox.showLightbox(0, 'css/images/9-12/Space/People_In_Space/Dreaming_Of_Space/The_Wrong_Planet/Ruined_Woolworths_Store_Hi_Res.jpg', '168 people were killed when a V2 rocket destroyed a Woolworths store in London.');">click here</a>
+        
+        <div id="zoomwrapper">
+          <div id="pol1" class="pPiece" style="left:100px;top:270px;">
+             <img src="css/images/9-12/Space/People_In_Space/Dreaming_Of_Space/The_Wrong_Planet/Tsiolkovsky_Sketches.jpg" alt="" />
+          </div>
+		  <div id="pol2"class="pPiece" style="left:75px;top:290px;">
+             <img src="css/images/9-12/Space/People_In_Space/Dreaming_Of_Space/The_Wrong_Planet/Goddard_Car.jpg" alt="" />
+          </div>
+		  <div id="pol3"class="pPiece" style="left:80px;top:270px;">
+             <img src="css/images/9-12/Space/People_In_Space/Dreaming_Of_Space/The_Wrong_Planet/Ruined_Woolworths_Store.jpg" alt="" />
+          </div>
+        </div><!--/zoomwrapper-->
+      </div>
+      
+      <div class="bpcontentPeopleInSpace">
+        <p>When did the idea of rocket travel start to become a reality?</p>
+		<p>Konstantin Tsiolkovsky, a Russian school teacher, worked out the basic theory of rocket flight way back in 1903!  That was the same year the Wright brothers flew the first aeroplane.</p>
+		<p>Some rockets have solid fuels, like gunpowder, but scientists realised more powerful rockets could be made by mixing and burning liquid fuels.  In 1903, though, there were no liquid-fuelled rockets.  Robert Goddard, an American physicist, spent decades trying to solve the puzzles of rocketry and space travel.  He flew the first liquid-fuelled rocket in 1926, and eventually flew rockets kilometres into the air.  That was still well short of space though.</p>
+		<p>During the Second World War, German scientist Wernher von Braun and his team advanced rocketry, getting to the edge of space.  However, von Braun's V2 rockets were designed as weapons and were built by slave labour.  Three thousand V2 rockets were fired at London (UK) and Antwerp (Belgium), killing thousands of people.  While von Braun eventually built rockets for NASA in America, the history of the V2 tainted his legacy.  Upon hearing that a V2 hit London, he supposedly said "The rocket worked perfectly except for landing on the wrong planet."</p>
+      </div>
+       
+      <div class="botlogoholder"><a href="home.html" class="homelinkbh"><img src="css/images/9-12/Space/bottomhomesp.png"></a></div>
+    </div> <!-- end content -->  
+  </div><!--/spacechar-->        
+  
+    <div class="micbtnholder"><div class="micbtnPeopleInSpace" id="playstopWrongPlanet"></div></div>
+    <div class="bPeopleInSpace"><div class="rwPeopleInSpace" id="WrongPlanetaudiobbtn"></div></div>
+    <div class="plPeopleInSpace"><div class="plpsPeopleInSpace" id="WrongPlanetaudioplbtn"></div></div>
+    <div class="fPeopleInSpace"><div class="fwPeopleInSpace" id="WrongPlanetaudiofbtn"></div></div>
+    <div id="actualaudio-WrongPlanet" style="visibility:hidden;"></div>
+  <!-- </div> -->
+  
+  <script>
+  // sound setup is in home.html and index.js
+    sound = new Audio(); // 'sound' is now an audio object
+ 
+	var playing;
+    var paused;
+    (function() {
+      playing = false;
+      paused = true;
+      $('div#pol2').css("z-index", 2);
+      $('div#pol1').css("z-index", 1);
+      $('div#pol1 > img').css("-webkit-transform", "rotate(0deg)");
+      $('div#pol2 > img').css("-webkit-transform", "rotate(5deg)");
+      $('div#pol3 > img').css("-webkit-transform", "rotate(-3deg)");
+      if(sound.canPlayType('audio/mpeg')) {
+        $('#actualaudio-WrongPlanet').html('<audio id="WrongPlanetaudio" controls preload onpause="playsPeopleInSpace()" onplay="pausePeopleInSpace()"><source src="audio/People_In_Space/The_Wrong_Planet.mp3" type="audio/mpeg"></audio>');
+      }             
+      $("#sub-people-in-space-dreaming-of-space-wrong-planet").swipe( { swipeRight:goBack, allowPageScroll:"auto"} );
+    })();
+    
+    $('.homelinkbh').on('tap', function() { mainaudiobg.play(); bgsoundPeopleInSpace.pause(); bgsoundPeopleInSpace.currentTime = 0;});
+	
+    
+    
+    $("#pol1").on('tap', function() {
+      $('#tsiolkovskylink')[0].click();
+    });
+	
+	$("#pol2").on('tap', function() {
+      $('#goddardlink')[0].click();
+    });
+	$("#pol3").on('tap', function() {
+      $('#ruinedlink')[0].click();
+    });
+    
+    function goBack() {
+      $.mobile.changePage("sub-people-in-space-dreaming-of-space.html", {transition: "slide", reverse: true });
+    }
+    
+    function playsPeopleInSpace() {
+         bgsoundPeopleInSpace.play();
+    }
+       
+    function pausePeopleInSpace() {
+         bgsoundPeopleInSpace.pause();
+    }
+    /* ******************** */
+    /* this is the microphone button */
+    $("#playstopWrongPlanet").on('tap', function() {
+      if(!playing) {
+        WrongPlanetaudio.play();
+        $('.micbtnPeopleInSpace').css('background-position-x', '-81px');
+        playing = true;
+        paused = false;
+      } else {
+        WrongPlanetaudio.pause(); WrongPlanetaudio.currentTime = 0;
+        $('.micbtnPeopleInSpace').css('background-position-x', '0px');
+        playing = false;
+        paused = true;
+      }
+    });
+    
+    $("#WrongPlanetaudioplbtn").on('tap', function() {
+      if(!paused) {
+        WrongPlanetaudio.pause();
+        paused = true;
+      } else {
+        WrongPlanetaudio.play();
+        paused = false;
+      }
+      //$(".audiopanel").css({"backgroundPosition":"-197px 0px"});
+    });
+    
+    $("#WrongPlanetaudiofbtn").on('tap', function() {
+      var ctime = WrongPlanetaudio.currentTime;
+      WrongPlanetaudio.currentTime = ctime + 10;
+    });
+    
+    $("#WrongPlanetaudiobbtn").on('tap', function() {
+      var ctime = WrongPlanetaudio.currentTime;
+      WrongPlanetaudio.currentTime = ctime - 10;
+    });
+    
+    $("#WrongPlanetaudiopsbtn").on('tap', function() {
+      WrongPlanetaudio.pause();
+    });
+  </script>
+  <script src="js/threecardLogic.js"></script>  <!-- for card dragging effects -->
+</div> <!--//home-->

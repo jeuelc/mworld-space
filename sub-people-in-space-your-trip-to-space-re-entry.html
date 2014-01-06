@@ -1,0 +1,169 @@
+<!-- i-C-a -->
+<div data-role="page" id="sub-people-in-space-your-trip-to-space-re-entry">
+  <script src="js/hammer.js"></script>
+  <script src="js/jquery.hammer.js"></script>
+  <script src="js/slidebar_people_in_space.js"></script>
+  <link rel="stylesheet" href="css/style_people_in_space.css" />
+  <div class="menuhousing"></div>
+  <div class="homebtnholder"><div class="homebtnPeopleInSpace"></div></div>
+  <div class="mpbtnholder"><div class="mpbtnPeopleInSpace"></div></div>
+  <div class="cpbtnholder"><div class="cpbtnPeopleInSpace"></div></div>
+  <div class="infobtnholder"><div class="infobtnPeopleInSpace"></div></div>
+  <div class="credsbtnholder"><div class="credsbtnPeopleInSpace"></div></div>
+  <div class="menubtnholder"><div class="menubtnPeopleInSpace"></div></div>
+  
+  <div class="bptitleholder" style="padding-top:0px;"><h1>Re-Entry</h1></div>
+  <div id="spacechar">&nbsp;
+    <div data-role="content" class="kidzcontent">
+      <div class="v-spacer"></div>
+      <div class="sidebarleft-half">
+        <a id="juleslink" style="visibility:hidden;" href="JavaScript:html5Lightbox.showLightbox(0, 'css/images/9-12/Space/People_In_Space/Your_Trip_Into_Space/Re_Entry/Apollo_Capsule_Reentry_Hi_Res.jpg', 'When entering the Earth\'s atmosphere, most spacecraft travel backwards with the heat shield protecting the spacecraft and its crew. (Courtesy: NASA)');">click here</a>
+		
+		<a id="destinationlink" style="visibility:hidden;" href="JavaScript:html5Lightbox.showLightbox(0, 'css/images/9-12/Space/People_In_Space/Your_Trip_Into_Space/Re_Entry/Shenzhou_Capsule_On_Landing_Hi_Res.jpg', 'A Shenzhou X capsule returns to Earth after a 15-day trip.  (Courtesy: Getty)');">click here</a>
+        
+        <div id="zoomwrapper">
+          <div id="pol1" class="pPiece" style="left:100px;top:270px;">
+             <img src="css/images/9-12/Space/People_In_Space/Your_Trip_Into_Space/Re_Entry/Re_Entry.png" alt="" />
+          </div>
+		  <div id="pol2"class="pPiece" style="left:75px;top:290px;">
+             <img src="css/images/9-12/Space/People_In_Space/Your_Trip_Into_Space/Re_Entry/Apollo_Capsule_Reentry.jpg" alt="" />
+          </div>
+		  <div id="pol3"class="pPiece" style="left:80px;top:270px;">
+             <img src="css/images/9-12/Space/People_In_Space/Your_Trip_Into_Space/Re_Entry/Shenzhou_Capsule_On_Landing.jpg" alt="" />
+          </div>
+        </div><!--/zoomwrapper-->
+      </div>
+      
+      <div class="bpcontentPeopleInSpace">
+        <p>Perhaps the most dangerous part of any spaceflight is re-entry.  To get home, you need to slow down from orbital speed to something more sedate.</p>
+		<p>How do you do this?  The solution is to use the Earth's atmosphere to slow the spacecraft down.  But there's a catch!  Travelling through the air so fast can heat the spacecraft to more than 1000 degrees.  Spacecraft need shielding against this temperature because it can weaken or melt most metals.</p>
+		<p>Once the spacecraft has slowed down to 'only' hundreds of kilometres per hour, landing is the next trick.  Some spacecraft land using giant parachutes while others land like gliders.</p>
+		<p>Back on the ground, it's time to get used to weight again.  Don't stand up too quickly!  You don't want to end your trip by falling flat on your face!</p>
+	  </div>
+       
+      <div class="botlogoholder"><a href="home.html" class="homelinkbh"><img src="css/images/9-12/Space/bottomhomesp.png"></a></div>
+    </div> <!-- end content -->  
+  </div><!--/spacechar-->        
+  
+    <div class="micbtnholder"><div class="micbtnPeopleInSpace" id="playstopReEntry"></div></div>
+    <div class="bPeopleInSpace"><div class="rwPeopleInSpace" id="ReEntryaudiobbtn"></div></div>
+    <div class="plPeopleInSpace"><div class="plpsPeopleInSpace" id="ReEntryaudioplbtn"></div></div>
+    <div class="fPeopleInSpace"><div class="fwPeopleInSpace" id="ReEntryaudiofbtn"></div></div>
+    <div id="actualaudio-ReEntry" style="visibility:hidden;"></div>
+  <!-- </div> -->
+  <!-- ----------------------- Video embedding --------------------------- -->
+  
+	<div id="watchTripToMoonVideo" style="width:1024px;height:748px;position:absolute;left:0px;top:0px;visibility:hidden;background:#000000;z-index:-1;">
+		<video id="watchTripToMoon" width="1024" height="748" preload>
+        <source src="css/images/9-12/Space/People_In_Space/Your_Trip_Into_Space/Re_Entry/Re_Entry.mov" type="video/mp4">
+    </video>
+    </div>
+  
+  <!-- ------------------------------------------------------------------ -->
+  <script>
+  // sound setup is in home.html and index.js
+    sound = new Audio(); // 'sound' is now an audio object
+ 
+	var playing;
+    var paused;
+    (function() {
+      playing = false;
+      paused = true;
+      $('div#pol1').css("z-index", 2);
+      $('div#pol2').css("z-index", 1);
+      $('div#pol1 > img').css("-webkit-transform", "rotate(0deg)");
+      $('#watchTripToMoonVideo').css({"visibility":"hidden", "z-index":-10});		
+      $('div#pol2 > img').css("-webkit-transform", "rotate(5deg)");
+      $('div#pol3 > img').css("-webkit-transform", "rotate(-3deg)");
+	  
+      if(sound.canPlayType('audio/mpeg')) {
+        $('#actualaudio-ReEntry').html('<audio id="ReEntryaudio" controls preload onpause="playsPeopleInSpace()" onplay="pausePeopleInSpace()"><source src="audio/People_In_Space/Re_Entry.mp3" type="audio/mpeg"></audio>');
+      }             
+      $("#sub-people-in-space-your-trip-to-space-re-entry").swipe( { swipeRight:goBack, allowPageScroll:"auto"} );
+    })();
+    
+    $('.homelinkbh').on('tap', function() { mainaudiobg.play(); bgsoundPeopleInSpace.pause(); bgsoundPeopleInSpace.currentTime = 0;});
+	
+      watchTripToMoon.addEventListener('ended', function() { 
+        $("#watchTripToMoonVideo").css({"visibility":"hidden", "z-index":-1});
+        $("#watchTripToMoon").css({"z-index":-1});
+        bgsoundvol.play(); 
+      });
+    
+      $("#watchTripToMoon").on('tap', function() {
+        $("#watchTripToMoonVideo").css({"visibility":"hidden", "z-index":-1});
+        $("#watchTripToMoon").css({"z-index":-1});
+        bgsoundvol.play();
+        watchTripToMoon.pause();
+        watchTripToMoon.currentTime = 0;
+      });
+	  
+    $("#pol1").on('tap', function(){
+      $("#watchTripToMoonVideo").css({"visibility":"visible", "z-index":10});
+      $("#watchTripToMoon").css({"z-index":9});
+      bgsoundvol.pause();
+      watchTripToMoon.play();
+    });
+	
+    $("#pol2").on('tap', function() {
+      $('#juleslink')[0].click();
+    });
+	
+	$("#pol3").on('tap', function() {
+      $('#destinationlink')[0].click();
+    });
+    
+    function goBack() {
+      $.mobile.changePage("sub-people-in-space-your-trip-to-space.html", {transition: "slide", reverse: true });
+    }
+    
+    function playsPeopleInSpace() {
+         bgsoundPeopleInSpace.play();
+    }
+       
+    function pausePeopleInSpace() {
+         bgsoundPeopleInSpace.pause();
+    }
+    /* ******************** */
+    /* this is the microphone button */
+    $("#playstopReEntry").on('tap', function() {
+      if(!playing) {
+        ReEntryaudio.play();
+        $('.micbtnPeopleInSpace').css('background-position-x', '-81px');
+        playing = true;
+        paused = false;
+      } else {
+        ReEntryaudio.pause(); ReEntryaudio.currentTime = 0;
+        $('.micbtnPeopleInSpace').css('background-position-x', '0px');
+        playing = false;
+        paused = true;
+      }
+    });
+    
+    $("#ReEntryaudioplbtn").on('tap', function() {
+      if(!paused) {
+        ReEntryaudio.pause();
+        paused = true;
+      } else {
+        ReEntryaudio.play();
+        paused = false;
+      }
+      //$(".audiopanel").css({"backgroundPosition":"-197px 0px"});
+    });
+    
+    $("#ReEntryaudiofbtn").on('tap', function() {
+      var ctime = ReEntryaudio.currentTime;
+      ReEntryaudio.currentTime = ctime + 10;
+    });
+    
+    $("#ReEntryaudiobbtn").on('tap', function() {
+      var ctime = ReEntryaudio.currentTime;
+      ReEntryaudio.currentTime = ctime - 10;
+    });
+    
+    $("#ReEntryaudiopsbtn").on('tap', function() {
+      ReEntryaudio.pause();
+    });
+  </script>
+  <script src="js/threecardLogic.js"></script>  <!-- for card dragging effects -->
+</div> <!--//home-->

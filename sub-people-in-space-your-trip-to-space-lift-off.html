@@ -1,0 +1,159 @@
+<!-- i-C-a -->
+<div data-role="page" id="sub-people-in-space-your-trip-to-space-lift-off">
+  <script src="js/hammer.js"></script>
+  <script src="js/jquery.hammer.js"></script>
+  <script src="js/slidebar_people_in_space.js"></script>
+  <link rel="stylesheet" href="css/style_people_in_space.css" />
+  <div class="menuhousing"></div>
+  <div class="homebtnholder"><div class="homebtnPeopleInSpace"></div></div>
+  <div class="mpbtnholder"><div class="mpbtnPeopleInSpace"></div></div>
+  <div class="cpbtnholder"><div class="cpbtnPeopleInSpace"></div></div>
+  <div class="infobtnholder"><div class="infobtnPeopleInSpace"></div></div>
+  <div class="credsbtnholder"><div class="credsbtnPeopleInSpace"></div></div>
+  <div class="menubtnholder"><div class="menubtnPeopleInSpace"></div></div>
+  
+  <div class="bptitleholder" style="padding-top:0px;"><h1>Lift Off</h1></div>
+  <div id="spacechar">&nbsp;
+    <div data-role="content" class="kidzcontent">
+      <div class="v-spacer"></div>
+      <div class="sidebarleft-half">
+        <a id="xlink" style="visibility:hidden;" href="JavaScript:html5Lightbox.showLightbox(0, 'css/images/9-12/Space/People_In_Space/Your_Trip_Into_Space/Lift_Off/X_15_Plane_Hi_Res.jpg', 'You can get into space briefly, without reaching orbital speeds, using rocket-powered planes like this X-15.  (Courtesy: NASA)');">click here</a>
+		
+		<div id="zoomwrapper">
+          <div id="pol1" class="pPiece" style="left:100px;top:270px;">
+             <img src="css/images/9-12/Space/People_In_Space/Your_Trip_Into_Space/Lift_Off/Apollo_11_Lift_Off.png" alt="" />
+          </div>
+		  <div id="pol2"class="pPiece" style="left:75px;top:290px;">
+             <img src="css/images/9-12/Space/People_In_Space/Your_Trip_Into_Space/Lift_Off/X_15_Plane.jpg" alt="" />
+          </div>
+		</div><!--/zoomwrapper-->
+      </div>
+      
+      <div class="bpcontentPeopleInSpace">
+        <p>Lift off is perhaps the most dramatic part of space travel!  It is undoubtedly the most dangerous as you're sitting on top of an enormous amount of fuel.</p>
+		<p>For a trip into orbit, you would fly on top of a rocket tens of metres high and weighing hundreds of tonnes.  The engines would be lit, throttle up to full power, and the rocket would leap skywards when unclamped from the launch pad.  You would be pushed into your chair by the acceleration, perhaps feeling more than twice your normal weight.</p>
+		<p>A large rocket or booster rockets are used for the first half of the trip, then a switch is made to a smaller rocket for the second half of the trip.  This 'staging' is the most efficient way of getting into orbit.</p>
+		<p>Eventually, the rocket achieves enough speed to stay in orbit.  The engines stop, and weightlessness replaces the crushing acceleration of rocket-powered flight.</p>
+	  </div>
+       
+      <div class="botlogoholder"><a href="home.html" class="homelinkbh"><img src="css/images/9-12/Space/bottomhomesp.png"></a></div>
+    </div> <!-- end content -->  
+  </div><!--/spacechar-->        
+  
+    <div class="micbtnholder"><div class="micbtnPeopleInSpace" id="playstopLiftOff"></div></div>
+    <div class="bPeopleInSpace"><div class="rwPeopleInSpace" id="LiftOffaudiobbtn"></div></div>
+    <div class="plPeopleInSpace"><div class="plpsPeopleInSpace" id="LiftOffaudioplbtn"></div></div>
+    <div class="fPeopleInSpace"><div class="fwPeopleInSpace" id="LiftOffaudiofbtn"></div></div>
+    <div id="actualaudio-LiftOff" style="visibility:hidden;"></div>
+  <!-- </div> -->
+  <!-- ----------------------- Video embedding --------------------------- -->
+  
+	<div id="watchApolloVideo" style="width:1024px;height:748px;position:absolute;left:0px;top:0px;visibility:hidden;background:#000000;z-index:-1;">
+	<video id="watchApollo" width="1024" height="748" preload>
+        <source src="css/images/9-12/Space/People_In_Space/Your_Trip_Into_Space/Lift_Off/Apollo_11_Lift_Off.mp4" type="video/mp4">
+    </video>
+    </div>
+  
+  <!-- ------------------------------------------------------------------ -->
+  <script>
+  // sound setup is in home.html and index.js
+    sound = new Audio(); // 'sound' is now an audio object
+ 
+	var playing;
+    var paused;
+    (function() {
+      playing = false;
+      paused = true;
+	  $('div#pol1').css("z-index", 2);
+      $('div#pol2').css("z-index", 1);
+      $('div#pol1 > img').css("-webkit-transform", "rotate(0deg)");
+	  $('#watchApolloVideo').css({"visibility":"hidden", "z-index":-10});		
+      $('div#pol2 > img').css("-webkit-transform", "rotate(5deg)");
+	  
+      if(sound.canPlayType('audio/mpeg')) {
+        $('#actualaudio-LiftOff').html('<audio id="LiftOffaudio" controls preload onpause="playsPeopleInSpace()" onplay="pausePeopleInSpace()"><source src="audio/People_In_Space/Lift_Off.mp3" type="audio/mpeg"></audio>');
+      }             
+      $("#sub-people-in-space-your-trip-to-space-lift-off").swipe( { swipeRight:goBack, allowPageScroll:"auto"} );
+    })();
+    
+    $('.homelinkbh').on('tap', function() { mainaudiobg.play(); bgsoundPeopleInSpace.pause(); bgsoundPeopleInSpace.currentTime = 0;});
+	
+      watchApollo.addEventListener('ended', function() { 
+        $("#watchApolloVideo").css({"visibility":"hidden", "z-index":-1});
+        $("#watchApollo").css({"z-index":-1});
+        bgsoundvol.play(); 
+      });
+    
+      $("#watchApollo").on('tap', function() {
+        $("#watchApolloVideo").css({"visibility":"hidden", "z-index":-1});
+        $("#watchApollo").css({"z-index":-1});
+        bgsoundvol.play();
+        watchApollo.pause();
+        watchApollo.currentTime = 0;
+      });
+	  
+    $("#pol1").on('tap', function(){
+      $("#watchApolloVideo").css({"visibility":"visible", "z-index":10});
+      $("#watchApollo").css({"z-index":9});
+      bgsoundvol.pause();
+      watchApollo.play();
+    });
+	
+    $("#pol2").on('tap', function() {
+      $('#xlink')[0].click();
+    });
+	
+	function goBack() {
+      $.mobile.changePage("sub-people-in-space-your-trip-to-space.html", {transition: "slide", reverse: true });
+    }
+    
+    function playsPeopleInSpace() {
+         bgsoundPeopleInSpace.play();
+    }
+       
+    function pausePeopleInSpace() {
+         bgsoundPeopleInSpace.pause();
+    }
+    /* ******************** */
+    /* this is the microphone button */
+    $("#playstopLiftOff").on('tap', function() {
+      if(!playing) {
+        LiftOffaudio.play();
+        $('.micbtnPeopleInSpace').css('background-position-x', '-81px');
+        playing = true;
+        paused = false;
+      } else {
+        LiftOffaudio.pause(); LiftOffaudio.currentTime = 0;
+        $('.micbtnPeopleInSpace').css('background-position-x', '0px');
+        playing = false;
+        paused = true;
+      }
+    });
+    
+    $("#LiftOffaudioplbtn").on('tap', function() {
+      if(!paused) {
+        LiftOffaudio.pause();
+        paused = true;
+      } else {
+        LiftOffaudio.play();
+        paused = false;
+      }
+      //$(".audiopanel").css({"backgroundPosition":"-197px 0px"});
+    });
+    
+    $("#LiftOffaudiofbtn").on('tap', function() {
+      var ctime = LiftOffaudio.currentTime;
+      LiftOffaudio.currentTime = ctime + 10;
+    });
+    
+    $("#LiftOffaudiobbtn").on('tap', function() {
+      var ctime = LiftOffaudio.currentTime;
+      LiftOffaudio.currentTime = ctime - 10;
+    });
+    
+    $("#LiftOffaudiopsbtn").on('tap', function() {
+      LiftOffaudio.pause();
+    });
+  </script>
+  <script src="js/twocardLogic.js"></script>  <!-- for card dragging effects -->
+</div> <!--//home-->

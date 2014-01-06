@@ -1,0 +1,191 @@
+<!-- i-C-a -->
+<div data-role="page" id="sub-people-in-space-space-race-a-challenge"> 
+  <script src="js/hammer.js"></script>
+  <script src="js/jquery.hammer.js"></script>
+  <script src="js/slidebar_people_in_space.js"></script>
+  <link rel="stylesheet" href="css/style_people_in_space.css" />
+  <div class="menuhousing"></div>
+  <div class="homebtnholder"><div class="homebtnPeopleInSpace"></div></div>
+  <div class="mpbtnholder"><div class="mpbtnPeopleInSpace"></div></div>
+  <div class="cpbtnholder"><div class="cpbtnPeopleInSpace"></div></div>
+  <div class="infobtnholder"><div class="infobtnPeopleInSpace"></div></div>
+  <div class="credsbtnholder"><div class="credsbtnPeopleInSpace"></div></div>
+  <div class="menubtnholder"><div class="menubtnPeopleInSpace"></div></div>
+  
+    <div id="f1_container" style="visibility:hidden;position:absolute;left:28px;top:360px;">
+          <div id="f1_card">
+            <div class="front facee">
+              <img id="dopple" src="css/images/9-12/Space/People_In_Space/Space_Race/A_Challenge/How_Long.png">
+            </div>
+            <div id="backofcard" class="back facee" style="background:url(css/images/9-12/Space/People_In_Space/Space_Race/A_Challenge/3_Days_Answer.png) no-repeat;">
+              <div class="returncard" style="position:absolute;left:0px;top:0px;width:362px;height:170px;"></div>
+            </div>
+          </div><!--/f1+card-->
+    </div><!--/f1_container-->
+  
+  <div class="bptitleholder" style="padding-top:14px;"><h1></h1></div>
+  <!-- <div id="moonlink" style="position: absolute;left: 55px;top: 453px;width: 163px;height: 133px;"></div>
+  <div id="tvlink" style="position: absolute;left: 785px;top: 461px;width: 198px;height: 137px;"></div> -->
+  
+  <div id="pol1" style="left: 28px;top: 360px;width: 245px;position: absolute;">
+        <img src="css/images/9-12/Space/People_In_Space/Space_Race/A_Challenge/How_Long.png" alt="" />
+  </div>
+  
+  <div id="pol2" style="left: 760px;top: 320px;width: 245px;position: absolute;">
+        <img src="css/images/9-12/Space/People_In_Space/Space_Race/A_Challenge/TV_Button.png" alt="" />
+  </div>
+  
+  <div data-role="content" class="kidzcontent">
+	<div class="navPeopleInSpace-challenge">
+        <p>The Soviet Union launched the first satellite and man into space and was very proud of these successes during the 'Cold War'.  This was a time when things were pretty tense between the Soviet Union and America  they didn't trust each other at all!</p>
+		<p>The United States felt it had to beat the Soviet Union in the Space Race.  Apart from national prestige, the US was worried that the Soviet Union could use space for military or economic advantage.</p>
+		<p>In 1962, US President John F Kennedy laid down a challenge to land on the moon.  It was now a race - a race to be finished in less than a decade.</p>
+    </div>
+	
+    <div class="botlogoholder"><a href="home.html" class="homelinkbh"><img src="css/images/9-12/Space/bottomhomesp.png"></a></div>
+  </div> <!-- end content -->  
+    
+  
+  <!--<div class="audiopanel">-->
+    <!-- images are in slidebarnat.js 
+         note: change the ids to be able play the narration
+    -->
+    <div class="micbtnholder"><div class="micbtnPeopleInSpace" id="playstopAChallange"></div></div>
+    <div class="bPeopleInSpace"><div class="rwPeopleInSpace" id="AChallangeaudiobbtn"></div></div>
+    <div class="plPeopleInSpace"><div class="plpsPeopleInSpace" id="AChallangeaudioplbtn"></div></div>
+    <div class="fPeopleInSpace"><div class="fwPeopleInSpace" id="AChallangeaudiofbtn"></div></div>
+    <div id="actualaudio-AChallange" style="visibility:hidden;"></div>
+	
+	<!-- ----------------------- Video embedding --------------------------- -->
+  
+	<div id="watchSpeechVideo" style="width:1024px;height:748px;position:absolute;left:0px;top:0px;visibility:hidden;background:#000000;z-index:-1;">
+    <video id="watchSpeech" width="1024" height="748" preload>
+      <source src="css/images/9-12/Space/People_In_Space/Space_Race/A_Challenge/JFK_At_Rice_Speech.mpg" type="video/mp4">
+    </video>
+  </div>
+  
+  <!-- ------------------------------------------------------------------ -->
+  
+  
+  <!--</div>-->
+  <script>
+  // sound setup is in home.html and index.js
+    sound = new Audio(); // 'sound' is now an audio object
+    var playing;
+    var paused;
+	$('#watchSpeechVideo').css({"visibility":"hidden", "z-index":-10});
+    (function() {
+      playing = false;
+      paused = true;
+      if(sound.canPlayType('audio/mpeg')) {
+        $('#actualaudio-AChallange').html('<audio id="AChallangeaudio" controls preload onpause="playsPeopleInSpace()" onplay="pausePeopleInSpace()"><source src="audio/People_In_Space/Challenge.mp3" type="audio/mpeg"></audio>');
+      } 
+    
+      $("#sub-people-in-space-space-race-a-challenge").swipe( { swipeRight:goBack, allowPageScroll:"auto"} );
+    })();
+    
+	  watchSpeech.addEventListener('ended', function() { 
+        $("#watchSpeechVideo").css({"visibility":"hidden", "z-index":-1});
+        $("#watchSpeech").css({"z-index":-1});
+        bgsoundPeopleInSpace.play(); 
+      });
+    
+      $("#watchSpeech").on('tap', function() {
+        $("#watchSpeechVideo").css({"visibility":"hidden", "z-index":-1});
+        $("#watchSpeech").css({"z-index":-1});
+        bgsoundPeopleInSpace.play();
+        watchSpeech.pause();
+        watchSpeech.currentTime = 0;
+      });
+	
+    /* $('#moonlink').on('tap', function() {
+      $.mobile.changePage("sub-people-in-space-space-race-a-challenge-first-dog-in-orbit.html", {transition: "slide"});
+    });
+    
+    $('#tvlink').on('tap', function() {
+      $.mobile.changePage("sub-people-in-space-space-race-a-challengefirst-person-in-space.html", {transition: "slide"});
+    }); */
+    
+	$(".returncard").on('tap', function() {
+      $('#f1_card').css({"-webkit-transform": "rotateY(0deg)"});
+      $('#f1_card').css({"-moz-transform": "rotateY(0deg)"});
+      $('#f1_card').css({"-o-transform": "rotateY(0deg)"});
+      $('#f1_card').css({"transform": "rotateY(0deg)"});
+      setTimeout(function() {
+        $("#pol1").css({"visibility":"visible", "z-index":4});
+        $('#f1_container').css({"visibility":"hidden", "z-index":0});
+      }, 1000);
+    });
+    
+    $("#pol1").on('tap', function() {
+      $('#f1_container').css({"visibility":"visible", "z-index":10});
+      $(this).css({"visibility":"hidden"});
+      $('#f1_card').css({"-webkit-transform": "rotateY(180deg)"});
+      $('#f1_card').css({"-moz-transform": "rotateY(180deg)"});
+      $('#f1_card').css({"-o-transform": "rotateY(180deg)"});
+      $('#f1_card').css({"transform": "rotateY(180deg)"});
+    });
+	
+	$("#pol2").on('tap', function(){
+      $("#watchSpeechVideo").css({"visibility":"visible", "z-index":10});
+      $("#watchSpeech").css({"z-index":9});
+      bgsoundPeopleInSpace.pause();
+      watchSpeech.play();
+    });
+	
+	$('.homelinkbh').on('tap', function() { mainaudiobg.play(); bgsoundPeopleInSpace.pause(); bgsoundPeopleInSpace.currentTime = 0;});
+    
+    function goBack() {
+      $.mobile.changePage("sub-people-in-space-space-race.html", {transition: "slide", reverse: true });
+    }
+    
+    function playsPeopleInSpace() {
+         bgsoundPeopleInSpace.play();
+    }
+       
+    function pausePeopleInSpace() {
+         bgsoundPeopleInSpace.pause();
+    }
+    /* ******************** */
+    /* this is the microphone button */
+    $("#playstopAChallange").on('tap', function() {
+      if(!playing) {
+        AChallangeaudio.play();
+        $('.micbtnPeopleInSpace').css('background-position-x', '-81px');
+        playing = true;
+        paused = false;
+      } else {
+        AChallangeaudio.pause(); AChallangeaudio.currentTime = 0;
+        $('.micbtnPeopleInSpace').css('background-position-x', '0px');
+        playing = false;
+        paused = true;
+      }
+    });
+    
+    $("#AChallangeaudioplbtn").on('tap', function() {
+      if(!paused) {
+        AChallangeaudio.pause();
+        paused = true;
+      } else {
+        AChallangeaudio.play();
+        paused = false;
+      }
+      //$(".audiopanel").css({"backgroundPosition":"-197px 0px"});
+    });
+    
+    $("#AChallangeaudiofbtn").on('tap', function() {
+      var ctime = AChallangeaudio.currentTime;
+      AChallangeaudio.currentTime = ctime + 10;
+    });
+    
+    $("#AChallangeaudiobbtn").on('tap', function() {
+      var ctime = AChallangeaudio.currentTime;
+      AChallangeaudio.currentTime = ctime - 10;
+    });
+    
+    $("#AChallangeaudiopsbtn").on('tap', function() {
+      AChallangeaudio.pause();
+    });
+  </script>
+  
+</div> <!--//home-->

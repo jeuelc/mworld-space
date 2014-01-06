@@ -1,0 +1,136 @@
+<!-- i-C-a -->
+<div data-role="page" id="sub-people-in-space-your-trip-to-space">
+  <!-- <script src="js/slidebarnat.js"></script> -->
+  <script src="js/slidebar_people_in_space.js"></script>
+  <link rel="stylesheet" href="css/style_people_in_space.css" />
+  <div class="menuhousing"></div>
+  <div class="homebtnholder"><div class="homebtnPeopleInSpace"></div></div>
+  <div class="mpbtnholder"><div class="mpbtnPeopleInSpace"></div></div>
+  <div class="cpbtnholder"><div class="cpbtnPeopleInSpace"></div></div>
+  <div class="infobtnholder"><div class="infobtnPeopleInSpace"></div></div>
+  <div class="credsbtnholder"><div class="credsbtnPeopleInSpace"></div></div>
+  <div class="menubtnholder"><div class="menubtnPeopleInSpace"></div></div>
+  
+  <div class="bptitleholder" style="padding-top:14px;"><h1>Your Trip into Space</h1></div>
+  
+    <div data-role="content" class="kidzcontent">
+      <div class="navPeopleInSpace-content5">
+        <p>So you want to become an astronaut?  Well it's a little more involved than buying a plane ticket and listening to the safety demonstration!  There are many applicants and a long training process, but you have a higher chance of going into orbit than your parents did.  If you're keen to go, here's what you can expect and maybe one day you'll send us a photo from Mars!</p>
+      </div>
+        
+      <div class="navpeoplebtn1">
+        <p><a href="sub-people-in-space-your-trip-to-space-lift-off.html" data-transition="slide"><img src="css/images/9-12/Space/People_In_Space/Your_Trip_Into_Space/Lift_Off.png"></a></p>
+      </div>
+      <div class="navpeoplebtn2">
+        <p><a href="sub-people-in-space-your-trip-to-space-re-entry.html" data-transition="slide"><img src="css/images/9-12/Space/People_In_Space/Your_Trip_Into_Space/Re_Entry.png"></a></p>
+      </div>
+      <div class="navpeoplebtn3">
+        <p><a href="sub-people-in-space-your-trip-to-space-next-great-leap.html" data-transition="slide"><img src="css/images/9-12/Space/People_In_Space/Your_Trip_Into_Space/Next_Giant_Leap.png"></a></p>
+      </div>
+      <div class="navpeoplebtn4">
+        <p><a href="sub-people-in-space-your-trip-to-space-training-or-ticket.html" data-transition="slide"><img src="css/images/9-12/Space/People_In_Space/Your_Trip_Into_Space/Training_Or_Ticket.png"></a></p>
+      </div>
+	  <div class="navpeoplebtn5">
+        <p><a href="sub-people-in-space-your-trip-to-space-weightlessness.html" data-transition="slide"><img src="css/images/9-12/Space/People_In_Space/Your_Trip_Into_Space/Weightlessness.png"></a></p>
+      </div>
+        
+      <div class="botlogoholder"><a href="home.html" class="homelinkbh"><img src="css/images/9-12/Space/bottomhomesp.png"></a></div>
+    </div> <!-- end content -->  
+    
+  
+  <!--<div class="audiopanel">-->
+    <!-- images are in slidebarnat.js -->
+    <div class="micbtnholder"><div class="micbtnPeopleInSpace" id="playstopYourTripToSpace"></div></div>
+    <div class="bPeopleInSpace"><div class="rwPeopleInSpace" id="YourTripToSpaceaudiobbtn"></div></div>
+    <div class="plPeopleInSpace"><div class="plpsPeopleInSpace" id="YourTripToSpaceaudioplbtn"></div></div>
+    <div class="fPeopleInSpace"><div class="fwPeopleInSpace" id="YourTripToSpaceaudiofbtn"></div></div>
+    <div id="actualaudio-YourTripToSpace" style="visibility:hidden;"></div>
+  <!--</div>-->
+  <script>
+  // sound setup is in home.html and index.js
+    sound = new Audio(); // 'sound' is now an audio object
+    var playing;
+    var paused;
+    (function() {
+      playing = false;
+      paused = true;
+      if(sound.canPlayType('audio/mpeg')) {
+        $('#actualaudio-YourTripToSpace').html('<audio id="YourTripToSpaceaudio" controls preload onpause="playsPeopleInSpace()" onplay="pausePeopleInSpace()"><source src="audio/People_In_Space/Trip_Space.mp3" type="audio/mpeg"></audio>');
+      } 
+    
+      $("#sub-people-in-space-your-trip-to-space").swipe( { swipeRight:goBack, allowPageScroll:"auto"} );
+    })();
+    
+    $('.homelinkbh').on('tap', function() { bgsoundPeopleInSpace.pause(); bgsoundPeopleInSpace.currentTime = 0; mainaudiobg.play(); });
+    
+    function goBack() {
+      $.mobile.changePage("sub-people-in-space.html", {transition: "slide", reverse: true });
+    }
+    
+    function playsPeopleInSpace() {
+         bgsoundPeopleInSpace.play();
+    }
+       
+    function pausePeopleInSpace() {
+         bgsoundPeopleInSpace.pause();
+    }
+    /* ******************** */
+    /* this is the microphone button */
+	
+    $("#playstopYourTripToSpace").on('tap', function() {
+      if(!playing) {
+        YourTripToSpaceaudio.play();
+        $('.micbtnPeopleInSpace').css('background-position-x', '-81px');
+        playing = true;
+        paused = false;
+      } else {
+        YourTripToSpaceaudio.pause(); YourTripToSpaceaudio.currentTime = 0;
+        $('.micbtnPeopleInSpace').css('background-position-x', '0px');
+        playing = false;
+        paused = true;
+      }
+    });
+    
+    $("#YourTripToSpaceaudioplbtn").on('tap', function() {
+      if(!paused) {
+        YourTripToSpaceaudio.pause();
+        paused = true;
+      } else {
+        YourTripToSpaceaudio.play();
+        paused = false;
+      }
+      //$(".audiopanel").css({"backgroundPosition":"-197px 0px"});
+    });
+    
+    $("#YourTripToSpaceaudiofbtn").on('tap', function() {
+      var ctime = YourTripToSpaceaudio.currentTime;
+      YourTripToSpaceaudio.currentTime = ctime + 10;
+    });
+    
+    $("#YourTripToSpaceaudiobbtn").on('tap', function() {
+      var ctime = YourTripToSpaceaudio.currentTime;
+      YourTripToSpaceaudio.currentTime = ctime - 10;
+    });
+    
+    $("#YourTripToSpaceaudiopsbtn").on('tap', function() {
+      YourTripToSpaceaudio.pause();
+      //$(".audiopanel").css({"backgroundPosition":"0px 0px"});
+    });
+    
+    $('.navpeoplebtn1').on('tap', function() { 
+      nav1Effects(); 
+    });
+    
+    $('.navpeoplebtn2').on('tap', function() { 
+      nav2Effects(); 
+    });
+    
+    $('.navpeoplebtn3').on('tap', function() { 
+      nav3Effects(); 
+    });
+    
+    $('.navpeoplebtn4').on('tap', function() { 
+      nav4Effects(); 
+    });
+  </script>
+</div> <!--//home-->

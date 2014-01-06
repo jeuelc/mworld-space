@@ -1,0 +1,109 @@
+<!-- i-C-a -->
+<div data-role="page" id="sub-comets-asteroids-meteors-small-worlds">
+  <!-- <script src="js/slidebarnat.js"></script> -->
+  <script src="js/slidebar_comets_asteroids_meteors.js"></script>
+  <link rel="stylesheet" href="css/style_comets_asteroids_meteors.css" />
+  <div class="menuhousing"></div>
+  <div class="homebtnholder"><div class="homebtncometsasteroidsmeteors"></div></div>
+  <div class="mpbtnholder"><div class="mpbtncometsasteroidsmeteors"></div></div>
+  <div class="cpbtnholder"><div class="cpbtncometsasteroidsmeteors"></div></div>
+  <div class="infobtnholder"><div class="infobtncometsasteroidsmeteors"></div></div>
+  <div class="credsbtnholder"><div class="credsbtncometsasteroidsmeteors"></div></div>
+  <div class="menubtnholder"><div class="menubtncometsasteroidsmeteors"></div></div>
+  
+  <div class="bptitleholder" style="padding-top:14px;"><h1>Small Worlds</h1></div>
+  
+    <div data-role="content" class="kidzcontent">
+      <div class="navcometsasteroidsmeteors-smallworlds">
+		<p>What do you know about the solar system?  You can see the sun, moon and some planets in the sky with your eyes or with binoculars, and you can see close-up pictures of them taken with telescopes and spacecraft.  But there's a lot more to the solar system than that!</p> 
+
+		<p>It's full of millions of small worlds and smaller rocky fragments.  Some are the size of countries like yours and others are the size of a pin-head!  What are these small solar system bodies? </p>
+
+		<p>You'll have to tap the buttons to find out!</p>
+      </div>     
+      <div class="botlogoholder"><a href="home.html" class="homelinkbh"><img src="css/images/9-12/Space/bottomhomesp.png"></a></div>
+    </div> <!-- end content -->  
+    
+  
+  <!--<div class="audiopanel">-->
+    <!-- images are in slidebarnat.js -->
+    <div class="micbtnholder"><div class="micbtncometsasteroidsmeteors" id="playstopsmallworlds"></div></div>
+    <div class="bcometsasteroidsmeteors"><div class="rwcometsasteroidsmeteors" id="smallworldsaudiobbtn"></div></div>
+    <div class="plcometsasteroidsmeteors"><div class="plpscometsasteroidsmeteors" id="smallworldsaudioplbtn"></div></div>
+    <div class="fcometsasteroidsmeteors"><div class="fwcometsasteroidsmeteors" id="smallworldsaudiofbtn"></div></div>
+    <div id="actualaudio-smallworlds" style="visibility:hidden;"></div>
+  <!--</div>-->
+  <script>
+  // sound setup is in home.html and index.js
+    sound = new Audio(); // 'sound' is now an audio object
+    var playing;
+    var paused;
+    (function() {
+      playing = false;
+      paused = true;
+      if(sound.canPlayType('audio/mpeg')) {
+        $('#actualaudio-smallworlds').html('<audio id="smallworldsaudio" controls preload onpause="playscometsasteroidsmeteors()" onplay="pausecometsasteroidsmeteors()"><source src="audio/Commets_Asteroids_Meteors/Small_Worlds.mp3" type="audio/mpeg"></audio>');
+      } 
+    
+      $("#sub-comets-asteroids-meteors-small-worlds").swipe( { swipeRight:goBack, allowPageScroll:"auto"} );
+    })();
+    
+    $('.homelinkbh').on('tap', function() { bgsoundcometsasteroidsmeteors.pause(); bgsoundcometsasteroidsmeteors.currentTime = 0; mainaudiobg.play(); });
+    
+    function goBack() {
+      $.mobile.changePage("sub-comets-asteroids-metiors.html", {transition: "slide", reverse: true });
+      bgsoundcometsasteroidsmeteors.pause(); 
+      bgsoundcometsasteroidsmeteors.currentTime = 0;
+      spacesoundbg.play();
+    }
+    function playscometsasteroidsmeteors() {
+         bgsoundcometsasteroidsmeteors.play();
+    }
+       
+    function pausecometsasteroidsmeteors() {
+         bgsoundcometsasteroidsmeteors.pause();
+    }
+    /* ******************** */
+    /* this is the microphone button */
+	
+    $("#playstopsmallworlds").on('tap', function() {
+      if(!playing) {
+        smallworldsaudio.play();
+        $('.micbtncometsasteroidsmeteors').css('background-position-x', '-81px');
+        playing = true;
+        paused = false;
+      } else {
+        smallworldsaudio.pause(); smallworldsaudio.currentTime = 0;
+        $('.micbtncometsasteroidsmeteors').css('background-position-x', '0px');
+        playing = false;
+        paused = true;
+      }
+    });
+    
+    $("#smallworldsaudioplbtn").on('tap', function() {
+      if(!paused) {
+        smallworldsaudio.pause();
+        paused = true;
+      } else {
+        smallworldsaudio.play();
+        paused = false;
+      }
+      //$(".audiopanel").css({"backgroundPosition":"-197px 0px"});
+    });
+    
+    $("#smallworldsaudiofbtn").on('tap', function() {
+      var ctime = smallworldsaudio.currentTime;
+      smallworldsaudio.currentTime = ctime + 10;
+    });
+    
+    $("#smallworldsaudiobbtn").on('tap', function() {
+      var ctime = smallworldsaudio.currentTime;
+      smallworldsaudio.currentTime = ctime - 10;
+    });
+    
+    $("#cometsasteroidsmeteorsaudiopsbtnpsbtn").on('tap', function() {
+      smallworldsaudio.pause();
+      //$(".audiopanel").css({"backgroundPosition":"0px 0px"});
+    });
+  </script>
+</div> <!--//home-->

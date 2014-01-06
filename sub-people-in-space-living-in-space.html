@@ -1,0 +1,138 @@
+<!-- i-C-a -->
+<div data-role="page" id="sub-people-in-space-living-in-space">
+  <!-- <script src="js/slidebarnat.js"></script> -->
+  <script src="js/slidebar_people_in_space.js"></script>
+  <link rel="stylesheet" href="css/style_people_in_space.css" />
+  <div class="menuhousing"></div>
+  <div class="homebtnholder"><div class="homebtnPeopleInSpace"></div></div>
+  <div class="mpbtnholder"><div class="mpbtnPeopleInSpace"></div></div>
+  <div class="cpbtnholder"><div class="cpbtnPeopleInSpace"></div></div>
+  <div class="infobtnholder"><div class="infobtnPeopleInSpace"></div></div>
+  <div class="credsbtnholder"><div class="credsbtnPeopleInSpace"></div></div>
+  <div class="menubtnholder"><div class="menubtnPeopleInSpace"></div></div>
+  
+  <div class="bptitleholder" style="padding-top:14px;"><h1>Living in Space</h1></div>
+  
+    <div data-role="content" class="kidzcontent">
+      <div class="navPeopleInSpace-content5">
+        <p>Can space become a routine part of our lives?</p>
+		<p>Space exploration was less intense after the 1960s Space Race.  The race to the Moon had been dangerous and expensive!</p>
+		<p>Nations then looked to use space for science, diplomacy, military and scientific goals.  Space stations were launched and people lived in space for weeks, months or even years.</p>
+      </div>
+        
+      <div class="navpeoplebtn1">
+        <p><a href="sub-people-in-space-living-in-space-exercise-and-sleep.html" data-transition="slide"><img src="css/images/9-12/Space/People_In_Space/Living_In_Space/Exercise_And_Sleep.png"></a></p>
+      </div>
+      <div class="navpeoplebtn2">
+        <p><a href="sub-people-in-space-living-in-space-food.html" data-transition="slide"><img src="css/images/9-12/Space/People_In_Space/Living_In_Space/Food.png"></a></p>
+      </div>
+      <div class="navpeoplebtn3">
+        <p><a href="sub-people-in-space-living-in-space-repairs.html" data-transition="slide"><img src="css/images/9-12/Space/People_In_Space/Living_In_Space/Repairs.png"></a></p>
+      </div>
+      <div class="navpeoplebtn4">
+        <p><a href="sub-people-in-space-living-in-space-space-shuttles.html" data-transition="slide"><img src="css/images/9-12/Space/People_In_Space/Living_In_Space/Space_shuttles.png"></a></p>
+      </div>
+	  <div class="navpeoplebtn5">
+        <p><a href="sub-people-in-space-living-in-space-space-stations.html" data-transition="slide"><img src="css/images/9-12/Space/People_In_Space/Living_In_Space/Space_Stations.png"></a></p>
+      </div>
+        
+      <div class="botlogoholder"><a href="home.html" class="homelinkbh"><img src="css/images/9-12/Space/bottomhomesp.png"></a></div>
+    </div> <!-- end content -->  
+    
+  
+  <!--<div class="audiopanel">-->
+    <!-- images are in slidebarnat.js -->
+    <div class="micbtnholder"><div class="micbtnPeopleInSpace" id="playstopLivingInSpace"></div></div>
+    <div class="bPeopleInSpace"><div class="rwPeopleInSpace" id="LivingInSpaceaudiobbtn"></div></div>
+    <div class="plPeopleInSpace"><div class="plpsPeopleInSpace" id="LivingInSpaceaudioplbtn"></div></div>
+    <div class="fPeopleInSpace"><div class="fwPeopleInSpace" id="LivingInSpaceaudiofbtn"></div></div>
+    <div id="actualaudio-LivingInSpace" style="visibility:hidden;"></div>
+  <!--</div>-->
+  <script>
+  // sound setup is in home.html and index.js
+    sound = new Audio(); // 'sound' is now an audio object
+    var playing;
+    var paused;
+    (function() {
+      playing = false;
+      paused = true;
+      if(sound.canPlayType('audio/mpeg')) {
+        $('#actualaudio-LivingInSpace').html('<audio id="LivingInSpaceaudio" controls preload onpause="playsPeopleInSpace()" onplay="pausePeopleInSpace()"><source src="audio/People_In_Space/Living_In_Space.mp3" type="audio/mpeg"></audio>');
+      } 
+    
+      $("#sub-people-in-space-living-in-space").swipe( { swipeRight:goBack, allowPageScroll:"auto"} );
+    })();
+    
+    $('.homelinkbh').on('tap', function() { bgsoundPeopleInSpace.pause(); bgsoundPeopleInSpace.currentTime = 0; mainaudiobg.play(); });
+    
+    function goBack() {
+      $.mobile.changePage("sub-people-in-space.html", {transition: "slide", reverse: true });
+    }
+    
+    function playsPeopleInSpace() {
+         bgsoundPeopleInSpace.play();
+    }
+       
+    function pausePeopleInSpace() {
+         bgsoundPeopleInSpace.pause();
+    }
+    /* ******************** */
+    /* this is the microphone button */
+	
+    $("#playstopLivingInSpace").on('tap', function() {
+      if(!playing) {
+        LivingInSpaceaudio.play();
+        $('.micbtnPeopleInSpace').css('background-position-x', '-81px');
+        playing = true;
+        paused = false;
+      } else {
+        LivingInSpaceaudio.pause(); LivingInSpaceaudio.currentTime = 0;
+        $('.micbtnPeopleInSpace').css('background-position-x', '0px');
+        playing = false;
+        paused = true;
+      }
+    });
+    
+    $("#LivingInSpaceaudioplbtn").on('tap', function() {
+      if(!paused) {
+        LivingInSpaceaudio.pause();
+        paused = true;
+      } else {
+        LivingInSpaceaudio.play();
+        paused = false;
+      }
+      //$(".audiopanel").css({"backgroundPosition":"-197px 0px"});
+    });
+    
+    $("#LivingInSpaceaudiofbtn").on('tap', function() {
+      var ctime = LivingInSpaceaudio.currentTime;
+      LivingInSpaceaudio.currentTime = ctime + 10;
+    });
+    
+    $("#LivingInSpaceaudiobbtn").on('tap', function() {
+      var ctime = LivingInSpaceaudio.currentTime;
+      LivingInSpaceaudio.currentTime = ctime - 10;
+    });
+    
+    $("#LivingInSpaceaudiopsbtn").on('tap', function() {
+      LivingInSpaceaudio.pause();
+      //$(".audiopanel").css({"backgroundPosition":"0px 0px"});
+    });
+    
+    $('.navpeoplebtn1').on('tap', function() { 
+      nav1Effects(); 
+    });
+    
+    $('.navpeoplebtn2').on('tap', function() { 
+      nav2Effects(); 
+    });
+    
+    $('.navpeoplebtn3').on('tap', function() { 
+      nav3Effects(); 
+    });
+    
+    $('.navpeoplebtn4').on('tap', function() { 
+      nav4Effects(); 
+    });
+  </script>
+</div> <!--//home-->

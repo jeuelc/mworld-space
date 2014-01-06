@@ -1,0 +1,164 @@
+<!-- i-C-a -->
+<div data-role="page" id="sub-people-in-space-your-trip-to-space-next-great-leap"> 
+  <script src="js/hammer.js"></script>
+  <script src="js/jquery.hammer.js"></script>
+  <script src="js/slidebar_people_in_space.js"></script>
+  <link rel="stylesheet" href="css/style_people_in_space.css" />
+  <div class="menuhousing"></div>
+  <div class="homebtnholder"><div class="homebtnPeopleInSpace"></div></div>
+  <div class="mpbtnholder"><div class="mpbtnPeopleInSpace"></div></div>
+  <div class="cpbtnholder"><div class="cpbtnPeopleInSpace"></div></div>
+  <div class="infobtnholder"><div class="infobtnPeopleInSpace"></div></div>
+  <div class="credsbtnholder"><div class="credsbtnPeopleInSpace"></div></div>
+  <div class="menubtnholder"><div class="menubtnPeopleInSpace"></div></div>
+  
+    <div id="f1_container" style="visibility:hidden;position:absolute;left:28px;top:360px;">
+          <div id="f1_card">
+            <div class="front facee">
+              <img id="dopple" src="css/images/9-12/Space/People_In_Space/Your_Trip_Into_Space/The_Next_Great_Lap/How_Long.png">
+            </div>
+            <div id="backofcard" class="back facee" style="background:url(css/images/9-12/Space/People_In_Space/Your_Trip_Into_Space/The_Next_Great_Lap/3_Days_Answer.png) no-repeat;">
+              <div class="returncard" style="position:absolute;left:0px;top:0px;width:362px;height:170px;"></div>
+            </div>
+          </div><!--/f1+card-->
+    </div><!--/f1_container-->
+  
+  <div class="bptitleholder" style="padding-top:14px;"><h1></h1></div>
+  <div id="marslink" style="position: absolute;left: 740px;top: 80px;width: 163px;height: 187px;"></div>
+  
+  <div data-role="content" class="kidzcontent">
+	<div class="navPeopleInSpace-greatleap">
+        <p>Where will people travel to next in space?</p>
+		<p>The most tantalising destination is <a href="#marspopup" data-rel="popup">Mars</a>.  It is the planet in our solar system that most resembles our home.  Mars has valleys, mountains, and ice caps.  Once upon a time Mars had lakes, rivers and seas too, and perhaps even living things.</p>
+		<p>However, the trip to Mars is expensive, long and dangerous.  It would take years to travel to and from Mars, and as one travels away from the Earth, the radiation from the Sun could prove deadly.  That's why we've sent probes and robots instead of astronauts.</p>
+		<p>Another possible destination is a nearby asteroid.  This would be cheaper, shorter and safer than a trip to Mars.  We may even be able to "bag" a small asteroid and bring it closer to Earth for closer examination by scientists!</p>
+    </div>
+	
+	<div data-role="popup" id="marspopup" data-position-to="window" data-overlay-theme="a" style="text-align:center;">
+			<div id="node-pop">
+			<p>Mars</p>
+			<p>To find out more see <b>Mission to Mars</b> in <b>Space</b>.</p>
+			<div>  <div class="defspeaker"  id="marspopup"> </div></div>
+			<!-- <audio id="governmentbondsaudio" controls preload onpause="playaudio()" onplay="pausebg()" style="visibility:hidden;"><source src="audio/Money/marspopup.mp3" type="audio/mpeg"></audio> -->
+			</div>
+		</div>
+			
+    <div class="botlogoholder"><a href="home.html" class="homelinkbh"><img src="css/images/9-12/Space/bottomhomesp.png"></a></div>
+  </div> <!-- end content -->  
+    
+  
+  <!--<div class="audiopanel">-->
+    <!-- images are in slidebarnat.js 
+         note: change the ids to be able play the narration
+    -->
+    <div class="micbtnholder"><div class="micbtnPeopleInSpace" id="playstopGreatLeap"></div></div>
+    <div class="bPeopleInSpace"><div class="rwPeopleInSpace" id="GreatLeapaudiobbtn"></div></div>
+    <div class="plPeopleInSpace"><div class="plpsPeopleInSpace" id="GreatLeapaudioplbtn"></div></div>
+    <div class="fPeopleInSpace"><div class="fwPeopleInSpace" id="GreatLeapaudiofbtn"></div></div>
+    <div id="actualaudio-GreatLeap" style="visibility:hidden;"></div>
+	
+	<!-- ----------------------- Video embedding --------------------------- -->
+  
+	<div id="watchMarsVideo" style="width:1024px;height:748px;position:absolute;left:0px;top:0px;visibility:hidden;background:#000000;z-index:-1;">
+    <video id="watchMars" width="1024" height="748" preload>
+      <source src="css/images/9-12/Space/People_In_Space/Your_Trip_Into_Space/The_Next_Great_Lap/Mars_Spinning_In_Space.mov" type="video/mp4">
+    </video>
+  </div>
+  
+  <!-- ------------------------------------------------------------------ -->
+  
+  
+  <!--</div>-->
+  <script>
+  // sound setup is in home.html and index.js
+    sound = new Audio(); // 'sound' is now an audio object
+    var playing;
+    var paused;
+	$('#watchMarsVideo').css({"visibility":"hidden", "z-index":-10});
+    (function() {
+      playing = false;
+      paused = true;
+      if(sound.canPlayType('audio/mpeg')) {
+        $('#actualaudio-GreatLeap').html('<audio id="GreatLeapaudio" controls preload onpause="playsPeopleInSpace()" onplay="pausePeopleInSpace()"><source src="audio/People_In_Space/The_Next_Great_Leap.mp3" type="audio/mpeg"></audio>');
+      } 
+    
+      $("#sub-people-in-space-your-trip-to-space-next-great-leap").swipe( { swipeRight:goBack, allowPageScroll:"auto"} );
+    })();
+    
+	  watchMars.addEventListener('ended', function() { 
+        $("#watchMarsVideo").css({"visibility":"hidden", "z-index":-1});
+        $("#watchMars").css({"z-index":-1});
+        bgsoundPeopleInSpace.play(); 
+      });
+    
+      $("#watchMars").on('tap', function() {
+        $("#watchMarsVideo").css({"visibility":"hidden", "z-index":-1});
+        $("#watchMars").css({"z-index":-1});
+        bgsoundPeopleInSpace.play();
+        watchMars.pause();
+        watchMars.currentTime = 0;
+      });
+	
+    $('#marslink').on('tap', function() {
+      $("#watchMarsVideo").css({"visibility":"visible", "z-index":10});
+      $("#watchMars").css({"z-index":9});
+      bgsoundPeopleInSpace.pause();
+      watchMars.play();
+    });
+    
+    $('.homelinkbh').on('tap', function() { mainaudiobg.play(); bgsoundPeopleInSpace.pause(); bgsoundPeopleInSpace.currentTime = 0;});
+    
+    function goBack() {
+      $.mobile.changePage("sub-people-in-space-your-trip-to-space.html", {transition: "slide", reverse: true });
+    }
+    
+    function playsPeopleInSpace() {
+         bgsoundPeopleInSpace.play();
+    }
+       
+    function pausePeopleInSpace() {
+         bgsoundPeopleInSpace.pause();
+    }
+    /* ******************** */
+    /* this is the microphone button */
+    $("#playstopGreatLeap").on('tap', function() {
+      if(!playing) {
+        GreatLeapaudio.play();
+        $('.micbtnPeopleInSpace').css('background-position-x', '-81px');
+        playing = true;
+        paused = false;
+      } else {
+        GreatLeapaudio.pause(); GreatLeapaudio.currentTime = 0;
+        $('.micbtnPeopleInSpace').css('background-position-x', '0px');
+        playing = false;
+        paused = true;
+      }
+    });
+    
+    $("#GreatLeapaudioplbtn").on('tap', function() {
+      if(!paused) {
+        GreatLeapaudio.pause();
+        paused = true;
+      } else {
+        GreatLeapaudio.play();
+        paused = false;
+      }
+      //$(".audiopanel").css({"backgroundPosition":"-197px 0px"});
+    });
+    
+    $("#GreatLeapaudiofbtn").on('tap', function() {
+      var ctime = GreatLeapaudio.currentTime;
+      GreatLeapaudio.currentTime = ctime + 10;
+    });
+    
+    $("#GreatLeapaudiobbtn").on('tap', function() {
+      var ctime = GreatLeapaudio.currentTime;
+      GreatLeapaudio.currentTime = ctime - 10;
+    });
+    
+    $("#GreatLeapaudiopsbtn").on('tap', function() {
+      GreatLeapaudio.pause();
+    });
+  </script>
+  
+</div> <!--//home-->

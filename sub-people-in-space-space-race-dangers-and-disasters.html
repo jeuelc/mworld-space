@@ -1,0 +1,147 @@
+<!-- i-C-a -->
+<div data-role="page" id="sub-people-in-space-space-race-dangers-and-disasters">
+  <script src="js/hammer.js"></script>
+  <script src="js/jquery.hammer.js"></script>
+  <script src="js/slidebar_people_in_space.js"></script>
+  <link rel="stylesheet" href="css/style_people_in_space.css" />
+  <div class="menuhousing"></div>
+  <div class="homebtnholder"><div class="homebtnPeopleInSpace"></div></div>
+  <div class="mpbtnholder"><div class="mpbtnPeopleInSpace"></div></div>
+  <div class="cpbtnholder"><div class="cpbtnPeopleInSpace"></div></div>
+  <div class="infobtnholder"><div class="infobtnPeopleInSpace"></div></div>
+  <div class="credsbtnholder"><div class="credsbtnPeopleInSpace"></div></div>
+  <div class="menubtnholder"><div class="menubtnPeopleInSpace"></div></div>
+  
+  <div class="bptitleholder" style="padding-top:0px;"><h1>Dangers and Disasters</h1></div>
+  <div id="spacechar">&nbsp;
+    <div data-role="content" class="kidzcontent">
+      <div class="v-spacer"></div>
+      <div class="sidebarleft-half">
+        <a id="apollolink" style="visibility:hidden;" href="JavaScript:html5Lightbox.showLightbox(0, 'css/images/9-12/Space/People_In_Space/Space_Race/Dangers_And_Disasters/Apollo_Burned_Capsule_Hi_Res.jpg', 'A fire in the capsule during a launch pad test for Apollo 1 killed the three crewmen.  (Courtesy: NASA)');">click here</a>
+		
+		<a id="komarovlink" style="visibility:hidden;" href="JavaScript:html5Lightbox.showLightbox(0, 'css/images/9-12/Space/People_In_Space/Space_Race/Dangers_And_Disasters/Komarov_Stamp_Hi_Res.jpg', 'Cosmonaut Vladimir Komarov died in 1967 when his Soyuz parachute failed to open on re-entry.');">click here</a>
+		
+		<a id="armstrong" style="visibility:hidden;" href="JavaScript:html5Lightbox.showLightbox(0, 'css/images/9-12/Space/People_In_Space/Space_Race/Dangers_And_Disasters/Armstrong_Parachutes_Hi_Res.jpg', 'Neil Armstrong parachutes to safety after the \'flying bedstead\' trainer plunges to Earth in 1968.  (Courtesy: NASA)');">click here</a>
+        
+        <div id="zoomwrapper">
+		  <div id="pol1"class="pPiece" style="left:80px;top:270px;">
+             <img src="css/images/9-12/Space/People_In_Space/Space_Race/Dangers_And_Disasters/Apollo_Burned_Capsule.jpg" alt="" />
+          </div>        
+		  <div id="pol2" class="pPiece" style="left:100px;top:270px;">
+             <img src="css/images/9-12/Space/People_In_Space/Space_Race/Dangers_And_Disasters/Komarov_Stamp.jpg" alt="" />
+          </div>
+		  <div id="pol3"class="pPiece" style="left:75px;top:290px;">
+             <img src="css/images/9-12/Space/People_In_Space/Space_Race/Dangers_And_Disasters/Armstrong_Parachutes.jpg" alt="" />
+          </div>
+		</div><!--/zoomwrapper-->
+      </div>
+      
+      <div class="bpcontentPeopleInSpace">
+        <p>Spaceflight is dangerous.  Riding a flaming rocket containing hundreds of tonnes of explosive fuels isn't for the fainthearted!  Spacecraft are some of the most advanced and complicated machines people make, and a single fault can potentially be fatal!</p>
+		<p>In 1967 two disasters struck.  The crew of America's Apollo 1, including Ed White, were killed in a fire as they tested their spacecraft before launch.  A few months later, Russian cosmonaut Vladimir Komarov died when the parachutes of his Soyuz 1 spacecraft failed to open.</p>
+		<p>Other disasters followed.  Several astronauts were killed during training accidents and plane crashes, including Yuri Gagarin, the first man in space.  The Soyuz 11, and the Challenger and Columbia space shuttle disasters killed another 17 astronauts.</p>
+		<p>Other disasters were averted by the narrowest of margins.  Apollo 13 limped back to Earth after being battered by an explosion on the way to the Moon.  The Soyuz T-10-1 spacecraft's escape system saved its crew just seconds before a catastrophic explosion!</p>
+      </div>
+       
+      <div class="botlogoholder"><a href="home.html" class="homelinkbh"><img src="css/images/9-12/Space/bottomhomesp.png"></a></div>
+    </div> <!-- end content -->  
+  </div><!--/spacechar-->        
+  
+    <div class="micbtnholder"><div class="micbtnPeopleInSpace" id="playstopDangersDisasters"></div></div>
+    <div class="bPeopleInSpace"><div class="rwPeopleInSpace" id="DangersDisastersaudiobbtn"></div></div>
+    <div class="plPeopleInSpace"><div class="plpsPeopleInSpace" id="DangersDisastersaudioplbtn"></div></div>
+    <div class="fPeopleInSpace"><div class="fwPeopleInSpace" id="DangersDisastersaudiofbtn"></div></div>
+    <div id="actualaudio-DangersDisasters" style="visibility:hidden;"></div>
+  <!-- </div> -->
+  
+  <script>
+  // sound setup is in home.html and index.js
+    sound = new Audio(); // 'sound' is now an audio object
+ 
+	var playing;
+    var paused;
+    (function() {
+      playing = false;
+      paused = true;
+      $('div#pol3').css("z-index", 1);
+	  $('div#pol2').css("z-index", 2);
+      $('div#pol1').css("z-index", 3);
+      $('div#pol2 > img').css("-webkit-transform", "rotate(0deg)");
+      $('div#pol3 > img').css("-webkit-transform", "rotate(5deg)");
+      $('div#pol1 > img').css("-webkit-transform", "rotate(-3deg)");
+      if(sound.canPlayType('audio/mpeg')) {
+        $('#actualaudio-DangersDisasters').html('<audio id="DangersDisastersaudio" controls preload onpause="playsPeopleInSpace()" onplay="pausePeopleInSpace()"><source src="audio/People_In_Space/Dangers_Disasters.mp3" type="audio/mpeg"></audio>');
+      }             
+      $("#sub-people-in-space-space-race-dangers-and-disasters").swipe( { swipeRight:goBack, allowPageScroll:"auto"} );
+    })();
+    
+    $('.homelinkbh').on('tap', function() { mainaudiobg.play(); bgsoundPeopleInSpace.pause(); bgsoundPeopleInSpace.currentTime = 0;});
+	
+    
+    
+    $("#pol1").on('tap', function() {
+      $('#apollolink')[0].click();
+    });
+	
+	$("#pol2").on('tap', function() {
+      $('#komarovlink')[0].click();
+    });
+	
+	$("#pol3").on('tap', function() {
+      $('#armstrong')[0].click();
+    });
+    
+    function goBack() {
+      $.mobile.changePage("sub-people-in-space-space-race.html", {transition: "slide", reverse: true });
+    }
+    
+    function playsPeopleInSpace() {
+         bgsoundPeopleInSpace.play();
+    }
+       
+    function pausePeopleInSpace() {
+         bgsoundPeopleInSpace.pause();
+    }
+    /* ******************** */
+    /* this is the microphone button */
+    $("#playstopDangersDisasters").on('tap', function() {
+      if(!playing) {
+        DangersDisastersaudio.play();
+        $('.micbtnPeopleInSpace').css('background-position-x', '-81px');
+        playing = true;
+        paused = false;
+      } else {
+        DangersDisastersaudio.pause(); DangersDisastersaudio.currentTime = 0;
+        $('.micbtnPeopleInSpace').css('background-position-x', '0px');
+        playing = false;
+        paused = true;
+      }
+    });
+    
+    $("#DangersDisastersaudioplbtn").on('tap', function() {
+      if(!paused) {
+        DangersDisastersaudio.pause();
+        paused = true;
+      } else {
+        DangersDisastersaudio.play();
+        paused = false;
+      }
+      //$(".audiopanel").css({"backgroundPosition":"-197px 0px"});
+    });
+    
+    $("#DangersDisastersaudiofbtn").on('tap', function() {
+      var ctime = DangersDisastersaudio.currentTime;
+      DangersDisastersaudio.currentTime = ctime + 10;
+    });
+    
+    $("#DangersDisastersaudiobbtn").on('tap', function() {
+      var ctime = DangersDisastersaudio.currentTime;
+      DangersDisastersaudio.currentTime = ctime - 10;
+    });
+    
+    $("#DangersDisastersaudiopsbtn").on('tap', function() {
+      DangersDisastersaudio.pause();
+    });
+  </script>
+  <script src="js/threecardLogic.js"></script>  <!-- for card dragging effects -->
+</div> <!--//home-->

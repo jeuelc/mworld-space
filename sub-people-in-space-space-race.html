@@ -1,0 +1,136 @@
+<!-- i-C-a -->
+<div data-role="page" id="sub-people-in-space-space-race">
+  <script src="js/slidebar_people_in_space.js"></script>
+  <link rel="stylesheet" href="css/style_people_in_space.css" />
+  <div class="menuhousing"></div>
+  <div class="homebtnholder"><div class="homebtnPeopleInSpace"></div></div>
+  <div class="mpbtnholder"><div class="mpbtnPeopleInSpace"></div></div>
+  <div class="cpbtnholder"><div class="cpbtnPeopleInSpace"></div></div>
+  <div class="infobtnholder"><div class="infobtnPeopleInSpace"></div></div>
+  <div class="credsbtnholder"><div class="credsbtnPeopleInSpace"></div></div>
+  <div class="menubtnholder"><div class="menubtnPeopleInSpace"></div></div>
+  
+  <div class="bptitleholder" style="padding-top:14px;"><h1>Space Race!</h1></div>
+  <div id="firstdoglink" style="position: absolute;left: 76px;top: 85px;width: 142px;height: 120px;"></div>
+  <div id="firstmanlink" style="position: absolute;left: 65px;top: 290px;width: 165px;height: 130px;"></div>
+  <div id="dangerslink" style="position: absolute;left: 165px;top: 486px;width: 180px;height: 135px;"></div>
+  <div id="spacecraftlink" style="position: absolute;left: 437px;top: 513px;width: 141px;height: 100px;"></div>
+  <div id="onmotakingawalklink" style="position: absolute;left: 680px;top: 487px;width: 158px;height: 136px;"></div>
+  <div id="challengelink" style="position: absolute;left: 809px;top: 285px;width: 147px;height: 134px;"></div>
+  <div id="takingawalklink" style="position: absolute;left: 800px;top: 65px;width: 150px;height: 130px;"></div>
+  <div data-role="content" class="kidzcontent">
+	<div class="navPeopleInSpace-spacerace">
+        <p>After the launch of Sputnik, feats in space became hugely important to the Soviet Union and United States.  Who would put the first person in space?  Who would land the first person on the Moon?  Who would win the Space Race?</p>
+    </div>
+    <div class="botlogoholder"><a href="home.html" class="homelinkbh"><img src="css/images/9-12/Space/bottomhomesp.png"></a></div>
+  </div> <!-- end content -->  
+    
+  
+  <!--<div class="audiopanel">-->
+    <!-- images are in slidebarnat.js 
+         note: change the ids to be able play the narration
+    -->
+    <div class="micbtnholder"><div class="micbtnPeopleInSpace" id="playstopSpaceRace"></div></div>
+    <div class="bPeopleInSpace"><div class="rwPeopleInSpace" id="SpaceRaceaudiobbtn"></div></div>
+    <div class="plPeopleInSpace"><div class="plpsPeopleInSpace" id="SpaceRaceaudioplbtn"></div></div>
+    <div class="fPeopleInSpace"><div class="fwPeopleInSpace" id="SpaceRaceaudiofbtn"></div></div>
+    <div id="actualaudio-SpaceRace" style="visibility:hidden;"></div>
+  <!--</div>-->
+  <script>
+  // sound setup is in home.html and index.js
+    sound = new Audio(); // 'sound' is now an audio object
+    var playing;
+    var paused;
+    (function() {
+      playing = false;
+      paused = true;
+      if(sound.canPlayType('audio/mpeg')) {
+        $('#actualaudio-SpaceRace').html('<audio id="SpaceRaceaudio" controls preload onpause="playsPeopleInSpace()" onplay="pausePeopleInSpace()"><source src="audio/People_In_Space/Space_Race.mp3" type="audio/mpeg"></audio>');
+      } 
+    
+      $("#sub-people-in-space-space-race").swipe( { swipeRight:goBack, allowPageScroll:"auto"} );
+    })();
+    
+    $('#firstdoglink').on('tap', function() {
+      $.mobile.changePage("sub-people-in-space-space-race-first-dog-in-orbit.html", {transition: "slide"});
+    });
+    
+    $('#firstmanlink').on('tap', function() {
+      $.mobile.changePage("sub-people-in-space-space-race-first-person-in-space.html", {transition: "slide"});
+    });
+    
+    $('#dangerslink').on('tap', function() {
+      $.mobile.changePage("sub-people-in-space-space-race-dangers-and-disasters.html", {transition: "slide"});
+    });
+	
+	$('#spacecraftlink').on('tap', function() {
+      $.mobile.changePage("sub-people-in-space-space-race-spacecrafts-of-space-race.html", {transition: "slide"});
+    });
+	
+	$('#onmotakingawalklink').on('tap', function() {
+      $.mobile.changePage("sub-people-in-space-space-race-on-the-moon.html", {transition: "slide"});
+    });
+	
+	$('#challengelink').on('tap', function() {
+      $.mobile.changePage("sub-people-in-space-space-race-a-challenge.html", {transition: "slide"});
+    });
+	
+	$('#takingawalklink').on('tap', function() {
+      $.mobile.changePage("sub-people-in-space-space-race-taking-a-walk.html", {transition: "slide"});
+    });
+    
+    $('.homelinkbh').on('tap', function() { mainaudiobg.play(); bgsoundPeopleInSpace.pause(); bgsoundPeopleInSpace.currentTime = 0;});
+    
+    function goBack() {
+      $.mobile.changePage("sub-people-in-space.html", {transition: "slide", reverse: true });
+    }
+    
+    function playsPeopleInSpace() {
+         bgsoundPeopleInSpace.play();
+    }
+       
+    function pausePeopleInSpace() {
+         bgsoundPeopleInSpace.pause();
+    }
+    /* ******************** */
+    /* this is the microphone button */
+    $("#playstopSpaceRace").on('tap', function() {
+      if(!playing) {
+        SpaceRaceaudio.play();
+        $('.micbtnPeopleInSpace').css('background-position-x', '-81px');
+        playing = true;
+        paused = false;
+      } else {
+        SpaceRaceaudio.pause(); SpaceRaceaudio.currentTime = 0;
+        $('.micbtnPeopleInSpace').css('background-position-x', '0px');
+        playing = false;
+        paused = true;
+      }
+    });
+    
+    $("#SpaceRaceaudioplbtn").on('tap', function() {
+      if(!paused) {
+        SpaceRaceaudio.pause();
+        paused = true;
+      } else {
+        SpaceRaceaudio.play();
+        paused = false;
+      }
+      //$(".audiopanel").css({"backgroundPosition":"-197px 0px"});
+    });
+    
+    $("#SpaceRaceaudiofbtn").on('tap', function() {
+      var ctime = SpaceRaceaudio.currentTime;
+      SpaceRaceaudio.currentTime = ctime + 10;
+    });
+    
+    $("#SpaceRaceaudiobbtn").on('tap', function() {
+      var ctime = SpaceRaceaudio.currentTime;
+      SpaceRaceaudio.currentTime = ctime - 10;
+    });
+    
+    $("#SpaceRaceaudiopsbtn").on('tap', function() {
+      SpaceRaceaudio.pause();
+    });
+  </script>
+</div> <!--//home-->

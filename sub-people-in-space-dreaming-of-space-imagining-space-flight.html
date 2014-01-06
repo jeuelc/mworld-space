@@ -1,0 +1,168 @@
+<!-- i-C-a -->
+<div data-role="page" id="sub-people-in-space-dreaming-of-space-imagining-space-flight">
+  <script src="js/hammer.js"></script>
+  <script src="js/jquery.hammer.js"></script>
+  <script src="js/slidebar_people_in_space.js"></script>
+  <link rel="stylesheet" href="css/style_people_in_space.css" />
+  <div class="menuhousing"></div>
+  <div class="homebtnholder"><div class="homebtnPeopleInSpace"></div></div>
+  <div class="mpbtnholder"><div class="mpbtnPeopleInSpace"></div></div>
+  <div class="cpbtnholder"><div class="cpbtnPeopleInSpace"></div></div>
+  <div class="infobtnholder"><div class="infobtnPeopleInSpace"></div></div>
+  <div class="credsbtnholder"><div class="credsbtnPeopleInSpace"></div></div>
+  <div class="menubtnholder"><div class="menubtnPeopleInSpace"></div></div>
+  
+  <div class="bptitleholder" style="padding-top:0px;"><h1>Imagining Space Flight</h1></div>
+  <div id="spacechar">&nbsp;
+    <div data-role="content" class="kidzcontent">
+      <div class="v-spacer"></div>
+      <div class="sidebarleft-half">
+        <a id="juleslink" style="visibility:hidden;" href="JavaScript:html5Lightbox.showLightbox(0, 'css/images/9-12/Space/People_In_Space/Dreaming_Of_Space/Imagining_Space_Flight/Jules_Verne_illustration_Hi_Res.jpg', 'Jules Verne\'s space rocket in his science fiction novel \'From the Earth to the Moon\' (1865).  (Credit: Alamy)');">click here</a>
+		
+		<a id="destinationlink" style="visibility:hidden;" href="JavaScript:html5Lightbox.showLightbox(0, 'css/images/9-12/Space/People_In_Space/Dreaming_Of_Space/Imagining_Space_Flight/Destination_Moon_Movie_Poster_Hi_Res.jpg', 'A poster for 1950 science fiction film \'Destination Moon\'. (Credit: Alamy)');">click here</a>
+        
+        <div id="zoomwrapper">
+          <div id="pol1" class="pPiece" style="left:100px;top:270px;">
+             <img src="css/images/9-12/Space/People_In_Space/Dreaming_Of_Space/Imagining_Space_Flight/A_Trip_To_Moon.png" alt="" />
+          </div>
+		  <div id="pol2"class="pPiece" style="left:75px;top:290px;">
+             <img src="css/images/9-12/Space/People_In_Space/Dreaming_Of_Space/Imagining_Space_Flight/Jules_Verne_illustration.jpg" alt="" />
+          </div>
+		  <div id="pol3"class="pPiece" style="left:80px;top:270px;">
+             <img src="css/images/9-12/Space/People_In_Space/Dreaming_Of_Space/Imagining_Space_Flight/Destination_Moon_Movie_Poster.jpg" alt="" />
+          </div>
+        </div><!--/zoomwrapper-->
+      </div>
+      
+      <div class="bpcontentPeopleInSpace">
+        <p>Have you imagined travelling into space?  You wouldn't be the first, not by a long shot!</p>
+		<p>In the mythology of Ancient Greece, Icarus flies into the sky on wings made of feathers and wax.  However, the wax melts when he gets too close to the Sun, and he falls back to Earth.  Could you really fly too close to the Sun using wings?  No.  Wings need air to work, and planes struggle to fly more than 20 kilometres above the Earth.</p>
+		<p>In 1865, French author Jules Verne imagined launching men to the Moon using a giant cannon!  Lots of people read his book 'From the Earth to the Moon' and it inspired many pioneers of spaceflight.  However, a cannon launching a capsule into space would subject its occupants to lethal accelerations!  Watch the clip of 'A Trip to the Moon' and see whether you can spot any other aspects of the journey which would be impossible in reality.</p>
+	  </div>
+       
+      <div class="botlogoholder"><a href="home.html" class="homelinkbh"><img src="css/images/9-12/Space/bottomhomesp.png"></a></div>
+    </div> <!-- end content -->  
+  </div><!--/spacechar-->        
+  
+    <div class="micbtnholder"><div class="micbtnPeopleInSpace" id="playstopSpaceFlight"></div></div>
+    <div class="bPeopleInSpace"><div class="rwPeopleInSpace" id="SpaceFlightaudiobbtn"></div></div>
+    <div class="plPeopleInSpace"><div class="plpsPeopleInSpace" id="SpaceFlightaudioplbtn"></div></div>
+    <div class="fPeopleInSpace"><div class="fwPeopleInSpace" id="SpaceFlightaudiofbtn"></div></div>
+    <div id="actualaudio-SpaceFlight" style="visibility:hidden;"></div>
+  <!-- </div> -->
+  <!-- ----------------------- Video embedding --------------------------- -->
+  
+	<div id="watchTripToMoonVideo" style="width:1024px;height:748px;position:absolute;left:0px;top:0px;visibility:hidden;background:#000000;z-index:-1;">
+		<video id="watchTripToMoon" width="1024" height="748" preload>
+        <source src="css/images/9-12/Space/People_In_Space/Dreaming_Of_Space/Imagining_Space_Flight/A_Trip_To_The_Moon.mp4" type="video/mp4">
+    </video>
+    </div>
+  
+  <!-- ------------------------------------------------------------------ -->
+  <script>
+  // sound setup is in home.html and index.js
+    sound = new Audio(); // 'sound' is now an audio object
+ 
+	var playing;
+    var paused;
+    (function() {
+      playing = false;
+      paused = true;
+      $('div#pol1').css("z-index", 2);
+      $('div#pol2').css("z-index", 1);
+      $('div#pol1 > img').css("-webkit-transform", "rotate(0deg)");
+      $('#watchTripToMoonVideo').css({"visibility":"hidden", "z-index":-10});		
+      $('div#pol2 > img').css("-webkit-transform", "rotate(5deg)");
+      $('div#pol3 > img').css("-webkit-transform", "rotate(-3deg)");
+	  
+      if(sound.canPlayType('audio/mpeg')) {
+        $('#actualaudio-SpaceFlight').html('<audio id="SpaceFlightaudio" controls preload onpause="playsPeopleInSpace()" onplay="pausePeopleInSpace()"><source src="audio/People_In_Space/Imagining_Space_Flight.mp3" type="audio/mpeg"></audio>');
+      }             
+      $("#sub-people-in-space-dreaming-of-space-imagining-space-flight").swipe( { swipeRight:goBack, allowPageScroll:"auto"} );
+    })();
+    
+    $('.homelinkbh').on('tap', function() { mainaudiobg.play(); bgsoundPeopleInSpace.pause(); bgsoundPeopleInSpace.currentTime = 0;});
+	
+      watchTripToMoon.addEventListener('ended', function() { 
+        $("#watchTripToMoonVideo").css({"visibility":"hidden", "z-index":-1});
+        $("#watchTripToMoon").css({"z-index":-1});
+        bgsoundvol.play(); 
+      });
+    
+      $("#watchTripToMoon").on('tap', function() {
+        $("#watchTripToMoonVideo").css({"visibility":"hidden", "z-index":-1});
+        $("#watchTripToMoon").css({"z-index":-1});
+        bgsoundvol.play();
+        watchTripToMoon.pause();
+        watchTripToMoon.currentTime = 0;
+      });
+	  
+    $("#pol1").on('tap', function(){
+      $("#watchTripToMoonVideo").css({"visibility":"visible", "z-index":10});
+      $("#watchTripToMoon").css({"z-index":9});
+      bgsoundvol.pause();
+      watchTripToMoon.play();
+    });
+	
+    $("#pol2").on('tap', function() {
+      $('#juleslink')[0].click();
+    });
+	
+	$("#pol3").on('tap', function() {
+      $('#destinationlink')[0].click();
+    });
+    
+    function goBack() {
+      $.mobile.changePage("sub-people-in-space-dreaming-of-space.html", {transition: "slide", reverse: true });
+    }
+    
+    function playsPeopleInSpace() {
+         bgsoundPeopleInSpace.play();
+    }
+       
+    function pausePeopleInSpace() {
+         bgsoundPeopleInSpace.pause();
+    }
+    /* ******************** */
+    /* this is the microphone button */
+    $("#playstopSpaceFlight").on('tap', function() {
+      if(!playing) {
+        SpaceFlightaudio.play();
+        $('.micbtnPeopleInSpace').css('background-position-x', '-81px');
+        playing = true;
+        paused = false;
+      } else {
+        SpaceFlightaudio.pause(); SpaceFlightaudio.currentTime = 0;
+        $('.micbtnPeopleInSpace').css('background-position-x', '0px');
+        playing = false;
+        paused = true;
+      }
+    });
+    
+    $("#SpaceFlightaudioplbtn").on('tap', function() {
+      if(!paused) {
+        SpaceFlightaudio.pause();
+        paused = true;
+      } else {
+        SpaceFlightaudio.play();
+        paused = false;
+      }
+      //$(".audiopanel").css({"backgroundPosition":"-197px 0px"});
+    });
+    
+    $("#SpaceFlightaudiofbtn").on('tap', function() {
+      var ctime = SpaceFlightaudio.currentTime;
+      SpaceFlightaudio.currentTime = ctime + 10;
+    });
+    
+    $("#SpaceFlightaudiobbtn").on('tap', function() {
+      var ctime = SpaceFlightaudio.currentTime;
+      SpaceFlightaudio.currentTime = ctime - 10;
+    });
+    
+    $("#SpaceFlightaudiopsbtn").on('tap', function() {
+      SpaceFlightaudio.pause();
+    });
+  </script>
+  <script src="js/threecardLogic.js"></script>  <!-- for card dragging effects -->
+</div> <!--//home-->

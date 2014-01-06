@@ -1,0 +1,130 @@
+<!-- i-C-a -->
+<div data-role="page" id="sub-people-in-space-dreaming-of-space-beep-beep">
+  <script src="js/hammer.js"></script>
+  <script src="js/jquery.hammer.js"></script>
+  <script src="js/slidebar_people_in_space.js"></script>
+  <link rel="stylesheet" href="css/style_people_in_space.css" />
+  <div class="menuhousing"></div>
+  <div class="homebtnholder"><div class="homebtnPeopleInSpace"></div></div>
+  <div class="mpbtnholder"><div class="mpbtnPeopleInSpace"></div></div>
+  <div class="cpbtnholder"><div class="cpbtnPeopleInSpace"></div></div>
+  <div class="infobtnholder"><div class="infobtnPeopleInSpace"></div></div>
+  <div class="credsbtnholder"><div class="credsbtnPeopleInSpace"></div></div>
+  <div class="menubtnholder"><div class="menubtnPeopleInSpace"></div></div>
+  
+  <div class="bptitleholder" style="padding-top:0px;"><h1>Beep Beep Beep</h1></div>
+  <div id="spacechar">&nbsp;
+    <div data-role="content" class="kidzcontent">
+      <div class="v-spacer"></div>
+      <div class="sidebarleft-half">
+        <a id="firstphotolink" style="visibility:hidden;" href="JavaScript:html5Lightbox.showLightbox(0, 'css/images/9-12/Space/People_In_Space/Dreaming_Of_Space/Beep_Beep_Beep/First_Photo_From_Space_B_W_Hi_Res.jpg', 'After the Second World War, American scientists used a captured V2 and an automatic camera to take the first photo from space.');">click here</a>
+        
+        <div id="zoomwrapper">
+          <div id="pol1" class="pPiece" style="left:100px;top:270px;">
+             <img src="css/images/9-12/Space/People_In_Space/Dreaming_Of_Space/Beep_Beep_Beep/First_Photo_From_Space_B_W.jpg" alt="" />
+          </div>
+        </div><!--/zoomwrapper-->
+      </div>
+      
+      <div class="bpcontentPeopleInSpace">
+        <p>After the Second World War, scientists from around the world used captured V2 rockets to improve rocketry.  American scientists used a V2 and an automatic camera to take a photo from 100 kilometres above the Earth  the first look at our home from space!?</p>
+		<p>A lot of rocket advances happened at a time when things were kind of tense between the Soviet Union and United States, and both wanted to be able to launch large nuclear weapons across thousands of kilometres.  Rockets became bigger, more powerful and faster throughout the 1950s.  A rocket travelling fast enough can place a satellite into orbit around the Earth.</p>
+		<p>In 1957 the Soviet Union surprised the world by launching Sputnik 1.  Sputnik 1 had a radio transmitter in it, and people around the world could listen to the beeping it sent as it passed overhead!  People could also see Sputnik 1, like a tiny star moving from horizon to horizon.</p>
+		<p>The 'Space Race' had begun!</p>
+      </div>
+       
+      <div class="botlogoholder"><a href="home.html" class="homelinkbh"><img src="css/images/9-12/Space/bottomhomesp.png"></a></div>
+    </div> <!-- end content -->  
+  </div><!--/spacechar-->        
+  
+    <div class="micbtnholder"><div class="micbtnPeopleInSpace" id="playstopBeepBeep"></div></div>
+    <div class="bPeopleInSpace"><div class="rwPeopleInSpace" id="BeepBeepaudiobbtn"></div></div>
+    <div class="plPeopleInSpace"><div class="plpsPeopleInSpace" id="BeepBeepaudioplbtn"></div></div>
+    <div class="fPeopleInSpace"><div class="fwPeopleInSpace" id="BeepBeepaudiofbtn"></div></div>
+    <div id="actualaudio-BeepBeep" style="visibility:hidden;"></div>
+  <!-- </div> -->
+  
+  <script>
+  // sound setup is in home.html and index.js
+    sound = new Audio(); // 'sound' is now an audio object
+ 
+	var playing;
+    var paused;
+    (function() {
+      playing = false;
+      paused = true;
+      $('div#pol1').css("z-index", 1);
+      $('div#pol1 > img').css("-webkit-transform", "rotate(0deg)");
+      if(sound.canPlayType('audio/mpeg')) {
+        $('#actualaudio-BeepBeep').html('<audio id="BeepBeepaudio" controls preload onpause="playsPeopleInSpace()" onplay="pausePeopleInSpace()"><source src="audio/People_In_Space/Beep_Beep.mp3" type="audio/mpeg"></audio>');
+      }             
+      $("#sub-people-in-space-dreaming-of-space-beep-beep").swipe( { swipeRight:goBack, allowPageScroll:"auto"} );
+    })();
+    
+    $('.homelinkbh').on('tap', function() { mainaudiobg.play(); bgsoundPeopleInSpace.pause(); bgsoundPeopleInSpace.currentTime = 0;});
+	
+    $('#falseans').on('tap', function() {
+      alert("Wrong answer");
+    });
+    $('#trueans').on('tap', function() {
+      alert("Correct answer");
+    });
+    
+    $("#pol1").on('tap', function() {
+      $('#firstphotolink')[0].click();
+    });
+    
+    function goBack() {
+      $.mobile.changePage("sub-people-in-space-dreaming-of-space.html", {transition: "slide", reverse: true });
+    }
+    
+    function playsPeopleInSpace() {
+         bgsoundPeopleInSpace.play();
+    }
+       
+    function pausePeopleInSpace() {
+         bgsoundPeopleInSpace.pause();
+    }
+    /* ******************** */
+    /* this is the microphone button */
+    $("#playstopBeepBeep").on('tap', function() {
+      if(!playing) {
+        BeepBeepaudio.play();
+        $('.micbtnPeopleInSpace').css('background-position-x', '-81px');
+        playing = true;
+        paused = false;
+      } else {
+        BeepBeepaudio.pause(); BeepBeepaudio.currentTime = 0;
+        $('.micbtnPeopleInSpace').css('background-position-x', '0px');
+        playing = false;
+        paused = true;
+      }
+    });
+    
+    $("#BeepBeepaudioplbtn").on('tap', function() {
+      if(!paused) {
+        BeepBeepaudio.pause();
+        paused = true;
+      } else {
+        BeepBeepaudio.play();
+        paused = false;
+      }
+      //$(".audiopanel").css({"backgroundPosition":"-197px 0px"});
+    });
+    
+    $("#BeepBeepaudiofbtn").on('tap', function() {
+      var ctime = BeepBeepaudio.currentTime;
+      BeepBeepaudio.currentTime = ctime + 10;
+    });
+    
+    $("#BeepBeepaudiobbtn").on('tap', function() {
+      var ctime = BeepBeepaudio.currentTime;
+      BeepBeepaudio.currentTime = ctime - 10;
+    });
+    
+    $("#BeepBeepaudiopsbtn").on('tap', function() {
+      BeepBeepaudio.pause();
+    });
+  </script>
+  <script src="js/onecardLogic.js"></script>  <!-- for card dragging effects -->
+</div> <!--//home-->

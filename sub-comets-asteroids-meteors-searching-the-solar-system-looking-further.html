@@ -1,0 +1,182 @@
+<!-- i-C-a -->
+<div data-role="page" id="sub-comets-asteroids-meteors-searching-the-solar-system-looking-further">
+  <!-- <script src="js/slidebarnat.js"></script> -->
+  <script src="js/slidebar_comets_asteroids_meteors.js"></script>
+  <link rel="stylesheet" href="css/style_comets_asteroids_meteors.css" />
+  <div class="menuhousing"></div>
+  <div class="homebtnholder"><div class="homebtncometsasteroidsmeteors"></div></div>
+  <div class="mpbtnholder"><div class="mpbtncometsasteroidsmeteors"></div></div>
+  <div class="cpbtnholder"><div class="cpbtncometsasteroidsmeteors"></div></div>
+  <div class="infobtnholder"><div class="infobtncometsasteroidsmeteors"></div></div>
+  <div class="credsbtnholder"><div class="credsbtncometsasteroidsmeteors"></div></div>
+  <div class="menubtnholder"><div class="menubtncometsasteroidsmeteors"></div></div>
+  <div class="bptitleholder" style="padding-top:14px;"><h1>Looking further</h1></div>
+  <div id="spacechar">&nbsp;
+    <div data-role="content" class="kidzcontent">
+      <div class="v-spacer"></div>
+      <div class="sidebarleft-half">
+		<!-- Pol1 -->
+		<!-- Read me -->
+		
+		<!-- pol2 image -->
+        <a id="img1" style="visibility:hidden;" href="JavaScript:html5Lightbox.showLightbox(0, 'css/images/9-12/Space/Comets_Asteroids_Meteors/Searching_The_Solar_System/Looking_Further/Galileo_Hi_Res.jpg', 'Galileo demonstrating his amazing telescope to an enthusiastic group!');">click here</a>		
+
+		<!-- pol3 image -->
+        <a id="img2" style="visibility:hidden;" href="JavaScript:html5Lightbox.showLightbox(0, 'css/images/9-12/Space/Comets_Asteroids_Meteors/Searching_The_Solar_System/Looking_Further/Hubble_Hi_Res.jpg', 'The NASA/ESA Hubble Space Telescope in orbit around Earth!  The launch of Hubble in 1990 marked a major advance in astronomy.  Courtesy: European Southern Observatory');">click here</a>	
+		
+		<!-- pol4 image -->
+        <a id="img3" style="visibility:hidden;" href="JavaScript:html5Lightbox.showLightbox(0, 'css/images/9-12/Space/Comets_Asteroids_Meteors/Searching_The_Solar_System/Looking_Further/Saturn_Hi_Res.jpg', 'A stunning photo of Saturn\'s rings taken from NASA\'s Cassini Spacecraft in 2013.  Can you spot the blue dot  that is Earth which is 1.44 billion kilometres away! Courtesy: NASA/JPL-Caltech/Space Science Institute');">click here</a>		
+		
+		<div id="zoomwrapper">
+			<!-- Read Me -->
+          <div id="pol1" class="pPiece" style="left:100px;top:270px;">
+             <img src="css/images/9-12/Space/Comets_Asteroids_Meteors/Searching_The_Solar_System/Looking_Further/1_2_3.png" alt="" />
+          </div>
+		  
+		  <!-- Image card -->
+          <div id="pol2" class="pPiece" style="left:100px;top:270px;">
+             <img src="css/images/9-12/Space/Comets_Asteroids_Meteors/Searching_The_Solar_System/Looking_Further/Galileo.jpg" alt="" />
+          </div>
+
+		  <!-- Image card -->
+          <div id="pol3" class="pPiece" style="left:100px;top:270px;">
+             <img src="css/images/9-12/Space/Comets_Asteroids_Meteors/Searching_The_Solar_System/Looking_Further/Hubble.jpg" alt="" />
+          </div>
+
+		  <!-- Image card -->
+          <div id="pol4" class="pPiece" style="left:100px;top:270px;">
+             <img src="css/images/9-12/Space/Comets_Asteroids_Meteors/Searching_The_Solar_System/Looking_Further/Saturn.jpg" alt="" />
+          </div>		  
+	  
+        </div><!--/zoomwrapper-->
+      </div>
+      
+		  <div class="bpcontentcometsasteroidsmeteors">
+				<p>The invention of the telescope meant we could see lots more details of what the Solar System and the universe looks like.  The first person to gaze up into space through a telescope was Galileo in the early 1600's.  He discovered the brightest moons of Jupiter and the rings of Saturn.  Galileo also recorded the planet Uranus, but he did not recognise it as a new planet.  Telescopes now continue to grow in size, power and cost, with the Hubble Space Telescope costing 2.5 billion dollars.</p>
+
+				<p>In 1781, William Herschel found an object in the night sky and saw that it moved relative to the background stars, from night to night.  Herschel realised it was a previously unknown planet, now called Uranus, further away and fainter than the ones people had known about for thousands of years.</p>
+
+				<p>In the early 19th century four more 'planets' were discovered, starting with the discovery of Ceres in 1801.  These 'planets' were far smaller than the other previously known planets, and even with the best telescopes available they just looked like tiny dots of light. </p>
+
+				<p>These four small worlds orbited between Mars and Jupiter, and were actually the first asteroids to be discovered.  By the end of the 19th century astronomers had found hundreds of asteroids! </p> 
+
+		  </div>
+		<div class="botlogoholder"><a href="home.html" class="homelinkbh"><img src="css/images/9-12/Space/bottomhomesp.png"></a></div>
+    </div> <!-- end content -->  
+  </div><!--/spacechar-->  
+    
+  
+  <!--<div class="audiopanel">-->
+    <!-- images are in slidebarnat.js -->
+    <div class="micbtnholder"><div class="micbtncometsasteroidsmeteors" id="playstoplookingfurther"></div></div>
+    <div class="bcometsasteroidsmeteors"><div class="rwcometsasteroidsmeteors" id="lookingfurtheraudiobbtn"></div></div>
+    <div class="plcometsasteroidsmeteors"><div class="plpscometsasteroidsmeteors" id="lookingfurtheraudioplbtn"></div></div>
+    <div class="fcometsasteroidsmeteors"><div class="fwcometsasteroidsmeteors" id="lookingfurtheraudiofbtn"></div></div>
+    <div id="actualaudio-lookingfurther" style="visibility:hidden;"></div>
+  <!--</div>-->
+  <script>
+  // sound setup is in home.html and index.js
+    sound = new Audio(); // 'sound' is now an audio object
+    var playing;
+    var paused;
+    (function() {
+      playing = false;
+      paused = true;
+      $('div#pol1').css("z-index", 3);
+      $('div#pol2').css("z-index", 2);
+      $('div#pol3').css("z-index", 1);
+      $('div#pol1 > img').css("-webkit-transform", "rotate(0deg)");
+      $('#watchLavaFlowholder').css({"visibility":"hidden", "z-index":-10});		
+      $('div#pol2 > img').css("-webkit-transform", "rotate(5deg)");
+      $('div#pol3 > img').css("-webkit-transform", "rotate(-3deg)");
+      $('#watchMtTungurahuaholder').css({"visibility":"hidden", "z-index":-10});		
+      $('div#pol4 > img').css("-webkit-transform", "rotate(-3deg)");
+      if(sound.canPlayType('audio/mpeg')) {
+        $('#actualaudio-lookingfurther').html('<audio id="lookingfurtheraudio" controls preload onpause="playscometsasteroidsmeteors()" onplay="pausecometsasteroidsmeteors()"><source src="audio/Comets_Asteroids_Meteors/Looking_Further.mp3" type="audio/mpeg"></audio>');
+      } 
+    
+      $("#sub-comets-asteroids-meteors-searching-the-solar-system-looking-further").swipe( { swipeRight:goBack, allowPageScroll:"auto"} );
+    })();
+    
+    $('.homelinkbh').on('tap', function() { bgsoundcometsasteroidsmeteors.pause(); bgsoundcometsasteroidsmeteors.currentTime = 0; mainaudiobg.play(); });
+    
+    function goBack() {
+      $.mobile.changePage("sub-comets-asteroids-meteors-searching-the-solar-system.html", {transition: "slide", reverse: true });
+      bgsoundcometsasteroidsmeteors.pause(); 
+      bgsoundcometsasteroidsmeteors.currentTime = 0;
+      spacesoundbg.play();
+    }
+    
+    function playscometsasteroidsmeteors() {
+         bgsoundcometsasteroidsmeteors.play();
+    }
+       
+    function pausecometsasteroidsmeteors() {
+         bgsoundcometsasteroidsmeteors.pause();
+    }
+    /* ******************** */
+    /* this is the microphone button */
+	
+    $("#playstoplookingfurther").on('tap', function() {
+      if(!playing) {
+        lookingfurtheraudio.play();
+        $('.micbtncometsasteroidsmeteors').css('background-position-x', '-81px');
+        playing = true;
+        paused = false;
+      } else {
+        lookingfurtheraudio.pause(); lookingfurtheraudio.currentTime = 0;
+        $('.micbtncometsasteroidsmeteors').css('background-position-x', '0px');
+        playing = false;
+        paused = true;
+      }
+    });
+    
+    $("#lookingfurtheraudioplbtn").on('tap', function() {
+      if(!paused) {
+        lookingfurtheraudio.pause();
+        paused = true;
+      } else {
+        lookingfurtheraudio.play();
+        paused = false;
+      }
+      //$(".audiopanel").css({"backgroundPosition":"-197px 0px"});
+    });
+    
+    $("#lookingfurtheraudiofbtn").on('tap', function() {
+      var ctime = lookingfurtheraudio.currentTime;
+      lookingfurtheraudio.currentTime = ctime + 10;
+    });
+    
+    $("#lookingfurtheraudiobbtn").on('tap', function() {
+      var ctime = lookingfurtheraudio.currentTime;
+      lookingfurtheraudio.currentTime = ctime - 10;
+    });
+    
+    $("#cometsasteroidsmeteorsaudiopsbtnpsbtn").on('tap', function() {
+      lookingfurtheraudio.pause();
+      //$(".audiopanel").css({"backgroundPosition":"0px 0px"});
+    });
+		//poll1
+		$("#pol1").on('tap', function() {
+		  $.mobile.changePage("sub-comets-asteroids-meteors-searching-the-solar-system-looking-further-1-2-3.html", {transition: "slide"});
+		});	
+		
+		//pol2	
+		$("#pol2").on('tap', function() {
+		  $('#img1')[0].click();
+		});	
+		
+		//pol3	
+		$("#pol3").on('tap', function() {
+		  $('#img2')[0].click();
+		});	
+		//pol4
+		$("#pol4").on('tap', function() {
+		  $('#img3')[0].click();
+		});			
+
+	//card on click js ends here
+
+  </script>
+  <script src="js/fourcardLogic.js"></script>  <!-- for card dragging effects -->
+</div> <!--//home-->

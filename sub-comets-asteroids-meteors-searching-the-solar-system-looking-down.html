@@ -1,0 +1,187 @@
+<!-- i-C-a -->
+<div data-role="page" id="sub-comets-asteroids-meteors-searching-the-solar-system-looking-down">
+  <!-- <script src="js/slidebarnat.js"></script> -->
+  <script src="js/slidebar_comets_asteroids_meteors.js"></script>
+  <script src="js/hammer.js"></script>
+  <script src="js/jquery.hammer.js"></script>    
+  <link rel="stylesheet" href="css/style_comets_asteroids_meteors.css" />
+  <div class="menuhousing"></div>
+  <div class="homebtnholder"><div class="homebtncometsasteroidsmeteors"></div></div>
+  <div class="mpbtnholder"><div class="mpbtncometsasteroidsmeteors"></div></div>
+  <div class="cpbtnholder"><div class="cpbtncometsasteroidsmeteors"></div></div>
+  <div class="infobtnholder"><div class="infobtncometsasteroidsmeteors"></div></div>
+  <div class="credsbtnholder"><div class="credsbtncometsasteroidsmeteors"></div></div>
+  <div class="menubtnholder"><div class="menubtncometsasteroidsmeteors"></div></div>
+  <div class="bptitleholder" style="padding-top:14px;"><h1>Looking down!</h1></div>
+  <div id="spacechar">&nbsp;
+    <div data-role="content" class="kidzcontent">
+      <div class="v-spacer"></div>
+      <div class="sidebarleft-half">
+		<!-- pol1 Quiz -->
+        <div id="f1_container" style="visibility:hidden;position:absolute;left:100px;top:270px;">
+          <div id="f1_card">
+            <div class="front face">
+              <img id="dopple" src="css/images/9-12/Space/Comets_Asteroids_Meteors/Searching_The_Solar_System/Looking_Down/Comet_Tails.png">
+            </div>
+            <div id="backofcard" class="back face center" style="background:url(css/images/9-12/Space/Comets_Asteroids_Meteors/Searching_The_Solar_System/Looking_Down/Comet_Tails_Reverse.png) no-repeat;">
+              <div class="returncard" style="position:absolute;left:0px;top:0px;width:362px;height:170px;"></div>
+              <div id="trueans" style="position: absolute;left: 169px;top: 103px;width: 158px;height: 20px;"></div>
+              <div class="falseans" style="position: absolute;left: 169px;top: 127px;width: 158px;height: 20px;"></div>
+			  <div class="falseans" style="position: absolute;left: 169px;top: 151px;width: 158px;height: 20px;"></div>
+			  <div class="falseans" style="position: absolute;left: 169px;top: 175px;width: 158px;height: 20px;"></div>
+            </div>
+          </div><!--/f1+card-->
+        </div><!--/f1_container-->	  				
+
+		
+		<!-- pol2 image -->
+        <a id="img1" style="visibility:hidden;" href="JavaScript:html5Lightbox.showLightbox(0, 'css/images/9-12/Space/Comets_Asteroids_Meteors/Searching_The_Solar_System/Looking_Down/Meteorite_Hi_Res.jpg', 'This is the 4.5 billion Allende stony meteorite, can you see the circular chondrules?  Courtesy: NASA GSFC');">click here</a>		
+	
+		<div id="zoomwrapper">
+			<!-- quiz -->
+          <div id="pol1" class="pPiece" style="left:100px;top:270px;">
+             <img src="css/images/9-12/Space/Comets_Asteroids_Meteors/Searching_The_Solar_System/Looking_Down/Comet_Tails.png" alt="" />
+          </div>
+		 
+		  <!-- image card -->
+          <div id="pol2" class="pPiece" style="left:75px;top:290px;">
+             <img src="css/images/9-12/Space/Comets_Asteroids_Meteors/Searching_The_Solar_System/Looking_Down/Meteorite.jpg" alt="" />
+          </div>		  
+        </div><!--/zoomwrapper-->
+      </div>
+      
+		  <div class="bpcontentcometsasteroidsmeteors">
+				<p>Not all shooting stars are completely vaporised on their journey through the atmosphere.  Some meteoroids are big enough to survive and reach the surface of the Earth, where they become meteorites.  How do we find them?  Good question!  Some people are lucky enough to see a falling meteor or hear its sonic boom and then find a meteorite on the ground.  The sonic boom is the noise it makes when it travels through our atmosphere at speeds faster than the speed of sound.  Sometimes, it's still hot from almost burning up in the Earth's atmosphere.</p>
+
+				<p>Scientists also go hunting for meteorites that fell to Earth long ago.  Where are the best places to find meteorites?  Meteorites are easier to find in places without many rocks, trees and rivers, so if you thought of deserts and Antarctica, you're right!   In Antarctica, the movement of glaciers can also concentrate meteorites to places, like the edges of mountain ranges that make them easier to find.</p>
+
+				<p>But finding meteorites is rarely easy, even after you've made the hazardous journey to some of the most extreme places on Earth!</p>
+		  </div>
+		<div class="botlogoholder"><a href="home.html" class="homelinkbh"><img src="css/images/9-12/Space/bottomhomesp.png"></a></div>
+    </div> <!-- end content -->  
+  </div><!--/spacechar-->  
+    
+  
+  <!--<div class="audiopanel">-->
+    <!-- images are in slidebarnat.js -->
+    <div class="micbtnholder"><div class="micbtncometsasteroidsmeteors" id="playstoplookingdown"></div></div>
+    <div class="bcometsasteroidsmeteors"><div class="rwcometsasteroidsmeteors" id="lookingdownaudiobbtn"></div></div>
+    <div class="plcometsasteroidsmeteors"><div class="plpscometsasteroidsmeteors" id="lookingdownaudioplbtn"></div></div>
+    <div class="fcometsasteroidsmeteors"><div class="fwcometsasteroidsmeteors" id="lookingdownaudiofbtn"></div></div>
+    <div id="actualaudio-lookingdown" style="visibility:hidden;"></div>
+  <!--</div>-->
+  <script>
+  // sound setup is in home.html and index.js
+    sound = new Audio(); // 'sound' is now an audio object
+    var playing;
+    var paused;
+    (function() {
+      playing = false;
+      paused = true;
+      $('div#pol1').css("z-index", 2);
+      $('div#pol2').css("z-index", 1);
+      $('div#pol1 > img').css("-webkit-transform", "rotate(0deg)");
+      $('div#pol2 > img').css("-webkit-transform", "rotate(5deg)");
+      if(sound.canPlayType('audio/mpeg')) {
+        $('#actualaudio-lookingdown').html('<audio id="lookingdownaudio" controls preload onpause="playscometsasteroidsmeteors()" onplay="pausecometsasteroidsmeteors()"><source src="audio/Comets_Asteroids_Meteors/Looking_Down.mp3" type="audio/mpeg"></audio>');
+      } 
+    
+      $("#sub-comets-asteroids-meteors-searching-the-solar-system-looking-down").swipe( { swipeRight:goBack, allowPageScroll:"auto"} );
+    })();
+    
+    $('.homelinkbh').on('tap', function() { bgsoundcometsasteroidsmeteors.pause(); bgsoundcometsasteroidsmeteors.currentTime = 0; mainaudiobg.play(); });
+    
+    function goBack() {
+      $.mobile.changePage("sub-comets-asteroids-meteors-searching-the-solar-system.html", {transition: "slide", reverse: true });
+      bgsoundcometsasteroidsmeteors.pause(); 
+      bgsoundcometsasteroidsmeteors.currentTime = 0;
+      spacesoundbg.play();
+    }
+    
+    function playscometsasteroidsmeteors() {
+         bgsoundcometsasteroidsmeteors.play();
+    }
+       
+    function pausecometsasteroidsmeteors() {
+         bgsoundcometsasteroidsmeteors.pause();
+    }
+    /* ******************** */
+    /* this is the microphone button */
+	
+    $("#playstoplookingdown").on('tap', function() {
+      if(!playing) {
+        lookingdownaudio.play();
+        $('.micbtncometsasteroidsmeteors').css('background-position-x', '-81px');
+        playing = true;
+        paused = false;
+      } else {
+        lookingdownaudio.pause(); lookingdownaudio.currentTime = 0;
+        $('.micbtncometsasteroidsmeteors').css('background-position-x', '0px');
+        playing = false;
+        paused = true;
+      }
+    });
+    
+    $("#lookingdownaudioplbtn").on('tap', function() {
+      if(!paused) {
+        lookingdownaudio.pause();
+        paused = true;
+      } else {
+        lookingdownaudio.play();
+        paused = false;
+      }
+      //$(".audiopanel").css({"backgroundPosition":"-197px 0px"});
+    });
+    
+    $("#lookingdownaudiofbtn").on('tap', function() {
+      var ctime = lookingdownaudio.currentTime;
+      lookingdownaudio.currentTime = ctime + 10;
+    });
+    
+    $("#lookingdownaudiobbtn").on('tap', function() {
+      var ctime = lookingdownaudio.currentTime;
+      lookingdownaudio.currentTime = ctime - 10;
+    });
+    
+    $("#cometsasteroidsmeteorsaudiopsbtnpsbtn").on('tap', function() {
+      lookingdownaudio.pause();
+      //$(".audiopanel").css({"backgroundPosition":"0px 0px"});
+    });
+		//poll1
+			$(".returncard").on('tap', function() {
+			  $('#f1_card').css({"-webkit-transform": "rotateY(0deg)"});
+			  $('#f1_card').css({"-moz-transform": "rotateY(0deg)"});
+			  $('#f1_card').css({"-o-transform": "rotateY(0deg)"});
+			  $('#f1_card').css({"transform": "rotateY(0deg)"});
+			  setTimeout(function() {
+				$("#pol1").css({"visibility":"visible", "z-index":4});
+				$('#f1_container').css({"visibility":"hidden", "z-index":0});
+			  }, 1000);
+			});
+			
+			$("#pol1").on('tap', function() {
+			  $('#f1_container').css({"visibility":"visible", "z-index":10});
+			  $(this).css({"visibility":"hidden"});
+			  $('#f1_card').css({"-webkit-transform": "rotateY(180deg)"});
+			  $('#f1_card').css({"-moz-transform": "rotateY(180deg)"});
+			  $('#f1_card').css({"-o-transform": "rotateY(180deg)"});
+			  $('#f1_card').css({"transform": "rotateY(180deg)"});
+			});	
+			$('.falseans').on('tap', function() {
+			  alert("Wrong answer");
+			});
+			$('#trueans').on('tap', function() {
+			  alert("Correct answer");
+			});	
+		
+		
+		//pol2
+		$("#pol2").on('tap', function() {
+		  $('#img1')[0].click();
+		});	
+
+	//card on click js ends here
+
+  </script>
+  <script src="js/twocardLogic.js"></script>  <!-- for card dragging effects -->
+</div> <!--//home-->

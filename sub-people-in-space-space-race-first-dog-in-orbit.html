@@ -1,0 +1,178 @@
+<!-- i-C-a -->
+<div data-role="page" id="sub-people-in-space-space-race-first-dog-in-orbit">
+  <script src="js/hammer.js"></script>
+  <script src="js/jquery.hammer.js"></script>
+  <script src="js/slidebar_people_in_space.js"></script>
+  <link rel="stylesheet" href="css/style_people_in_space.css" />
+  <div class="menuhousing"></div>
+  <div class="homebtnholder"><div class="homebtnPeopleInSpace"></div></div>
+  <div class="mpbtnholder"><div class="mpbtnPeopleInSpace"></div></div>
+  <div class="cpbtnholder"><div class="cpbtnPeopleInSpace"></div></div>
+  <div class="infobtnholder"><div class="infobtnPeopleInSpace"></div></div>
+  <div class="credsbtnholder"><div class="credsbtnPeopleInSpace"></div></div>
+  <div class="menubtnholder"><div class="menubtnPeopleInSpace"></div></div>
+  
+  <div class="bptitleholder" style="padding-top:0px;"><h1>First... Dog in Orbit</h1></div>
+  <div id="spacechar">&nbsp;
+    <div data-role="content" class="kidzcontent">
+      <div class="v-spacer"></div>
+      <div class="sidebarleft-half">
+        <a id="laikalink" style="visibility:hidden;" href="JavaScript:html5Lightbox.showLightbox(0, 'css/images/9-12/Space/People_In_Space/Space_Race/First_Dog_In_Orbit/Laika_The_Dog_Hi_Res.jpg', 'Laika, the first dog in space had space to stand or lie down.  Her name means \'Barker\' in English.');">click here</a>
+		
+		<a id="fishlink" style="visibility:hidden;" href="JavaScript:html5Lightbox.showLightbox(0, 'css/images/9-12/Space/People_In_Space/Space_Race/First_Dog_In_Orbit/Fish_In_Space_Hi_Res.jpg', 'Cats, frogs, rats, mice, spiders, flies, fish, snails, jellyfish and more have been into space.  They have helped us better understand weightlessness.');">click here</a>
+        
+        <div id="f1_container" style="visibility:hidden;position:absolute;left:100px;top:270px;">
+          <div id="f1_card">
+            <div class="front face">
+              <img id="dopple" src="css/images/9-12/Space/People_In_Space/Space_Race/First_Dog_In_Orbit/Chimps_In_Space.png">
+            </div>
+            <div id="backofcard" class="back face center" style="background:url(css/images/9-12/Space/People_In_Space/Space_Race/First_Dog_In_Orbit/Chimps_In_Space_Reverse.png) no-repeat;">
+              <div class="returncard" style="position:absolute;left:0px;top:0px;width:362px;height:170px;"></div>
+              <div id="trueans" style="position:absolute;left:90px;top:180px;width:70px;height:50px;"></div>
+              <div id="falseans" style="position:absolute;left:200px;top:180px;width:70px;height:50px;"></div>
+            </div>
+          </div><!--/f1+card-->
+        </div><!--/f1_container-->
+		<div id="zoomwrapper">
+          <div id="pol1"class="pPiece" style="left:80px;top:270px;">
+             <img src="css/images/9-12/Space/People_In_Space/Space_Race/First_Dog_In_Orbit/Chimps_In_Space.png" alt="" />
+          </div>
+		  <div id="pol2"class="pPiece" style="left:75px;top:290px;">
+             <img src="css/images/9-12/Space/People_In_Space/Space_Race/First_Dog_In_Orbit/Laika_The_Dog.jpg" alt="" />
+          </div>
+		  <div id="pol3" class="pPiece" style="left:100px;top:270px;">
+             <img src="css/images/9-12/Space/People_In_Space/Space_Race/First_Dog_In_Orbit/Fish_In_Space.jpg" alt="" />
+          </div>
+        </div><!--/zoomwrapper-->
+      </div>
+      
+      <div class="bpcontentPeopleInSpace">
+        <p>Launching a person into orbit is far harder than launching a radio transmitter.  A person needs air, food and water.  Getting a spacecraft back to Earth is also a challenge, as a spacecraft moving through the air at seven kilometres per second gets really, really hot.</p>
+		<p>Rather than launch a person into space, animals were sent first.  In late 1957, Sputnik 2 carried Laika, a small dog, into orbit around the Earth.  Laika only lived for a day or two before dying in her overheated capsule.  That capsule was not designed to return safely to Earth, and Laika was always on a one-way trip to space.</p>
+		<p>The Soviet Union and United States flew dogs, monkeys, rabbits and mice in space to understand how to survive the demands of space travel.</p>
+		<p>Could people survive the crushing forces of being launched in a rocket?  Could they survive being weightless and operate a spacecraft?</p>
+      </div>
+       
+      <div class="botlogoholder"><a href="home.html" class="homelinkbh"><img src="css/images/9-12/Space/bottomhomesp.png"></a></div>
+    </div> <!-- end content -->  
+  </div><!--/spacechar-->        
+  
+    <div class="micbtnholder"><div class="micbtnPeopleInSpace" id="playstopFirstDog"></div></div>
+    <div class="bPeopleInSpace"><div class="rwPeopleInSpace" id="FirstDogaudiobbtn"></div></div>
+    <div class="plPeopleInSpace"><div class="plpsPeopleInSpace" id="FirstDogaudioplbtn"></div></div>
+    <div class="fPeopleInSpace"><div class="fwPeopleInSpace" id="FirstDogaudiofbtn"></div></div>
+    <div id="actualaudio-FirstDog" style="visibility:hidden;"></div>
+  <!-- </div> -->
+  
+  <script>
+  // sound setup is in home.html and index.js
+    sound = new Audio(); // 'sound' is now an audio object
+ 
+	var playing;
+    var paused;
+    (function() {
+      playing = false;
+      paused = true;
+	  $('div#pol1').css("z-index", 3);
+      $('div#pol2').css("z-index", 2);
+      $('div#pol3').css("z-index", 1);
+      $('div#pol3 > img').css("-webkit-transform", "rotate(0deg)");
+      $('div#pol2 > img').css("-webkit-transform", "rotate(5deg)");
+      $('div#pol1 > img').css("-webkit-transform", "rotate(-3deg)");
+      if(sound.canPlayType('audio/mpeg')) {
+        $('#actualaudio-FirstDog').html('<audio id="FirstDogaudio" controls preload onpause="playsPeopleInSpace()" onplay="pausePeopleInSpace()"><source src="audio/People_In_Space/First_Dog_Orbit.mp3" type="audio/mpeg"></audio>');
+      }             
+      $("#sub-people-in-space-space-race-first-dog-in-orbit").swipe( { swipeRight:goBack, allowPageScroll:"auto"} );
+    })();
+    
+    $('.homelinkbh').on('tap', function() { mainaudiobg.play(); bgsoundPeopleInSpace.pause(); bgsoundPeopleInSpace.currentTime = 0;});
+	
+    $('#falseans').on('tap', function() {
+      alert("Wrong answer");
+    });
+    $('#trueans').on('tap', function() {
+      alert("Correct answer");
+    });
+    
+    $(".returncard").on('tap', function() {
+      $('#f1_card').css({"-webkit-transform": "rotateY(0deg)"});
+      $('#f1_card').css({"-moz-transform": "rotateY(0deg)"});
+      $('#f1_card').css({"-o-transform": "rotateY(0deg)"});
+      $('#f1_card').css({"transform": "rotateY(0deg)"});
+      setTimeout(function() {
+      $("#pol1").css({"visibility":"visible", "z-index":4});
+      $('#f1_container').css({"visibility":"hidden", "z-index":0});
+      }, 1000);
+    });
+    
+    $("#pol1").on('tap', function() {
+      $('#f1_container').css({"visibility":"visible", "z-index":10});
+      $(this).css({"visibility":"hidden"});
+      $('#f1_card').css({"-webkit-transform": "rotateY(180deg)"});
+      $('#f1_card').css({"-moz-transform": "rotateY(180deg)"});
+      $('#f1_card').css({"-o-transform": "rotateY(180deg)"});
+      $('#f1_card').css({"transform": "rotateY(180deg)"});
+    });
+	
+    $("#pol2").on('tap', function() {
+      $('#laikalink')[0].click();
+    });
+	
+	$("#pol3").on('tap', function() {
+      $('#fishlink')[0].click();
+    });
+    
+    function goBack() {
+      $.mobile.changePage("sub-people-in-space-space-race.html", {transition: "slide", reverse: true });
+    }
+    
+    function playsPeopleInSpace() {
+         bgsoundPeopleInSpace.play();
+    }
+       
+    function pausePeopleInSpace() {
+         bgsoundPeopleInSpace.pause();
+    }
+    /* ******************** */
+    /* this is the microphone button */
+    $("#playstopFirstDog").on('tap', function() {
+      if(!playing) {
+        FirstDogaudio.play();
+        $('.micbtnPeopleInSpace').css('background-position-x', '-81px');
+        playing = true;
+        paused = false;
+      } else {
+        FirstDogaudio.pause(); FirstDogaudio.currentTime = 0;
+        $('.micbtnPeopleInSpace').css('background-position-x', '0px');
+        playing = false;
+        paused = true;
+      }
+    });
+    
+    $("#FirstDogaudioplbtn").on('tap', function() {
+      if(!paused) {
+        FirstDogaudio.pause();
+        paused = true;
+      } else {
+        FirstDogaudio.play();
+        paused = false;
+      }
+      //$(".audiopanel").css({"backgroundPosition":"-197px 0px"});
+    });
+    
+    $("#FirstDogaudiofbtn").on('tap', function() {
+      var ctime = FirstDogaudio.currentTime;
+      FirstDogaudio.currentTime = ctime + 10;
+    });
+    
+    $("#FirstDogaudiobbtn").on('tap', function() {
+      var ctime = FirstDogaudio.currentTime;
+      FirstDogaudio.currentTime = ctime - 10;
+    });
+    
+    $("#FirstDogaudiopsbtn").on('tap', function() {
+      FirstDogaudio.pause();
+    });
+  </script>
+  <script src="js/threecardLogic.js"></script>  <!-- for card dragging effects -->
+</div> <!--//home-->

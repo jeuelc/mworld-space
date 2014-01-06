@@ -1,0 +1,137 @@
+<!-- i-C-a -->
+<div data-role="page" id="sub-comets-asteroids-meteors-searching-the-solar-system-looking-up">
+  <!-- <script src="js/slidebarnat.js"></script> -->
+  <script src="js/slidebar_comets_asteroids_meteors.js"></script>
+  <script src="js/hammer.js"></script>
+  <script src="js/jquery.hammer.js"></script>    
+  <link rel="stylesheet" href="css/style_comets_asteroids_meteors.css" />
+  <div class="menuhousing"></div>
+  <div class="homebtnholder"><div class="homebtncometsasteroidsmeteors"></div></div>
+  <div class="mpbtnholder"><div class="mpbtncometsasteroidsmeteors"></div></div>
+  <div class="cpbtnholder"><div class="cpbtncometsasteroidsmeteors"></div></div>
+  <div class="infobtnholder"><div class="infobtncometsasteroidsmeteors"></div></div>
+  <div class="credsbtnholder"><div class="credsbtncometsasteroidsmeteors"></div></div>
+  <div class="menubtnholder"><div class="menubtncometsasteroidsmeteors"></div></div>
+  <div class="bptitleholder" style="padding-top:14px;"><h1>Looking up!</h1></div>
+  <div id="spacechar">&nbsp;
+    <div data-role="content" class="kidzcontent">
+      <div class="v-spacer"></div>
+      <div class="sidebarleft-half">
+		<!-- pol1 image -->
+        <a id="img1" style="visibility:hidden;" href="JavaScript:html5Lightbox.showLightbox(0, 'css/images/9-12/Space/Comets_Asteroids_Meteors/Searching_The_Solar_System/Looking_Up/Perseid_Shower_Hi_Res.jpg', 'Spectacular Perseid meteor shower! Courtesy: NASA/JPL');">click here</a>		
+	
+		<div id="zoomwrapper">
+			<!-- image card -->
+          <div id="pol1" class="pPiece" style="left:100px;top:270px;">
+             <img src="css/images/9-12/Space/Comets_Asteroids_Meteors/Searching_The_Solar_System/Looking_Up/Perseid_Shower.jpg" alt="" />
+          </div>	  
+        </div><!--/zoomwrapper-->
+      </div>
+      
+		  <div class="bpcontentcometsasteroidsmeteors">
+				<p>Have you ever seen a shooting star?  Shooting stars flash across the night sky, being visible for just a second or so.  Do you know what shooting stars are?</p>
+
+				<p>They are tiny meteoroids (often less than a centimetre in size) slamming into the Earth's atmosphere.  They travel so fast that when they hit our air they get super-hot and are vaporised.  They burn up because of the speed they are travelling at and disappear in a puff of smoke!  
+				</p>
+				<p>Some nights are better for seeing shooting stars than others.  When the moon is below the horizon, skies are darker and shooting stars are easier to see.  There are also some nights when the Earth travels through the orbits of comets which contain tiny particles of dust left behind by the comet's tails. </p>
+
+				<p>Sometimes, when everything aligns just right, you might see hundreds of shooting stars in a single hour.  These are called meteor storms, which have amazed those who have been lucky enough to see them, for example the Perseid meteor shower!
+				</p>
+		  </div>
+		<div class="botlogoholder"><a href="home.html" class="homelinkbh"><img src="css/images/9-12/Space/bottomhomesp.png"></a></div>
+    </div> <!-- end content -->  
+  </div><!--/spacechar-->  
+    
+  
+  <!--<div class="audiopanel">-->
+    <!-- images are in slidebarnat.js -->
+    <div class="micbtnholder"><div class="micbtncometsasteroidsmeteors" id="playstoplookingup"></div></div>
+    <div class="bcometsasteroidsmeteors"><div class="rwcometsasteroidsmeteors" id="lookingupaudiobbtn"></div></div>
+    <div class="plcometsasteroidsmeteors"><div class="plpscometsasteroidsmeteors" id="lookingupaudioplbtn"></div></div>
+    <div class="fcometsasteroidsmeteors"><div class="fwcometsasteroidsmeteors" id="lookingupaudiofbtn"></div></div>
+    <div id="actualaudio-lookingup" style="visibility:hidden;"></div>
+  <!--</div>-->
+  <script>
+  // sound setup is in home.html and index.js
+    sound = new Audio(); // 'sound' is now an audio object
+    var playing;
+    var paused;
+    (function() {
+      playing = false;
+      paused = true;
+      $('div#pol1').css("z-index", 1);
+      if(sound.canPlayType('audio/mpeg')) {
+        $('#actualaudio-lookingup').html('<audio id="lookingupaudio" controls preload onpause="playscometsasteroidsmeteors()" onplay="pausecometsasteroidsmeteors()"><source src="audio/Comets_Asteroids_Meteors/Looking_Up.mp3" type="audio/mpeg"></audio>');
+      } 
+    
+      $("#sub-comets-asteroids-meteors-searching-the-solar-system-looking-up").swipe( { swipeRight:goBack, allowPageScroll:"auto"} );
+    })();
+    
+    $('.homelinkbh').on('tap', function() { bgsoundcometsasteroidsmeteors.pause(); bgsoundcometsasteroidsmeteors.currentTime = 0; mainaudiobg.play(); });
+    
+    function goBack() {
+      $.mobile.changePage("sub-comets-asteroids-meteors-searching-the-solar-system.html", {transition: "slide", reverse: true });
+      bgsoundcometsasteroidsmeteors.pause(); 
+      bgsoundcometsasteroidsmeteors.currentTime = 0;
+      spacesoundbg.play();
+    }
+    
+    function playscometsasteroidsmeteors() {
+         bgsoundcometsasteroidsmeteors.play();
+    }
+       
+    function pausecometsasteroidsmeteors() {
+         bgsoundcometsasteroidsmeteors.pause();
+    }
+    /* ******************** */
+    /* this is the microphone button */
+	
+    $("#playstoplookingup").on('tap', function() {
+      if(!playing) {
+        lookingupaudio.play();
+        $('.micbtncometsasteroidsmeteors').css('background-position-x', '-81px');
+        playing = true;
+        paused = false;
+      } else {
+        lookingupaudio.pause(); lookingupaudio.currentTime = 0;
+        $('.micbtncometsasteroidsmeteors').css('background-position-x', '0px');
+        playing = false;
+        paused = true;
+      }
+    });
+    
+    $("#lookingupaudioplbtn").on('tap', function() {
+      if(!paused) {
+        lookingupaudio.pause();
+        paused = true;
+      } else {
+        lookingupaudio.play();
+        paused = false;
+      }
+      //$(".audiopanel").css({"backgroundPosition":"-197px 0px"});
+    });
+    
+    $("#lookingupaudiofbtn").on('tap', function() {
+      var ctime = lookingupaudio.currentTime;
+      lookingupaudio.currentTime = ctime + 10;
+    });
+    
+    $("#lookingupaudiobbtn").on('tap', function() {
+      var ctime = lookingupaudio.currentTime;
+      lookingupaudio.currentTime = ctime - 10;
+    });
+    
+    $("#cometsasteroidsmeteorsaudiopsbtnpsbtn").on('tap', function() {
+      lookingupaudio.pause();
+      //$(".audiopanel").css({"backgroundPosition":"0px 0px"});
+    });
+		//pol1
+		$("#pol1").on('tap', function() {
+		  $('#img1')[0].click();
+		});	
+
+	//card on click js ends here
+
+  </script>
+  <script src="js/onecardLogic.js"></script>  <!-- for card dragging effects -->
+</div> <!--//home-->

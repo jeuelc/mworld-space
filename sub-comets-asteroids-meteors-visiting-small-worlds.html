@@ -1,0 +1,139 @@
+<!-- i-C-a -->
+<div data-role="page" id="sub-comets-asteroids-meteors-visiting-small-worlds">
+  <!-- <script src="js/slidebarnat.js"></script> -->
+  <script src="js/slidebar_comets_asteroids_meteors.js"></script>
+  <link rel="stylesheet" href="css/style_comets_asteroids_meteors.css" />
+  <div class="menuhousing"></div>
+  <div class="homebtnholder"><div class="homebtncometsasteroidsmeteors"></div></div>
+  <div class="mpbtnholder"><div class="mpbtncometsasteroidsmeteors"></div></div>
+  <div class="cpbtnholder"><div class="cpbtncometsasteroidsmeteors"></div></div>
+  <div class="infobtnholder"><div class="infobtncometsasteroidsmeteors"></div></div>
+  <div class="credsbtnholder"><div class="credsbtncometsasteroidsmeteors"></div></div>
+  <div class="menubtnholder"><div class="menubtncometsasteroidsmeteors"></div></div>
+  
+  <div class="bptitleholder" style="padding-top:14px;"><h1>Visiting small worlds</h1></div>
+  
+    <div data-role="content" class="kidzcontent">
+      <div class="navcometsasteroidsmeteors-content">
+			<p>There are two ways of getting a close look at a small world.  Either you go to them or they come to you! </p>
+
+				<p>What do we see when we send spacecraft to small worlds?  Let's find out.
+			</p>
+      </div>
+        
+      <div class="navbtn1">
+        <p><a href="sub-comets-asteroids-meteors-searching-the-solar-system-looking-down.html" data-transition="slide"><img src="css/images/9-12/Space/Comets_Asteroids_Meteors/Visiting_Small_Worlds/"></a></p>
+      </div>
+      <div class="navbtn2">
+        <p><a href="sub-comets-asteroids-meteors-searching-the-solar-system-looking-for-visitor.html" data-transition="slide"><img src="css/images/9-12/Space/Comets_Asteroids_Meteors/Visiting_Small_Worlds/"></a></p>
+      </div>
+      <div class="navbtn3">
+        <p><a href="sub-comets-asteroids-meteors-searching-the-solar-system-looking-further.html" data-transition="slide"><img src="css/images/9-12/Space/Comets_Asteroids_Meteors/Visiting_Small_Worlds/"></a></p>
+      </div>
+      <div class="navbtn4">
+        <p><a href="sub-comets-asteroids-meteors-searching-the-solar-system-looking-up.html" data-transition="slide"><img src="css/images/9-12/Space/Comets_Asteroids_Meteors/Visiting_Small_Worlds/"></a></p>
+      </div>
+        
+      <div class="botlogoholder"><a href="home.html" class="homelinkbh"><img src="css/images/9-12/Space/bottomhomesp.png"></a></div>
+    </div> <!-- end content -->  
+    
+  
+  <!--<div class="audiopanel">-->
+    <!-- images are in slidebarnat.js -->
+    <div class="micbtnholder"><div class="micbtncometsasteroidsmeteors" id="playstopvisitingsmallworlds"></div></div>
+    <div class="bcometsasteroidsmeteors"><div class="rwcometsasteroidsmeteors" id="visitingsmallworldsaudiobbtn"></div></div>
+    <div class="plcometsasteroidsmeteors"><div class="plpscometsasteroidsmeteors" id="visitingsmallworldsaudioplbtn"></div></div>
+    <div class="fcometsasteroidsmeteors"><div class="fwcometsasteroidsmeteors" id="visitingsmallworldsaudiofbtn"></div></div>
+    <div id="actualaudio-visitingsmallworlds" style="visibility:hidden;"></div>
+  <!--</div>-->
+  <script>
+  // sound setup is in home.html and index.js
+    sound = new Audio(); // 'sound' is now an audio object
+    var playing;
+    var paused;
+    (function() {
+      playing = false;
+      paused = true;
+      if(sound.canPlayType('audio/mpeg')) {
+        $('#actualaudio-visitingsmallworlds').html('<audio id="visitingsmallworldsaudio" controls preload onpause="playscometsasteroidsmeteors()" onplay="pausecometsasteroidsmeteors()"><source src="audio/Commets_Asteroids_Meteors/Comets_Asteroids_Meteors.mp3" type="audio/mpeg"></audio>');
+      } 
+    
+      $("#sub-comets-asteroids-meteors-visiting-small-worlds").swipe( { swipeRight:goBack, allowPageScroll:"auto"} );
+    })();
+    
+    $('.homelinkbh').on('tap', function() { bgsoundcometsasteroidsmeteors.pause(); bgsoundcometsasteroidsmeteors.currentTime = 0; mainaudiobg.play(); });
+    
+    function goBack() {
+      $.mobile.changePage("sub-comets-asteroids-metiors.html", {transition: "slide", reverse: true });
+      bgsoundcometsasteroidsmeteors.pause(); 
+      bgsoundcometsasteroidsmeteors.currentTime = 0;
+      spacesoundbg.play();
+    }
+    
+    function playscometsasteroidsmeteors() {
+         bgsoundcometsasteroidsmeteors.play();
+    }
+       
+    function pausecometsasteroidsmeteors() {
+         bgsoundcometsasteroidsmeteors.pause();
+    }
+    /* ******************** */
+    /* this is the microphone button */
+	
+    $("#playstopvisitingsmallworlds").on('tap', function() {
+      if(!playing) {
+        visitingsmallworldsaudio.play();
+        $('.micbtncometsasteroidsmeteors').css('background-position-x', '-81px');
+        playing = true;
+        paused = false;
+      } else {
+        visitingsmallworldsaudio.pause(); visitingsmallworldsaudio.currentTime = 0;
+        $('.micbtncometsasteroidsmeteors').css('background-position-x', '0px');
+        playing = false;
+        paused = true;
+      }
+    });
+    
+    $("#visitingsmallworldsaudioplbtn").on('tap', function() {
+      if(!paused) {
+        visitingsmallworldsaudio.pause();
+        paused = true;
+      } else {
+        visitingsmallworldsaudio.play();
+        paused = false;
+      }
+      //$(".audiopanel").css({"backgroundPosition":"-197px 0px"});
+    });
+    
+    $("#visitingsmallworldsaudiofbtn").on('tap', function() {
+      var ctime = visitingsmallworldsaudio.currentTime;
+      visitingsmallworldsaudio.currentTime = ctime + 10;
+    });
+    
+    $("#visitingsmallworldsaudiobbtn").on('tap', function() {
+      var ctime = visitingsmallworldsaudio.currentTime;
+      visitingsmallworldsaudio.currentTime = ctime - 10;
+    });
+    
+    $("#visitingsmallworldsaudiopsbtn").on('tap', function() {
+      visitingsmallworldsaudio.pause();
+      //$(".audiopanel").css({"backgroundPosition":"0px 0px"});
+    });
+    
+    $('.navbtn1').on('tap', function() { 
+      nav1Effects(); 
+    });
+    
+    $('.navbtn2').on('tap', function() { 
+      nav2Effects(); 
+    });
+    
+    $('.navbtn3').on('tap', function() { 
+      nav3Effects(); 
+    });
+    
+    $('.navbtn4').on('tap', function() { 
+      nav4Effects(); 
+    });
+  </script>
+</div> <!--//home-->

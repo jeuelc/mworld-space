@@ -1,0 +1,136 @@
+<!-- i-C-a -->
+<div data-role="page" id="sub-people-in-space-living-in-space-food">
+  <script src="js/hammer.js"></script>
+  <script src="js/jquery.hammer.js"></script>
+  <script src="js/slidebar_people_in_space.js"></script>
+  <link rel="stylesheet" href="css/style_people_in_space.css" />
+  <div class="menuhousing"></div>
+  <div class="homebtnholder"><div class="homebtnPeopleInSpace"></div></div>
+  <div class="mpbtnholder"><div class="mpbtnPeopleInSpace"></div></div>
+  <div class="cpbtnholder"><div class="cpbtnPeopleInSpace"></div></div>
+  <div class="infobtnholder"><div class="infobtnPeopleInSpace"></div></div>
+  <div class="credsbtnholder"><div class="credsbtnPeopleInSpace"></div></div>
+  <div class="menubtnholder"><div class="menubtnPeopleInSpace"></div></div>
+  
+  <div class="bptitleholder" style="padding-top:0px;"><h1>Food</h1></div>
+  <div id="spacechar">&nbsp;
+    <div data-role="content" class="kidzcontent">
+      <div class="v-spacer"></div>
+      <div class="sidebarleft-half">
+        <a id="hamburgerlink" style="visibility:hidden;" href="JavaScript:html5Lightbox.showLightbox(0, 'css/images/9-12/Space/People_In_Space/Living_In_Space/Food/Hamburgers_Hi_Res.jpg', 'Flying hamburgers!  (Courtesy: NASA)');">click here</a>
+		
+		<a id="packetlink" style="visibility:hidden;" href="JavaScript:html5Lightbox.showLightbox(0, 'css/images/9-12/Space/People_In_Space/Living_In_Space/Food/Packets_In_Food_Hi_Res.png', 'Nowadays, most astronaut food comes in plastic wrapping and with scissors.  (Courtesy: NASA)');">click here</a>
+		
+		<div id="zoomwrapper">
+		  <div id="pol1"class="pPiece" style="left:80px;top:270px;">
+             <img src="css/images/9-12/Space/People_In_Space/Living_In_Space/Food/Hamburgers.jpg" alt="" />
+          </div>        
+		  <div id="pol2" class="pPiece" style="left:100px;top:270px;">
+             <img src="css/images/9-12/Space/People_In_Space/Living_In_Space/Food/Packets_In_Food.png" alt="" />
+          </div>
+		</div><!--/zoomwrapper-->
+      </div>
+      
+      <div class="bpcontentPeopleInSpace">
+        <p>On Earth, gravity keeps pens on desks, food on plates and dust on the floor.  In the weightlessness of orbit, everything wants to float away.  What food can you eat in space?  How can you eat food in space?</p>
+		<p>In the 1960s many of the foods came in plastic packages.  Astronauts would add hot water and then squeeze the mushy food into their mouths.  Not entirely appetizing!  Other foods included bars, a little like today's energy bars.</p>
+		<p>Food in space has become a lot better since the 1960s.  Some food is good at sticking together, so you can put the food into a bowl without it floating away.  People have got quite creative at eating and drinking in space too.</p>
+		<p>Of course, unless your trip is a short one, you're going to need a toilet too.  The International Space Station toilet uses a gentle vacuum (like your vacuum cleaner) to replace the important role gravity plays in your bathroom.</p>
+      </div>
+       
+      <div class="botlogoholder"><a href="home.html" class="homelinkbh"><img src="css/images/9-12/Space/bottomhomesp.png"></a></div>
+    </div> <!-- end content -->  
+  </div><!--/spacechar-->        
+  
+    <div class="micbtnholder"><div class="micbtnPeopleInSpace" id="playstopFood"></div></div>
+    <div class="bPeopleInSpace"><div class="rwPeopleInSpace" id="Foodaudiobbtn"></div></div>
+    <div class="plPeopleInSpace"><div class="plpsPeopleInSpace" id="Foodaudioplbtn"></div></div>
+    <div class="fPeopleInSpace"><div class="fwPeopleInSpace" id="Foodaudiofbtn"></div></div>
+    <div id="actualaudio-Food" style="visibility:hidden;"></div>
+  <!-- </div> -->
+  
+  <script>
+  // sound setup is in home.html and index.js
+    sound = new Audio(); // 'sound' is now an audio object
+ 
+	var playing;
+    var paused;
+    (function() {
+      playing = false;
+      paused = true;
+      $('div#pol1').css("z-index", 2);
+      $('div#pol2').css("z-index", 1);
+      $('div#pol1 > img').css("-webkit-transform", "rotate(0deg)");
+      $('div#pol2 > img').css("-webkit-transform", "rotate(5deg)");
+      if(sound.canPlayType('audio/mpeg')) {
+        $('#actualaudio-Food').html('<audio id="Foodaudio" controls preload onpause="playsPeopleInSpace()" onplay="pausePeopleInSpace()"><source src="audio/People_In_Space/Food.mp3" type="audio/mpeg"></audio>');
+      }             
+      $("#sub-people-in-space-living-in-space-food").swipe( { swipeRight:goBack, allowPageScroll:"auto"} );
+    })();
+    
+    $('.homelinkbh').on('tap', function() { mainaudiobg.play(); bgsoundPeopleInSpace.pause(); bgsoundPeopleInSpace.currentTime = 0;});
+	
+    
+    
+    $("#pol1").on('tap', function() {
+      $('#hamburgerlink')[0].click();
+    });
+	
+	$("#pol2").on('tap', function() {
+      $('#packetlink')[0].click();
+    });
+	
+    function goBack() {
+      $.mobile.changePage("sub-people-in-space-living-in-space.html", {transition: "slide", reverse: true });
+    }
+    
+    function playsPeopleInSpace() {
+         bgsoundPeopleInSpace.play();
+    }
+       
+    function pausePeopleInSpace() {
+         bgsoundPeopleInSpace.pause();
+    }
+    /* ******************** */
+    /* this is the microphone button */
+    $("#playstopFood").on('tap', function() {
+      if(!playing) {
+        Foodaudio.play();
+        $('.micbtnPeopleInSpace').css('background-position-x', '-81px');
+        playing = true;
+        paused = false;
+      } else {
+        Foodaudio.pause(); Foodaudio.currentTime = 0;
+        $('.micbtnPeopleInSpace').css('background-position-x', '0px');
+        playing = false;
+        paused = true;
+      }
+    });
+    
+    $("#Foodaudioplbtn").on('tap', function() {
+      if(!paused) {
+        Foodaudio.pause();
+        paused = true;
+      } else {
+        Foodaudio.play();
+        paused = false;
+      }
+      //$(".audiopanel").css({"backgroundPosition":"-197px 0px"});
+    });
+    
+    $("#Foodaudiofbtn").on('tap', function() {
+      var ctime = Foodaudio.currentTime;
+      Foodaudio.currentTime = ctime + 10;
+    });
+    
+    $("#Foodaudiobbtn").on('tap', function() {
+      var ctime = Foodaudio.currentTime;
+      Foodaudio.currentTime = ctime - 10;
+    });
+    
+    $("#Foodaudiopsbtn").on('tap', function() {
+      Foodaudio.pause();
+    });
+  </script>
+  <script src="js/twocardLogic.js"></script>  <!-- for card dragging effects -->
+</div> <!--//home-->

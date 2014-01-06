@@ -1,0 +1,136 @@
+<!-- i-C-a -->
+<div data-role="page" id="sub-people-in-space-dreaming-of-space">
+  <!-- <script src="js/slidebarnat.js"></script> -->
+  <script src="js/slidebar_people_in_space.js"></script>
+  <link rel="stylesheet" href="css/style_people_in_space.css" />
+  <div class="menuhousing"></div>
+  <div class="homebtnholder"><div class="homebtnPeopleInSpace"></div></div>
+  <div class="mpbtnholder"><div class="mpbtnPeopleInSpace"></div></div>
+  <div class="cpbtnholder"><div class="cpbtnPeopleInSpace"></div></div>
+  <div class="infobtnholder"><div class="infobtnPeopleInSpace"></div></div>
+  <div class="credsbtnholder"><div class="credsbtnPeopleInSpace"></div></div>
+  <div class="menubtnholder"><div class="menubtnPeopleInSpace"></div></div>
+  
+  <div class="bptitleholder" style="padding-top:14px;"><h1>Dreaming of Space</h1></div>
+  
+    <div data-role="content" class="kidzcontent">
+      <div class="navPeopleInSpace-content5">
+        <p>People have dreamed of travelling into space for centuries.  Science fiction adventures with heroes flying rocket ships were recurring themes in early 20th-century movies and comic books.  How did space travel transform from science fiction to reality?</p>
+      </div>
+        
+      <div class="navpeoplebtn1">
+        <p><a href="sub-people-in-space-dreaming-of-space-beep-beep.html" data-transition="slide"><img src="css/images/9-12/Space/People_In_Space/Dreaming_Of_Space/Beep_Beep.png"></a></p>
+      </div>
+      <div class="navpeoplebtn2">
+        <p><a href="sub-people-in-space-dreaming-of-space-imagining-space-flight.html" data-transition="slide"><img src="css/images/9-12/Space/People_In_Space/Dreaming_Of_Space/Space_Flight.png"></a></p>
+      </div>
+      <div class="navpeoplebtn3">
+        <p><a href="sub-people-in-space-dreaming-of-space-orbit.html" data-transition="slide"><img src="css/images/9-12/Space/People_In_Space/Dreaming_Of_Space/Orbits.png"></a></p>
+      </div>
+      <div class="navpeoplebtn4">
+        <p><a href="sub-people-in-space-dreaming-of-space-rockets.html" data-transition="slide"><img src="css/images/9-12/Space/People_In_Space/Dreaming_Of_Space/Rocketss.png"></a></p>
+      </div>
+	  <div class="navpeoplebtn5">
+        <p><a href="sub-people-in-space-dreaming-of-space-wrong-planet.html" data-transition="slide"><img src="css/images/9-12/Space/People_In_Space/Dreaming_Of_Space/Wrong_Planet.png"></a></p>
+      </div>
+        
+      <div class="botlogoholder"><a href="home.html" class="homelinkbh"><img src="css/images/9-12/Space/bottomhomesp.png"></a></div>
+    </div> <!-- end content -->  
+    
+  
+  <!--<div class="audiopanel">-->
+    <!-- images are in slidebarnat.js -->
+    <div class="micbtnholder"><div class="micbtnPeopleInSpace" id="playstopDreamingOfSpace"></div></div>
+    <div class="bPeopleInSpace"><div class="rwPeopleInSpace" id="DreamingOfSpaceaudiobbtn"></div></div>
+    <div class="plPeopleInSpace"><div class="plpsPeopleInSpace" id="DreamingOfSpaceaudioplbtn"></div></div>
+    <div class="fPeopleInSpace"><div class="fwPeopleInSpace" id="DreamingOfSpaceaudiofbtn"></div></div>
+    <div id="actualaudio-DreamingOfSpace" style="visibility:hidden;"></div>
+  <!--</div>-->
+  <script>
+  // sound setup is in home.html and index.js
+    sound = new Audio(); // 'sound' is now an audio object
+    var playing;
+    var paused;
+    (function() {
+      playing = false;
+      paused = true;
+      if(sound.canPlayType('audio/mpeg')) {
+        $('#actualaudio-DreamingOfSpace').html('<audio id="DreamingOfSpaceaudio" controls preload onpause="playsPeopleInSpace()" onplay="pausePeopleInSpace()"><source src="audio/People_In_Space/Dreaming_Of_Space.mp3" type="audio/mpeg"></audio>');
+      } 
+    
+      $("#sub-people-in-space-dreaming-of-space").swipe( { swipeRight:goBack, allowPageScroll:"auto"} );
+    })();
+    
+    $('.homelinkbh').on('tap', function() { bgsoundPeopleInSpace.pause(); bgsoundPeopleInSpace.currentTime = 0; mainaudiobg.play(); });
+    
+    function goBack() {
+      $.mobile.changePage("sub-people-in-space.html", {transition: "slide", reverse: true });
+    }
+    
+    function playsPeopleInSpace() {
+         bgsoundPeopleInSpace.play();
+    }
+       
+    function pausePeopleInSpace() {
+         bgsoundPeopleInSpace.pause();
+    }
+    /* ******************** */
+    /* this is the microphone button */
+	
+    $("#playstopDreamingOfSpace").on('tap', function() {
+      if(!playing) {
+        DreamingOfSpaceaudio.play();
+        $('.micbtnPeopleInSpace').css('background-position-x', '-81px');
+        playing = true;
+        paused = false;
+      } else {
+        DreamingOfSpaceaudio.pause(); DreamingOfSpaceaudio.currentTime = 0;
+        $('.micbtnPeopleInSpace').css('background-position-x', '0px');
+        playing = false;
+        paused = true;
+      }
+    });
+    
+    $("#DreamingOfSpaceaudioplbtn").on('tap', function() {
+      if(!paused) {
+        DreamingOfSpaceaudio.pause();
+        paused = true;
+      } else {
+        DreamingOfSpaceaudio.play();
+        paused = false;
+      }
+      //$(".audiopanel").css({"backgroundPosition":"-197px 0px"});
+    });
+    
+    $("#DreamingOfSpaceaudiofbtn").on('tap', function() {
+      var ctime = DreamingOfSpaceaudio.currentTime;
+      DreamingOfSpaceaudio.currentTime = ctime + 10;
+    });
+    
+    $("#DreamingOfSpaceaudiobbtn").on('tap', function() {
+      var ctime = DreamingOfSpaceaudio.currentTime;
+      DreamingOfSpaceaudio.currentTime = ctime - 10;
+    });
+    
+    $("#DreamingOfSpaceaudiopsbtn").on('tap', function() {
+      DreamingOfSpaceaudio.pause();
+      //$(".audiopanel").css({"backgroundPosition":"0px 0px"});
+    });
+    
+    $('.navpeoplebtn1').on('tap', function() { 
+      nav1Effects(); 
+    });
+    
+    $('.navpeoplebtn2').on('tap', function() { 
+      nav2Effects(); 
+    });
+    
+    $('.navpeoplebtn3').on('tap', function() { 
+      nav3Effects(); 
+    });
+    
+    $('.navpeoplebtn4').on('tap', function() { 
+      nav4Effects(); 
+    });
+  </script>
+</div> <!--//home-->

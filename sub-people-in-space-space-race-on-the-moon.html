@@ -1,0 +1,110 @@
+<!-- i-C-a -->
+<div data-role="page" id="sub-people-in-space-space-race-on-the-moon">
+  <script src="js/slidebar_people_in_space.js"></script>
+  <link rel="stylesheet" href="css/style_people_in_space.css" />
+  <div class="menuhousing"></div>
+  <div class="homebtnholder"><div class="homebtnPeopleInSpace"></div></div>
+  <div class="mpbtnholder"><div class="mpbtnPeopleInSpace"></div></div>
+  <div class="cpbtnholder"><div class="cpbtnPeopleInSpace"></div></div>
+  <div class="infobtnholder"><div class="infobtnPeopleInSpace"></div></div>
+  <div class="credsbtnholder"><div class="credsbtnPeopleInSpace"></div></div>
+  <div class="menubtnholder"><div class="menubtnPeopleInSpace"></div></div>
+  
+  <div class="bptitleholder" style="padding-top:14px;"><h1></h1></div>
+  <div id="firstdoglink" style="position: absolute;left: 76px;top: 85px;width: 142px;height: 120px;"></div>
+  <div data-role="content" class="kidzcontent">
+	<div class="navPeopleInSpace-OnTheMoon">
+        <p>The race to reach the Moon dominated the Space Race throughout the 1960s.  The Soviet Union and United States built giant rockets to get their crews to the Moon.  By the time they got there, billions of dollars had been spent, people had lost their lives and rockets remained a risky way to travel.</p>
+		<p>In July 1969, a giant Saturn V rocket lifted off from Florida in the US carrying Apollo 11 and its crew, Neil Armstrong, 'Buzz' Aldrin and Michael Collins.  After voyaging across hundreds of thousands of kilometres, they entered orbit above the Moon.</p>
+		<p>Armstrong and Aldrin descended to the Moon's surface in the tiny Lunar Exploration Module.  Armstrong used all his piloting skills, avoiding dangerous boulders, to safely land on the Moon.  When he landed, his heart was beating at more than twice the normal rate and the fuel gauge was empty!</p>
+		<p>Armstrong opened the hatch of the Lunar Exploration Module and stepped carefully down a ladder.  As he stepped on to the Moon's surface, he uttered the famous words "That's one small step for man, one giant leap for mankind".</p>
+		<p>The race to the Moon was over.</p>
+    </div>
+    <div class="botlogoholder"><a href="home.html" class="homelinkbh"><img src="css/images/9-12/Space/bottomhomesp.png"></a></div>
+  </div> <!-- end content -->  
+    
+  
+  <!--<div class="audiopanel">-->
+    <!-- images are in slidebarnat.js 
+         note: change the ids to be able play the narration
+    -->
+    <div class="micbtnholder"><div class="micbtnPeopleInSpace" id="playstopOnTheMoon"></div></div>
+    <div class="bPeopleInSpace"><div class="rwPeopleInSpace" id="OnTheMoonaudiobbtn"></div></div>
+    <div class="plPeopleInSpace"><div class="plpsPeopleInSpace" id="OnTheMoonaudioplbtn"></div></div>
+    <div class="fPeopleInSpace"><div class="fwPeopleInSpace" id="OnTheMoonaudiofbtn"></div></div>
+    <div id="actualaudio-OnTheMoon" style="visibility:hidden;"></div>
+  <!--</div>-->
+  <script>
+  // sound setup is in home.html and index.js
+    sound = new Audio(); // 'sound' is now an audio object
+    var playing;
+    var paused;
+    (function() {
+      playing = false;
+      paused = true;
+      if(sound.canPlayType('audio/mpeg')) {
+        $('#actualaudio-OnTheMoon').html('<audio id="OnTheMoonaudio" controls preload onpause="playsPeopleInSpace()" onplay="pausePeopleInSpace()"><source src="audio/People_In_Space/On_The_Moon.mp3" type="audio/mpeg"></audio>');
+      } 
+    
+      $("#sub-people-in-space-space-race-on-the-moon").swipe( { swipeRight:goBack, allowPageScroll:"auto"} );
+    })();
+    
+    $('#firstdoglink').on('tap', function() {
+      $.mobile.changePage("sub-people-in-space-space-race-on-the-moon-first-dog-in-orbit.html", {transition: "slide"});
+    });
+    
+    $('.homelinkbh').on('tap', function() { mainaudiobg.play(); bgsoundPeopleInSpace.pause(); bgsoundPeopleInSpace.currentTime = 0;});
+    
+    function goBack() {
+      $.mobile.changePage("sub-people-in-space-space-race.html", {transition: "slide", reverse: true });
+    }
+    
+    function playsPeopleInSpace() {
+         bgsoundPeopleInSpace.play();
+    }
+       
+    function pausePeopleInSpace() {
+         bgsoundPeopleInSpace.pause();
+    }
+    /* ******************** */
+    /* this is the microphone button */
+    $("#playstopOnTheMoon").on('tap', function() {
+      if(!playing) {
+        OnTheMoonaudio.play();
+        $('.micbtnPeopleInSpace').css('background-position-x', '-81px');
+        playing = true;
+        paused = false;
+      } else {
+        OnTheMoonaudio.pause(); OnTheMoonaudio.currentTime = 0;
+        $('.micbtnPeopleInSpace').css('background-position-x', '0px');
+        playing = false;
+        paused = true;
+      }
+    });
+    
+    $("#OnTheMoonaudioplbtn").on('tap', function() {
+      if(!paused) {
+        OnTheMoonaudio.pause();
+        paused = true;
+      } else {
+        OnTheMoonaudio.play();
+        paused = false;
+      }
+      //$(".audiopanel").css({"backgroundPosition":"-197px 0px"});
+    });
+    
+    $("#OnTheMoonaudiofbtn").on('tap', function() {
+      var ctime = OnTheMoonaudio.currentTime;
+      OnTheMoonaudio.currentTime = ctime + 10;
+    });
+    
+    $("#OnTheMoonaudiobbtn").on('tap', function() {
+      var ctime = OnTheMoonaudio.currentTime;
+      OnTheMoonaudio.currentTime = ctime - 10;
+    });
+    
+    $("#OnTheMoonaudiopsbtn").on('tap', function() {
+      OnTheMoonaudio.pause();
+    });
+  </script>
+</div> <!--//home-->

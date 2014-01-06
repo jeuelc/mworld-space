@@ -1,0 +1,151 @@
+<!-- i-C-a -->
+<div data-role="page" id="sub-comets-asteroids-meteors-searching-the-solar-system-looking-further-lf-1-2-3">
+  <!-- <script src="js/slidebarnat.js"></script> -->
+  <script src="js/slidebar_comets_asteroids_meteors.js"></script>
+  <script src="js/hammer.js"></script>
+  <script src="js/jquery.hammer.js"></script>    
+  <link rel="stylesheet" href="css/style_comets_asteroids_meteors.css" />
+  <div class="menuhousing"></div>
+  <div class="homebtnholder"><div class="homebtncometsasteroidsmeteors"></div></div>
+  <div class="mpbtnholder"><div class="mpbtncometsasteroidsmeteors"></div></div>
+  <div class="cpbtnholder"><div class="cpbtncometsasteroidsmeteors"></div></div>
+  <div class="infobtnholder"><div class="infobtncometsasteroidsmeteors"></div></div>
+  <div class="credsbtnholder"><div class="credsbtncometsasteroidsmeteors"></div></div>
+  <div class="menubtnholder"><div class="menubtncometsasteroidsmeteors"></div></div>
+  <div class="bptitleholder" style="padding-top:14px;"><h1>1, 2, 3... a million</h1></div>
+  <div id="spacechar">&nbsp;
+    <div data-role="content" class="kidzcontent">
+      <div class="v-spacer"></div>
+      <div class="sidebarleft-half">
+		<!-- polb1 Game Page-->		
+
+		
+		<!-- polb2 image -->
+        <a id="img1" style="visibility:hidden;" href="JavaScript:html5Lightbox.showLightbox(0, 'css/images/9-12/Space/Comets_Asteroids_Meteors/Searching_The_Solar_System/Looking_Further/1_2_3/Pluto_Hi_Res.jpg', 'This beautiful artist\'s impression shows the well-known dwarf planets including; Eris (left centre), Ceres (little middle planet), Pluto and its largest moon Charon (bottom), in comparison to Earth and our Moon!  Courtesy: NASA');">click here</a>		
+	
+		<div id="zoomwrapper">
+			<!-- Game -->
+          <div id="polb1" class="pPiece" style="left:100px;top:270px;">
+             <img src="css/images/9-12/Space/Comets_Asteroids_Meteors/Searching_The_Solar_System/Looking_Further/1_2_3/Hunting_Small_Worlds.png" alt="" />
+          </div>
+		 
+		  <!-- image card -->
+          <div id="polb2" class="pPiece" style="left:75px;top:290px;">
+             <img src="css/images/9-12/Space/Comets_Asteroids_Meteors/Searching_The_Solar_System/Looking_Further/1_2_3/Pluto.jpg" alt="" />
+          </div>		  
+        </div><!--/zoomwrapper-->
+      </div>
+      
+		  <div class="bpcontentcometsasteroidsmeteors">
+				<p>Over the past two centuries astronomers have discovered over 100,000 asteroids!  They have done this by looking for faint points of light that move from night to night, or hour to hour, against the background of stars.</p>
+
+				<p>As telescopes have got bigger and technology has improved, people have found things which are much smaller, fainter and further away. </p>
+
+				<p>In 1930, Clyde Tombaugh found Pluto, the first object discovered in our solar system beyond the gas giant planet Neptune.  At first they thought Pluto was a large planet.  As telescopes got bigger and better, astronomers realised Pluto was only 2300 kilometres across, far smaller than the other planets in our Solar System.  Eventually, in 2006, the International Astronomical Union kicked Pluto off the planet list!  Pluto was renamed from being a planet to being called a 'dwarf planet', along with asteroids like Ceres and Vesta.</p>
+
+				<p>One reason Pluto was demoted was that astronomers have discovered hundreds of objects beyond Neptune, now known as the Kuiper Belt Objects.  There was nothing special about Pluto any more, nor was it the largest of the Kuiper Belt Objects.  In 2005, Eris was discovered, an object about the same size but with a greater mass than Pluto.</p>
+		  </div>
+		<div class="botlogoholder"><a href="home.html" class="homelinkbh"><img src="css/images/9-12/Space/bottomhomesp.png"></a></div>
+    </div> <!-- end content -->  
+  </div><!--/spacechar-->  
+    
+  
+  <!--<div class="audiopanel">-->
+    <!-- images are in slidebarnat.js -->
+    <div class="micbtnholder"><div class="micbtncometsasteroidsmeteors" id="playstoplf123"></div></div>
+    <div class="bcometsasteroidsmeteors"><div class="rwcometsasteroidsmeteors" id="lf123audiobbtn"></div></div>
+    <div class="plcometsasteroidsmeteors"><div class="plpscometsasteroidsmeteors" id="lf123audioplbtn"></div></div>
+    <div class="fcometsasteroidsmeteors"><div class="fwcometsasteroidsmeteors" id="lf123audiofbtn"></div></div>
+    <div id="actualaudio-lf123" style="visibility:hidden;"></div>
+  <!--</div>-->
+  <script>
+  // sound setup is in home.html and index.js
+    sound = new Audio(); // 'sound' is now an audio object
+    var playing;
+    var paused;
+    (function() {
+      playing = false;
+      paused = true;
+      $('div#polb1').css("z-index", 2);
+      $('div#polb2').css("z-index", 1);
+      $('div#polb1 > img').css("-webkit-transform", "rotate(0deg)");
+      $('div#polb2 > img').css("-webkit-transform", "rotate(5deg)");
+      if(sound.canPlayType('audio/mpeg')) {
+        $('#actualaudio-lf123').html('<audio id="lf123audio" controls preload onpause="playscometsasteroidsmeteors()" onplay="pausecometsasteroidsmeteors()"><source src="audio/Comets_Asteroids_Meteors/lf_1_2_3.mp3" type="audio/mpeg"></audio>');
+      } 
+    
+      $("#sub-comets-asteroids-meteors-searching-the-solar-system-looking-further-lf-1-2-3").swipe( { swipeRight:goBack, allowPageScroll:"auto"} );
+    })();
+    
+    $('.homelinkbh').on('tap', function() { bgsoundcometsasteroidsmeteors.pause(); bgsoundcometsasteroidsmeteors.currentTime = 0; mainaudiobg.play(); });
+    
+    function goBack() {
+      $.mobile.changePage("sub-comets-asteroids-meteors-searching-the-solar-system-looking-further.html", {transition: "slide", reverse: true });
+      bgsoundcometsasteroidsmeteors.pause(); 
+      bgsoundcometsasteroidsmeteors.currentTime = 0;
+      spacesoundbg.play();
+    }
+    
+    function playscometsasteroidsmeteors() {
+         bgsoundcometsasteroidsmeteors.play();
+    }
+       
+    function pausecometsasteroidsmeteors() {
+         bgsoundcometsasteroidsmeteors.pause();
+    }
+    /* ******************** */
+    /* this is the microphone button */
+	
+    $("#playstoplf123").on('tap', function() {
+      if(!playing) {
+        lf123audio.play();
+        $('.micbtncometsasteroidsmeteors').css('background-position-x', '-81px');
+        playing = true;
+        paused = false;
+      } else {
+        lf123audio.pause(); lf123audio.currentTime = 0;
+        $('.micbtncometsasteroidsmeteors').css('background-position-x', '0px');
+        playing = false;
+        paused = true;
+      }
+    });
+    
+    $("#lf123audioplbtn").on('tap', function() {
+      if(!paused) {
+        lf123audio.pause();
+        paused = true;
+      } else {
+        lf123audio.play();
+        paused = false;
+      }
+      //$(".audiopanel").css({"backgroundPosition":"-197px 0px"});
+    });
+    
+    $("#lf123audiofbtn").on('tap', function() {
+      var ctime = lf123audio.currentTime;
+      lf123audio.currentTime = ctime + 10;
+    });
+    
+    $("#lf123audiobbtn").on('tap', function() {
+      var ctime = lf123audio.currentTime;
+      lf123audio.currentTime = ctime - 10;
+    });
+    
+    $("#cometsasteroidsmeteorsaudiopsbtnpsbtn").on('tap', function() {
+      lf123audio.pause();
+      //$(".audiopanel").css({"backgroundPosition":"0px 0px"});
+    });
+		//poll1
+		//game page
+		
+		
+		//polb2
+		$("#polb2").on('tap', function() {
+		  $('#img1')[0].click();
+		});	
+
+	//card on click js ends here
+
+  </script>
+  <script src="js/twocardLogicb.js"></script>  <!-- for card dragging effects -->
+</div> <!--//home-->

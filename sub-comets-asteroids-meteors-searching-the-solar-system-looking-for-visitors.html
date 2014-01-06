@@ -1,0 +1,187 @@
+<!-- i-C-a -->
+<div data-role="page" id="sub-comets-asteroids-meteors-searching-the-solar-system-looking-for-visitors">
+  <!-- <script src="js/slidebarnat.js"></script> -->
+  <script src="js/slidebar_comets_asteroids_meteors.js"></script>
+  <script src="js/hammer.js"></script>
+  <script src="js/jquery.hammer.js"></script>    
+  <link rel="stylesheet" href="css/style_comets_asteroids_meteors.css" />
+  <div class="menuhousing"></div>
+  <div class="homebtnholder"><div class="homebtncometsasteroidsmeteors"></div></div>
+  <div class="mpbtnholder"><div class="mpbtncometsasteroidsmeteors"></div></div>
+  <div class="cpbtnholder"><div class="cpbtncometsasteroidsmeteors"></div></div>
+  <div class="infobtnholder"><div class="infobtncometsasteroidsmeteors"></div></div>
+  <div class="credsbtnholder"><div class="credsbtncometsasteroidsmeteors"></div></div>
+  <div class="menubtnholder"><div class="menubtncometsasteroidsmeteors"></div></div>
+  <div class="bptitleholder" style="padding-top:14px;"><h1>Looking for visitors</h1></div>
+  <div id="spacechar">&nbsp;
+    <div data-role="content" class="kidzcontent">
+      <div class="v-spacer"></div>
+      <div class="sidebarleft-half">
+		<!-- Try this-->
+        <div id="f1_container" style="visibility:hidden;position:absolute;left:100px;top:270px;">
+          <div id="f1_card">
+            <div class="front face">
+              <img id="dopple" src="css/images/9-12/Space/Comets_Asteroids_Meteors/Searching_The_Solar_System/Looking_For_Visitors/Find_A_Shooting_Star.png">
+            </div>
+            <div id="backofcard" class="back face center" style="background:url(css/images/9-12/Space/Comets_Asteroids_Meteors/Searching_The_Solar_System/Looking_For_Visitors/Find_A_Shooting_Star_Reverse.png) no-repeat;">
+              <div class="returncard" style="position:absolute;left:0px;top:0px;width:362px;height:170px;"></div>
+              <div id="trueans" style="position: absolute;left: 169px;top: 103px;width: 158px;height: 20px;"></div>
+              <div class="falseans" style="position: absolute;left: 169px;top: 127px;width: 158px;height: 20px;"></div>
+			  <div class="falseans" style="position: absolute;left: 169px;top: 151px;width: 158px;height: 20px;"></div>
+			  <div class="falseans" style="position: absolute;left: 169px;top: 175px;width: 158px;height: 20px;"></div>
+            </div>
+          </div><!--/f1+card-->
+        </div><!--/f1_container-->	  				
+
+		
+		<!-- pol2 image -->
+        <a id="img1" style="visibility:hidden;" href="JavaScript:html5Lightbox.showLightbox(0, 'css/images/9-12/Space/Comets_Asteroids_Meteors/Searching_The_Solar_System/Looking_For_Visitors/McNaught_Hi_Res.jpg', 'Comet McNaught blazes past, leaving a stunning trail for us in the night sky!  Courtesy: European Southern Observatory');">click here</a>		
+	
+		<div id="zoomwrapper">
+			<!-- quiz -->
+          <div id="pol1" class="pPiece" style="left:100px;top:270px;">
+             <img src="css/images/9-12/Space/Comets_Asteroids_Meteors/Searching_The_Solar_System/Looking_For_Visitors/Find_A_Shooting_Star.png" alt="" />
+          </div>
+		 
+		  <!-- image card -->
+          <div id="pol2" class="pPiece" style="left:75px;top:290px;">
+             <img src="css/images/9-12/Space/Comets_Asteroids_Meteors/Searching_The_Solar_System/Looking_For_Visitors/McNaught.jpg" alt="" />
+          </div>		  
+        </div><!--/zoomwrapper-->
+      </div>
+      
+		  <div class="bpcontentcometsasteroidsmeteors">
+				<p>Sometimes comets are so bright that everyone sees them.  In 1910, the Earth passed through the tail of Halley's comet, which stretched across the entire night sky.  Almost everyone around the world, both young and old, saw Halley's comet that year!  Some comets are bright enough to see in daylight, at least if you know where to look.</p>
+
+				<p>Most comets are harder to find though.  Many people search for comets using telescopes or binoculars.  If you know what the night sky normally looks like, you can look for faint fuzzy blobs that look out of place.  If the blob moves from hour to hour or from night to night with respect to the nearby stars, then it's possible that it is a comet wandering through the solar system! </p>
+
+				<p>How do comets get their names?  Well, mostly they are named after the people who discover them.  For example, Robert McNaught has discovered several comets, including Comet McNaught, which was seen around the world in 2008.  One day, there might be a 'Comet You!'</p>
+		  </div>
+		<div class="botlogoholder"><a href="home.html" class="homelinkbh"><img src="css/images/9-12/Space/bottomhomesp.png"></a></div>
+    </div> <!-- end content -->  
+  </div><!--/spacechar-->  
+    
+  
+  <!--<div class="audiopanel">-->
+    <!-- images are in slidebarnat.js -->
+    <div class="micbtnholder"><div class="micbtncometsasteroidsmeteors" id="playstoplookingforvisitors"></div></div>
+    <div class="bcometsasteroidsmeteors"><div class="rwcometsasteroidsmeteors" id="lookingforvisitorsaudiobbtn"></div></div>
+    <div class="plcometsasteroidsmeteors"><div class="plpscometsasteroidsmeteors" id="lookingforvisitorsaudioplbtn"></div></div>
+    <div class="fcometsasteroidsmeteors"><div class="fwcometsasteroidsmeteors" id="lookingforvisitorsaudiofbtn"></div></div>
+    <div id="actualaudio-lookingforvisitors" style="visibility:hidden;"></div>
+  <!--</div>-->
+  <script>
+  // sound setup is in home.html and index.js
+    sound = new Audio(); // 'sound' is now an audio object
+    var playing;
+    var paused;
+    (function() {
+      playing = false;
+      paused = true;
+      $('div#pol1').css("z-index", 2);
+      $('div#pol2').css("z-index", 1);
+      $('div#pol1 > img').css("-webkit-transform", "rotate(0deg)");
+      $('div#pol2 > img').css("-webkit-transform", "rotate(5deg)");
+      if(sound.canPlayType('audio/mpeg')) {
+        $('#actualaudio-lookingforvisitors').html('<audio id="lookingforvisitorsaudio" controls preload onpause="playscometsasteroidsmeteors()" onplay="pausecometsasteroidsmeteors()"><source src="audio/Comets_Asteroids_Meteors/Looking_For_Visitors.mp3" type="audio/mpeg"></audio>');
+      } 
+    
+      $("#sub-comets-asteroids-meteors-searching-the-solar-system-looking-for-visitors").swipe( { swipeRight:goBack, allowPageScroll:"auto"} );
+    })();
+    
+    $('.homelinkbh').on('tap', function() { bgsoundcometsasteroidsmeteors.pause(); bgsoundcometsasteroidsmeteors.currentTime = 0; mainaudiobg.play(); });
+    
+    function goBack() {
+      $.mobile.changePage("sub-comets-asteroids-meteors-searching-the-solar-system.html", {transition: "slide", reverse: true });
+      bgsoundcometsasteroidsmeteors.pause(); 
+      bgsoundcometsasteroidsmeteors.currentTime = 0;
+      spacesoundbg.play();
+    }
+    
+    function playscometsasteroidsmeteors() {
+         bgsoundcometsasteroidsmeteors.play();
+    }
+       
+    function pausecometsasteroidsmeteors() {
+         bgsoundcometsasteroidsmeteors.pause();
+    }
+    /* ******************** */
+    /* this is the microphone button */
+	
+    $("#playstoplookingforvisitors").on('tap', function() {
+      if(!playing) {
+        lookingforvisitorsaudio.play();
+        $('.micbtncometsasteroidsmeteors').css('background-position-x', '-81px');
+        playing = true;
+        paused = false;
+      } else {
+        lookingforvisitorsaudio.pause(); lookingforvisitorsaudio.currentTime = 0;
+        $('.micbtncometsasteroidsmeteors').css('background-position-x', '0px');
+        playing = false;
+        paused = true;
+      }
+    });
+    
+    $("#lookingforvisitorsaudioplbtn").on('tap', function() {
+      if(!paused) {
+        lookingforvisitorsaudio.pause();
+        paused = true;
+      } else {
+        lookingforvisitorsaudio.play();
+        paused = false;
+      }
+      //$(".audiopanel").css({"backgroundPosition":"-197px 0px"});
+    });
+    
+    $("#lookingforvisitorsaudiofbtn").on('tap', function() {
+      var ctime = lookingforvisitorsaudio.currentTime;
+      lookingforvisitorsaudio.currentTime = ctime + 10;
+    });
+    
+    $("#lookingforvisitorsaudiobbtn").on('tap', function() {
+      var ctime = lookingforvisitorsaudio.currentTime;
+      lookingforvisitorsaudio.currentTime = ctime - 10;
+    });
+    
+    $("#cometsasteroidsmeteorsaudiopsbtnpsbtn").on('tap', function() {
+      lookingforvisitorsaudio.pause();
+      //$(".audiopanel").css({"backgroundPosition":"0px 0px"});
+    });
+		//poll1
+			$(".returncard").on('tap', function() {
+			  $('#f1_card').css({"-webkit-transform": "rotateY(0deg)"});
+			  $('#f1_card').css({"-moz-transform": "rotateY(0deg)"});
+			  $('#f1_card').css({"-o-transform": "rotateY(0deg)"});
+			  $('#f1_card').css({"transform": "rotateY(0deg)"});
+			  setTimeout(function() {
+				$("#pol1").css({"visibility":"visible", "z-index":4});
+				$('#f1_container').css({"visibility":"hidden", "z-index":0});
+			  }, 1000);
+			});
+			
+			$("#pol1").on('tap', function() {
+			  $('#f1_container').css({"visibility":"visible", "z-index":10});
+			  $(this).css({"visibility":"hidden"});
+			  $('#f1_card').css({"-webkit-transform": "rotateY(180deg)"});
+			  $('#f1_card').css({"-moz-transform": "rotateY(180deg)"});
+			  $('#f1_card').css({"-o-transform": "rotateY(180deg)"});
+			  $('#f1_card').css({"transform": "rotateY(180deg)"});
+			});	
+			$('.falseans').on('tap', function() {
+			  alert("Wrong answer");
+			});
+			$('#trueans').on('tap', function() {
+			  alert("Correct answer");
+			});	
+		
+		
+		//pol2	
+		$("#pol2").on('tap', function() {
+		  $('#img1')[0].click();
+		});	
+
+	//card on click js ends here
+
+  </script>
+  <script src="js/twocardLogic.js"></script>  <!-- for card dragging effects -->
+</div> <!--//home-->
