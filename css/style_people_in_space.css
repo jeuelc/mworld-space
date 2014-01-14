@@ -15,7 +15,7 @@
 }
 
 #sub-people-in-space-space-race-on-the-moon{
-  background:url('images/9-12/Space/People_In_Space/Space_Race/On_The_Moon/On_The_Moon.png') no-repeat;
+  background:url('images/9-12/Space/People_In_Space/Space_Race/On_The_Moon/On_The_Moon_BG.png') no-repeat;
   height:748px !important;
   overflow:hidden !important;
   width:1024px !important;
@@ -404,4 +404,14 @@
   color: white;
   text-align: center;
   background-color: #aaa;
+}
+
+
+.tvbutttonholder{
+	position: absolute;
+	left: 29px;
+	top: 8px;
+	width: 258px;
+	height: 266px;
+	background: url('images/9-12/Space/People_In_Space/Space_Race/On_The_Moon/Tv_Button.png') no-repeat;
 }
